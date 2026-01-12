@@ -1,0 +1,38 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && jj st > /dev/null 2>&1 || true"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && if [ -z \"$(jj log --no-graph -T 'description')\" ]; then jj describe -m 'claude: Stop' ; fi > /dev/null 2>&1 || true"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash:jj log*",
+      "Bash:jj show*",
+      "Bash:jj diff*",
+      "Bash:jj status*",
+      "Bash:jj cat*",
+      "Bash:jj file*",
+      "Bash:jj files*",
+      "Bash:jj obslog*",
+      "Bash:jj evolog*"
+    ]
+  }
+}
