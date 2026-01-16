@@ -10,16 +10,6 @@
           }
         ]
       }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cd \"$CLAUDE_PROJECT_DIR\" && if [ -z \"$(jj log --no-graph -T 'description')\" ]; then jj describe -m 'claude: Stop' ; fi > /dev/null 2>&1 || true"
-          }
-        ]
-      }
     ]
   },
   "permissions": {
