@@ -1,0 +1,12 @@
+CC BY-NC-SA 4.0
+
+Creative Commons 表示-非営利-継承 4.0
+https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja
+
+
+Acknowledgement
+
+本スキルには、以下の文献の指標を引用しています。
+
+arXiv:2512.21494v1 Soichiro Murakami, Hidetaka Kamigaito, Hiroya Takamura, Manabu Okumura https://arxiv.org/abs/2512.21494v1
+arXiv:2601.03103v1 Soichiro Murakami, Hidetaka Kamigaito, Hiroya Takamura, Manabu Okumura https://arxiv.org/abs/2601.03103v1
