@@ -1,0 +1,22 @@
+{
+  "name": "ogiri-ai",
+  "owner": {
+    "name": "gyu-don",
+    "email": "takumi.kt@gmail.com"
+  },
+  "metadata": {
+    "description": "大喜利（Ogiri）の回答を生成するスキル - Generate creative Japanese comedy responses for Ogiri prompts",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ogiri-ai",
+      "description": "大喜利（Ogiri）の回答を生成するスキル",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/ogiri-ai"
+      ]
+    }
+  ]
+}
