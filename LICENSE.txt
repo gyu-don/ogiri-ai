@@ -1,10 +1,18 @@
+(C) 2026 gyu-don
+
 CC BY-NC-SA 4.0
 
 Creative Commons 表示-非営利-継承 4.0
 https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja
 
 
-Acknowledgement
+スキルファイル自体の利用・配布・改変には上記のライセンスが適用されますが、
+このスキルを利用して生成されたネタの権利はスキルファイル作者に帰属しません。
+ただし、同様のお題に対し、同様の回答が返される可能性があることにご留意ください。
+
+
+Notices
+=======
 
 本スキルには、以下の文献の指標を引用しています。
 
