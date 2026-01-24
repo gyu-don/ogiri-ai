@@ -5,6 +5,12 @@ Claude Code用の大喜利スキルです。お題に対して面白い回答を
 ## インストール
 
 ```bash
+npx skills add gyu-don/ogiri-ai
+```
+
+または、Claude Code上で
+
+```bash
 /plugin marketplace add https://github.com/gyu-don/ogiri-ai
 /plugin install ogiri-ai
 ```
