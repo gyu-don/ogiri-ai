@@ -30,8 +30,21 @@ When iterating on `SKILL.md`, follow this cycle:
    - Collect outputs from step 3 and run `/diversity-check` with the topic and all answers
    - Target: **5+ distinct decomposition axes per 10 answers** (2 runs)
    - 3-4 axes = improvement needed, 1-2 = still converging
-5. **Evaluate quality** — have a human review the outputs. LLM self-evaluation of funniness is unreliable (see warning below).
+5. **Evaluate quality risks** using the `/fun-check` skill:
+   - Pass the topic and all answers to `/fun-check`
+   - It reports *risks* (not verdicts) per answer: ベタ / 絵なし / ひねりなし / 共感 / 認知度 / 長さ
+   - It also flags structural overlap between answers (素材・構造の被り)
+   - Use the output to identify *which answers to replace* and *why*, then re-run `/ogiri-ai`
+   - `/fun-check` does **not** judge overall funniness — final quality assessment requires human review (see warning below)
 6. **Test with novel topics** — if a topic has been used repeatedly in testing, the model may overfit to it. Always end a development session by testing with an entirely different topic category.
 7. **Commit** with a message explaining the hypothesis and result
 
 **Warning:** Evaluation of "funniness" by the LLM itself is unreliable. The model rates its own outputs as funny because it completed the prescribed process. Use structural checks (diversity, specificity, visual quality) as proxies, and rely on human judgment for final quality assessment.
+
+### Evaluation tools at a glance
+
+| Tool | What it measures | What it does NOT measure |
+|---|---|---|
+| `/diversity-check` | Structural variety of decomposition axes | Funniness |
+| `/fun-check` | Per-answer risks (ベタ・絵・ひねり・共感・認知度・長さ・被り) | Overall funniness |
+| Human review | Overall funniness | — |
