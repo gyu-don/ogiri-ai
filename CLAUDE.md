@@ -17,6 +17,10 @@ This project uses **Jujutsu (jj)** as the primary version control system, with G
 
 The `.claude/skills/ogiri-ai/SKILL.md` file contains the main skill logic. This file is experimental and frequently updated with different approaches to generating humor. Refer to the skill file itself for the current methodology.
 
+## Development
+
+See `DEVELOPMENT.md` for the skill development process, design theory, and iteration methodology.
+
 ## Language Guidelines
 
 When creating or modifying files in this repository:
