@@ -1,5 +1,3 @@
-# CLAUDE.md
-
 ## Project Overview
 
 This repository contains a Claude Code skill for generating Japanese comedy responses (大喜利/Ogiri). Ogiri is a form of Japanese improvisational comedy where participants provide witty, unexpected answers to prompts.
@@ -20,6 +18,18 @@ The `.claude/skills/ogiri-ai/SKILL.md` file contains the main skill logic. This 
 ## Development
 
 See `DEVELOPMENT.md` for the skill development process, design theory, and iteration methodology.
+
+## Sub-Agent Usage for Ogiri
+
+When delegating Ogiri generation to sub-agents, apply the following defaults unless the user specifies otherwise:
+
+**Model and effort defaults:**
+- Claude: Opus 4.6 at medium effort or below, **or** Sonnet 4.6 (or later) at high effort or below. Do not use Opus 4.7.
+- Codex: Use the latest available version at high effort or below. Older Codex versions have no token-efficiency advantage, so prefer the newest.
+
+**When making many sub-agent calls:**
+- Prefer lower effort settings and/or lower-tier models to control costs.
+- Reserve higher-effort or higher-tier models for cases where response quality is likely to benefit meaningfully.
 
 ## Language Guidelines
 
