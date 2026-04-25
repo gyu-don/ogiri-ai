@@ -21,9 +21,14 @@ When iterating on `SKILL.md`, follow this cycle:
 
 1. **Hypothesize** — identify the specific failure mode (SMC? not funny? verbose?)
 2. **Edit** `SKILL.md` with a targeted change
-3. **Verify with parallel subagents** — run at least 2 agents per topic, 2+ topics:
+3. **Verify with parallel subagents** — run at least 2 agents per topic, 2+ topics. Use one of the following launch methods depending on the agent environment:
    ```
-   claude -p --model=opus "/ogiri-ai <お題>"
+   # Claude Code
+   claude -p --model=<model> --effort=<effort> "/ogiri-ai <お題>"
+
+   # Codex CLI
+   codex exec -C . -m <model> -c 'model_reasoning_effort="<effort>"' \
+     "Read .claude/skills/ogiri-ai/SKILL.md and follow it to answer this topic: <お題>"
    ```
    Or launch subagents that read the skill file and execute it.
 4. **Evaluate diversity** using the `/diversity-check` skill:
