@@ -52,11 +52,11 @@ When iterating on `SKILL.md`, follow this cycle:
 
 **Warning:** Evaluation of "funniness" by the LLM itself is unreliable. The model rates its own outputs as funny because it completed the prescribed process. Use structural checks (diversity, specificity, visual quality) as proxies, and rely on human judgment for final quality assessment.
 
-### Evaluation tools at a glance
+### Evaluation skills at a glance
 
-| Tool | What it measures | What it does NOT measure |
+| Skill | What it measures | What it does NOT measure |
 |---|---|---|
-| `/diversity-check` | Structural variety of decomposition axes | Funniness |
-| `/fun-check` | Per-answer risks (ベタ・絵・ひねり・共感・認知度・長さ・滑り・被り・相対典型性) | Overall funniness |
-| `/cluster-fit-check` | Alignment with literature-derived user cluster preference features | Overall funniness or universal appeal |
+| `diversity-check` | Structural variety of decomposition axes | Funniness |
+| `fun-check` | Per-answer risks (ベタ・絵・ひねり・共感・認知度・長さ・滑り・被り・相対典型性) | Overall funniness |
+| `cluster-fit-check` | Alignment with literature-derived user cluster preference features | Overall funniness or universal appeal |
 | Human review | Overall funniness | — |
