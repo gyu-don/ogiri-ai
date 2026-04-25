@@ -32,12 +32,18 @@ When iterating on `SKILL.md`, follow this cycle:
    - 3-4 axes = improvement needed, 1-2 = still converging
 5. **Evaluate quality risks** using the `/fun-check` skill:
    - Pass the topic and all answers to `/fun-check`
-   - It reports *risks* (not verdicts) per answer: ベタ / 絵なし / ひねりなし / 共感 / 認知度 / 長さ
-   - It also flags structural overlap between answers (素材・構造の被り)
+   - It reports *risks* (not verdicts) per answer: ベタ / 絵なし / ひねりなし / 共感 / 認知度 / 長さ / 滑り
+   - It also flags relative typicality, structural overlap, and repeated surreal escape patterns
    - Use the output to identify *which answers to replace* and *why*, then re-run `/ogiri-ai`
    - `/fun-check` does **not** judge overall funniness — final quality assessment requires human review (see warning below)
-6. **Test with novel topics** — if a topic has been used repeatedly in testing, the model may overfit to it. Always end a development session by testing with an entirely different topic category.
-7. **Commit** with a message explaining the hypothesis and result
+6. **Evaluate preference-cluster fit** using the `/cluster-fit-check` skill when comparing styles or tuning for audience breadth:
+   - Pass the topic and all answers to `/cluster-fit-check`
+   - It estimates how each answer aligns with literature-derived user cluster preference features
+   - Treat its scores as *preference-fit signals*, not funniness scores
+   - Use its improvement notes to decide whether to broaden appeal (remove strong negative features) or intentionally sharpen toward a cluster
+   - Do not optimize answers by mechanically adding surface features such as parentheses, ellipses, or slang
+7. **Test with novel topics** — if a topic has been used repeatedly in testing, the model may overfit to it. Always end a development session by testing with an entirely different topic category.
+8. **Commit** with a message explaining the hypothesis and result
 
 **Warning:** Evaluation of "funniness" by the LLM itself is unreliable. The model rates its own outputs as funny because it completed the prescribed process. Use structural checks (diversity, specificity, visual quality) as proxies, and rely on human judgment for final quality assessment.
 
@@ -46,5 +52,6 @@ When iterating on `SKILL.md`, follow this cycle:
 | Tool | What it measures | What it does NOT measure |
 |---|---|---|
 | `/diversity-check` | Structural variety of decomposition axes | Funniness |
-| `/fun-check` | Per-answer risks (ベタ・絵・ひねり・共感・認知度・長さ・被り) | Overall funniness |
+| `/fun-check` | Per-answer risks (ベタ・絵・ひねり・共感・認知度・長さ・滑り・被り・相対典型性) | Overall funniness |
+| `/cluster-fit-check` | Alignment with literature-derived user cluster preference features | Overall funniness or universal appeal |
 | Human review | Overall funniness | — |

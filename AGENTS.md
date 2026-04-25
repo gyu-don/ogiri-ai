@@ -19,5 +19,10 @@ its workflow:
   - Use for identifying risks or caveats in a set of Ogiri answers.
   - Do not judge whether answers are funny; report only risks to know before
     use.
+- `cluster-fit-check`: `.claude/skills/cluster-fit-check/SKILL.md`
+  - Use for analyzing how Ogiri answers align with literature-derived user
+    cluster preference features.
+  - Do not judge whether answers are funny; report cluster-fit signals and
+    improvement notes.
 
 Skill-related content and Ogiri analysis should be written in Japanese.
