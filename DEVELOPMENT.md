@@ -31,24 +31,39 @@ When iterating on `SKILL.md`, follow this cycle:
      "Read .claude/skills/ogiri-ai/SKILL.md and follow it to answer this topic: <お題>"
    ```
    Or launch subagents that read the skill file and execute it.
-4. **Evaluate diversity** using the `/diversity-check` skill:
-   - Collect outputs from step 3 and run `/diversity-check` with the topic and all answers
+4. **Evaluate diversity** using `.claude/skills/diversity-check/SKILL.md`:
+   - Collect outputs from step 3 and run `diversity-check` with the topic and all answers
    - Target: **5+ distinct decomposition axes per 10 answers** (2 runs)
    - 3-4 axes = improvement needed, 1-2 = still converging
-5. **Evaluate quality risks** using the `/fun-check` skill:
-   - Pass the topic and all answers to `/fun-check`
+5. **Evaluate quality risks** using `.claude/skills/fun-check/SKILL.md`:
+   - Pass the topic and all answers to `fun-check`
    - It reports *risks* (not verdicts) per answer: ベタ / 絵なし / ひねりなし / 共感 / 認知度 / 長さ / 滑り
    - It also flags relative typicality, structural overlap, and repeated surreal escape patterns
    - Use the output to identify *which answers to replace* and *why*, then re-run `/ogiri-ai`
-   - `/fun-check` does **not** judge overall funniness — final quality assessment requires human review (see warning below)
-6. **Evaluate preference-cluster fit** using the `/cluster-fit-check` skill when comparing styles or tuning for audience breadth:
-   - Pass the topic and all answers to `/cluster-fit-check`
+   - `fun-check` does **not** judge overall funniness — final quality assessment requires human review (see warning below)
+6. **Evaluate preference-cluster fit** using `.claude/skills/cluster-fit-check/SKILL.md` when comparing styles or tuning for audience breadth:
+   - Pass the topic and all answers to `cluster-fit-check`
    - It estimates how each answer aligns with literature-derived user cluster preference features
    - Treat its scores as *preference-fit signals*, not funniness scores
    - Use its improvement notes to decide whether to broaden appeal (remove strong negative features) or intentionally sharpen toward a cluster
    - Do not optimize answers by mechanically adding surface features such as parentheses, ellipses, or slang
-7. **Test with novel topics** — if a topic has been used repeatedly in testing, the model may overfit to it. Always end a development session by testing with an entirely different topic category.
-8. **Commit** with a message explaining the hypothesis and result
+7. **Run an explicit feedback loop until quality is sufficient**:
+   - Treat steps 3-6 as one loop iteration
+   - After each iteration, edit `SKILL.md` based on the three reports and run the same topics again
+   - Keep a per-iteration log (`iteration N`) with: diversity axis count, fun-check risk counts, and top cluster-fit signals
+   - Continue until all stop criteria are met in **three consecutive iterations** (not two)
+8. **Stricter stop criteria (“sufficiently good”)**:
+   - **Diversity floor**: at least **6 decomposition axes per 10 answers**, and no single axis may contain >40% of answers
+   - **Diversity stability**: worst iteration in the 3-iteration pass streak must still be ≥6 axes
+   - **Risk ceiling** (`fun-check`): at most 30% of answers may have any risk flag, and no single risk type may account for >30% of all flagged risks
+   - **No repeated overlap warnings**: if structural-overlap or surreal-escape warnings appear in two consecutive iterations, loop must continue
+   - **Cluster anti-lock-in**: no single positive or negative cluster-fit feature may appear as the dominant signal in >50% of answers
+   - **Cross-topic robustness**: all above conditions must hold for at least 2 topic categories in the same development session
+9. **If criteria are not met, force another improvement cycle**:
+   - Add or revise one concrete intervention in `SKILL.md` (do not only reword)
+   - Re-run the same topic set, then one additional unseen topic before the next gate check
+10. **Test with novel topics** — always end a development session by testing with an entirely different topic category.
+11. **Commit** with a message explaining the hypothesis, loop count, metrics per iteration, and what intervention changed between iterations
 
 **Warning:** Evaluation of "funniness" by the LLM itself is unreliable. The model rates its own outputs as funny because it completed the prescribed process. Use structural checks (diversity, specificity, visual quality) as proxies, and rely on human judgment for final quality assessment.
 
@@ -59,4 +74,3 @@ When iterating on `SKILL.md`, follow this cycle:
 | `diversity-check` | Structural variety of decomposition axes | Funniness |
 | `fun-check` | Per-answer risks (ベタ・絵・ひねり・共感・認知度・長さ・滑り・被り・相対典型性) | Overall funniness |
 | `cluster-fit-check` | Alignment with literature-derived user cluster preference features | Overall funniness or universal appeal |
-| Human review | Overall funniness | — |
