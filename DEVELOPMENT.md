@@ -19,6 +19,55 @@ SMC is the core problem this skill tries to solve. When an LLM receives the same
 
 When iterating on `SKILL.md`, follow this cycle:
 
+### Codex autonomous execution prompt
+
+Use this section as the operating prompt for Codex when the task is to improve `ogiri-ai` or its evaluation skills. Its purpose is to prevent shallow prompt editing without evidence.
+
+**Activation:** Any request such as "improve the prompt", "make the skill better", "reduce convergence", "Codex is skipping thinking", or "run the feedback loop" activates this protocol.
+
+**Non-negotiable rule:** Do not stop after editing text. A development turn must include generation, evaluation, and a decision about the next intervention. If tooling, budget, or sandbox limits prevent the full loop, record the blocker explicitly and still run the largest local subset possible.
+
+**Before editing:**
+- Read `SKILL.md`, this file, and the evaluation skills that will be used.
+- Write one failure hypothesis in concrete terms, for example: "answers pass novelty by escaping into generic eerie imagery, but lose relevance."
+- Select at least two fixed topics from different categories for regression. Add one unseen topic before any final gate check.
+- Define the metric target before seeing the new outputs.
+
+**One loop iteration means all of the following happened:**
+1. Generate candidates with `ogiri-ai`: at least 2 independent runs per fixed topic, producing 10+ answers per topic.
+2. Preserve the raw answers. Do not evaluate from memory or from a cleaned-up subset.
+3. Run `diversity-check` on each topic and record axis count plus largest-axis share.
+4. Run `fun-check` and record total risk rate, risk-type concentration, structural overlap warnings, and surreal-escape warnings.
+5. Run `cluster-fit-check` and record any dominant positive or negative feature that appears in more than half of the answers.
+6. Use `humor-rank` on plausible finalists or on close pairs where the metrics disagree. Record whether wins concentrate on one brittle pattern.
+7. Run `humor-eval` on surviving candidates and record average Relevance, Empathy, and Overall Funniness.
+8. Decide one concrete next intervention in `SKILL.md`. The intervention must change behavior, not merely intensify wording.
+
+**Minimum verification before claiming progress:** complete at least one baseline loop and one post-edit loop. If the stricter stop criteria below are not met for three consecutive iterations, say so directly; the correct final state is "improved but not fully validated", not "done".
+
+**What Codex must not do:**
+- Do not infer diversity from the apparent variety of nouns; use `diversity-check`.
+- Do not treat `fun-check` as a funniness score.
+- Do not tune toward cluster-fit by mechanically adding parentheses, ellipses, slang, or other surface features.
+- Do not let `humor-eval` Overall Funniness override low Relevance or Empathy.
+- Do not discard inconvenient generated answers before scoring.
+- Do not change several unrelated prompt mechanisms at once unless the previous loop identified multiple coupled failures.
+
+**Iteration log template:**
+
+```
+iteration N
+hypothesis:
+edit:
+topics:
+diversity: axes / largest-axis share
+fun-check: risk rate / dominant risk / overlap warnings
+cluster-fit: dominant signals / lock-in risk
+humor-rank: pairwise pattern
+humor-eval: avg Relevance / Empathy / Overall
+decision: stop / continue, with next intervention
+```
+
 1. **Hypothesize** — identify the specific failure mode (SMC? not funny? verbose?)
 2. **Edit** `SKILL.md` with a targeted change
 3. **Verify with parallel subagents** — run at least 2 agents per topic, 2+ topics. Use one of the following launch methods depending on the agent environment:
