@@ -260,3 +260,74 @@ metrics:
 
 decision:
 improved but not fully validated. Diversity and Relevance/Empathy floors mostly pass, and unseen-topic robustness improved. Stop criteria are not met because three consecutive passing iterations were not completed, 職場 risk remains 40%, risk types still concentrate on 回収弱め/任意の不穏サイン, and overlap warnings remain for 職場初期不穏サイン and ラーメン会計/注文反応.
+
+## iteration 5: simplification without full rewrite
+
+hypothesis:
+`SKILL.md` が細則の追加で肥大化しており、特に `Step 3.7`〜`3.9` と最終チェックが実行負荷を上げている。直近で効いた制約は残すべきだが、個別のマクロ軸・サブ軸・回収強度テストを別ステップとして持つ必要はない。品質を落とさずに保つ最小単位は「同じ嫌さに集めない」「嫌さが実務上の不利益まで届いている」の2点。
+
+edit:
+- `Step 3.7`〜`3.9` を `Step 3.7: 収束監査` に統合。
+- 危険・脱出、監視・許可、変な説明、道具確認、遠い意味づけを「同じ嫌さの作り方」としてまとめた。
+- 予告・謝罪・祈り・夢・許しだけで嫌さを作る候補を落とし、実務上の不利益へ戻す短いゲートを追加。
+- 最終チェックを20項目から18項目へ削減。
+- 行数: 474行 -> 439行。
+
+topics:
+- 固定1: 逃げた方がいい職場の特徴
+- 固定2: 二度と行かないラーメン屋の特徴
+- 未見: こんなバスツアーは嫌だ
+
+raw answers after final simplification:
+
+逃げた方がいい職場の特徴 / Run 1:
+1. 面接で避難靴のサイズを聞かれる
+2. 給料日の朝、経理が先に謝る
+3. 新人歓迎の品が耳栓
+4. 引き継ぎが「怒号の聞き分け方」だけ
+5. 上司より先に椅子が威嚇してくる
+
+逃げた方がいい職場の特徴 / Run 2:
+1. 面接官が出口に一番近い席を譲らない
+2. 初日に「怒鳴られ用の内線」を渡される
+3. 休憩中だけ廊下の電気が消える
+4. 「定時」の発音で空気清浄機が赤くなる
+5. 新人紹介より先に謝罪文の例文を暗記させる
+
+二度と行かないラーメン屋の特徴 / Run 1:
+1. 食券機に「謝る」ボタンがある
+2. 麺をゆでる前に説得している
+3. 替え玉が皿で返ってくる
+4. レンゲだけ鍵付き
+5. 会計でスープの反省点を聞かれる
+
+二度と行かないラーメン屋の特徴 / Run 2:
+1. 食券機の横に「当たり外れ」の箱
+2. 店員が麺を一本だけ客席に見せて戻す
+3. レンゲの裏に前の客の感想が彫ってある
+4. スープを飲むたび厨房が小さくうなずく
+5. 替え玉を頼むと店内が少し暗くなる
+
+こんなバスツアーは嫌だ / Run 1:
+1. 添乗員が乗車前に家の鍵を預かる
+2. 休憩先で目的地が変わる
+3. 車内販売が酔い止めだけ
+4. 座席表が「心の強い順」
+5. 到着場所がサービスエリアのトイレ前
+
+こんなバスツアーは嫌だ / Run 2:
+1. 添乗員が集合場所をくじで決める
+2. 休憩先で運転手だけ走って買い物する
+3. ガイドのマイクがため息だけよく拾う
+4. お土産が前の便の忘れ物
+5. 目的地に着く前から帰りの反省会
+
+metrics:
+- diversity: 職場 5 axes / 30%, ラーメン 7 axes / 20%, バス 8 axes / 20%
+- fun-check: 職場 risk 30%（怒鳴り対応の被り）, ラーメン risk 20%（小物シュール寄り）, バス risk 20%（予定崩壊・反省会の軽い重複）
+- cluster-fit: 全体に C6 寄りの短文シュールが残る。職場は不穏設備、ラーメンは小物処理、バスは管理異常に寄るが、強い単一ロックではない。
+- humor-rank: 職場は「職場制度が壊れている」型にやや集中。ラーメンとバスは勝ち筋が比較的分散。
+- humor-eval: 職場 3.4 / 3.1 / 3.0, ラーメン 3.2 / 2.8 / 2.8, バス 3.5 / 3.2 / 3.1
+
+decision:
+keep the smaller `SKILL.md`. The simplification preserves enough quality for this iteration: Relevance remains above 3.0, Empathy remains above 2.8, and largest-axis share stays within 30%. Strict stop criteria are still not met because this is not a three-iteration pass streak, and 職場 remains at only 5 axes with overlap around 怒鳴り対応. Next intervention, if continuing, should target short-form surreal lock-in without adding another long rule list.
