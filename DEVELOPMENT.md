@@ -19,39 +19,99 @@ SMC is the core problem this skill tries to solve. When an LLM receives the same
 
 When iterating on `SKILL.md`, follow this cycle:
 
+### Codex autonomous execution prompt
+
+Use this section as the operating prompt for Codex when the task is to improve `ogiri-ai` or its evaluation skills. Its purpose is to prevent shallow prompt editing without evidence.
+
+**Activation:** Any request such as "improve the prompt", "make the skill better", "reduce convergence", "Codex is skipping thinking", or "run the feedback loop" activates this protocol.
+
+**Non-negotiable rule:** Do not stop after editing text. A development turn must include generation, evaluation, and a decision about the next intervention. If tooling, budget, or sandbox limits prevent the full loop, record the blocker explicitly and still run the largest local subset possible.
+
+**Before editing:**
+- Read `SKILL.md`, this file, and the evaluation skills that will be used.
+- Write one failure hypothesis in concrete terms, for example: "answers pass novelty by escaping into generic eerie imagery, but lose relevance."
+- Select at least two fixed topics from different categories for regression. Add one unseen topic before any final gate check.
+- Define the metric target before seeing the new outputs.
+
+**One loop iteration means all of the following happened:**
+1. Generate candidates with `ogiri-ai` through independent subagents first: at least 2 independent runs per fixed topic, producing 10+ answers per topic. If subagents are unavailable, use CLI fallback commands.
+2. Preserve the raw answers. Do not evaluate from memory or from a cleaned-up subset.
+3. Run `diversity-check` on each topic and record axis count plus largest-axis share.
+4. Run `fun-check` and record total risk rate, risk-type concentration, structural overlap warnings, and surreal-escape warnings.
+5. Run `cluster-fit-check` and record any dominant positive or negative feature that appears in more than half of the answers.
+6. Use `humor-rank` on plausible finalists or on close pairs where the metrics disagree. Record whether wins concentrate on one brittle pattern.
+7. Run `humor-eval` on surviving candidates and record average Relevance, Empathy, and Overall Funniness.
+8. Decide one concrete next intervention in `SKILL.md`. The intervention must change behavior, not merely intensify wording.
+
+**Minimum verification before claiming progress:** complete at least one baseline loop and one post-edit loop. If the stricter stop criteria below are not met for three consecutive iterations, say so directly; the correct final state is "improved but not fully validated", not "done".
+
+**What Codex must not do:**
+- Do not infer diversity from the apparent variety of nouns; use `diversity-check`.
+- Do not treat `fun-check` as a funniness score.
+- Do not tune toward cluster-fit by mechanically adding parentheses, ellipses, slang, or other surface features.
+- Do not let `humor-eval` Overall Funniness override low Relevance or Empathy.
+- Do not discard inconvenient generated answers before scoring.
+- Do not change several unrelated prompt mechanisms at once unless the previous loop identified multiple coupled failures.
+
+**Iteration log template:**
+
+```
+iteration N
+hypothesis:
+edit:
+topics:
+diversity: axes / largest-axis share
+fun-check: risk rate / dominant risk / overlap warnings
+cluster-fit: dominant signals / lock-in risk
+humor-rank: pairwise pattern
+humor-eval: avg Relevance / Empathy / Overall
+decision: stop / continue, with next intervention
+```
+
 1. **Hypothesize** — identify the specific failure mode (SMC? not funny? verbose?)
 2. **Edit** `SKILL.md` with a targeted change
-3. **Verify with parallel subagents** — run at least 2 agents per topic, 2+ topics. Use one of the following launch methods depending on the agent environment:
-   ```
-   # Claude Code
-   claude -p --model=<model> --effort=<effort> "/ogiri-ai <お題>"
+3. **Verify with parallel subagents** — run at least 2 agents per topic, 2+ topics. Prefer subagents over command-line execution, and prefer native skill invocation over prompts that explicitly tell the agent to read a skill file.
 
-   # Codex CLI
-   codex exec -C . -m <model> -c 'model_reasoning_effort="<effort>"' \
-     "Read .claude/skills/ogiri-ai/SKILL.md and follow it to answer this topic: <お題>"
+   Give each subagent the skill invocation directly:
    ```
-   Or launch subagents that read the skill file and execute it.
-4. **Evaluate diversity** using `.claude/skills/diversity-check/SKILL.md`:
-   - Collect outputs from step 3 and run `diversity-check` with the topic and all answers
+   # Claude-family subagent prompt
+   /ogiri-ai <お題>
+
+   # Codex-family subagent prompt
+   $ogiri-ai <お題>
+   ```
+
+   Use command-line execution only when subagents are unavailable or impractical:
+   ```
+   # Claude Code CLI fallback
+   claude -p --model=<model> --effort=<effort> '/ogiri-ai <お題>'
+
+   # Codex CLI fallback
+   codex exec -C . -m <model> -c 'model_reasoning_effort="<effort>"' \
+     '$ogiri-ai <お題>'
+   ```
+   Quote the Codex `$ogiri-ai` prompt with single quotes, or otherwise escape `$`, so the shell does not treat it as environment-variable expansion.
+4. **Evaluate diversity** with the `diversity-check` skill:
+   - Collect outputs from step 3 and invoke `diversity-check` with the topic and all answers
    - Target: **5+ distinct decomposition axes per 10 answers** (2 runs)
    - 3-4 axes = improvement needed, 1-2 = still converging
-5. **Evaluate quality risks** using `.claude/skills/fun-check/SKILL.md`:
-   - Pass the topic and all answers to `fun-check`
+5. **Evaluate quality risks** with the `fun-check` skill:
+   - Pass the topic and all answers to `fun-check` by skill invocation
    - It reports *risks* (not verdicts) per answer: ベタ / 絵なし / ひねりなし / 共感 / 認知度 / 長さ / 滑り
    - It also flags relative typicality, structural overlap, and repeated surreal escape patterns
-   - Use the output to identify *which answers to replace* and *why*, then re-run `/ogiri-ai`
+   - Use the output to identify *which answers to replace* and *why*, then re-run `ogiri-ai` by skill invocation
    - `fun-check` does **not** judge overall funniness — final quality assessment requires human review (see warning below)
-6. **Evaluate preference-cluster fit** using `.claude/skills/cluster-fit-check/SKILL.md` when comparing styles or tuning for audience breadth:
-   - Pass the topic and all answers to `cluster-fit-check`
+6. **Evaluate preference-cluster fit** with the `cluster-fit-check` skill when comparing styles or tuning for audience breadth:
+   - Pass the topic and all answers to `cluster-fit-check` by skill invocation
    - It estimates how each answer aligns with literature-derived user cluster preference features
    - Treat its scores as *preference-fit signals*, not funniness scores
    - Use its improvement notes to decide whether to broaden appeal (remove strong negative features) or intentionally sharpen toward a cluster
    - Do not optimize answers by mechanically adding surface features such as parentheses, ellipses, or slang
-7. **Rank candidates pairwise** using `.claude/skills/humor-rank/SKILL.md`:
+7. **Rank candidates pairwise** with the `humor-rank` skill:
    - Compare candidates within the same topic (A/B) and keep winners
    - Use this as a *relative ranking* signal, not a universal funniness score
    - Require clear relevance + empathy before novelty can win
-8. **Run multi-axis scoring** using `.claude/skills/humor-eval/SKILL.md`:
+8. **Run multi-axis scoring** with the `humor-eval` skill:
    - Score each surviving candidate on 6 axes: Novelty / Clarity / Relevance / Intelligence / Empathy / Overall Funniness
    - Apply a gate: if Relevance or Empathy is too low, cap overall score and regenerate
 9. **Run an explicit feedback loop until quality is sufficient**:

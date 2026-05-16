@@ -19,6 +19,25 @@ The `.claude/skills/ogiri-ai/SKILL.md` file contains the main skill logic. This 
 
 See `DEVELOPMENT.md` for the skill development process, design theory, and iteration methodology.
 
+## Codex Development Discipline
+
+When Codex is asked to improve the ogiri prompt, `SKILL.md`, or any evaluation skill, it must treat `DEVELOPMENT.md` as the execution contract, not background reading.
+
+Required behavior:
+- Read `DEVELOPMENT.md` and the relevant skill files before editing.
+- Start with a concrete failure hypothesis, then make a targeted prompt change. Do not reword large sections without naming the failure mode.
+- Use the full evaluation loop described in `DEVELOPMENT.md`: `ogiri-ai` generation, `diversity-check`, `fun-check`, `cluster-fit-check`, `humor-rank`, and `humor-eval`.
+- Prefer independent runs through subagents or CLI invocations. If those are unavailable, run the same checks locally and clearly mark the verification as limited.
+- Keep per-iteration metrics: diversity axis count, risk counts, dominant cluster-fit signals, pairwise ranking pattern, and average Relevance/Empathy/Overall scores.
+- Do not claim the prompt is "good enough" from self-review alone. A change is only validated by loop metrics, and the stricter stop criteria in `DEVELOPMENT.md` require three consecutive passing iterations.
+- If the full three-iteration pass streak is not completed in the current session, report the exact loop depth reached, the remaining failing criteria, and the next concrete intervention.
+
+Shortcut rules:
+- Do not skip raw candidate generation.
+- Do not replace the evaluation skills with a generic opinion about whether answers are funny.
+- Do not optimize for one metric while ignoring diversity, relevance, empathy, and cluster lock-in.
+- Do not end with only a proposal when the user asked for an improvement; edit the relevant file and verify as far as the environment allows.
+
 ## Sub-Agent Usage for Ogiri
 
 When delegating Ogiri generation to sub-agents, apply the following defaults unless the user specifies otherwise:
