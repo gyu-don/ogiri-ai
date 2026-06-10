@@ -15,6 +15,42 @@ SMC is the core problem this skill tries to solve. When an LLM receives the same
 - *Form-level* hints (style, format) do NOT cause SMC — they constrain HOW, not WHAT
 - Process inversion (逆走: start from punchline, connect to topic) is the only intervention that changes the generation pathway itself
 
+## Example Firewall: using human feedback without creating attractors
+
+Human reactions (which answers got laughs, which fell flat) are the highest-quality
+signal available, but pasting concrete examples into `SKILL.md` creates new
+attractors (see SMC above). The resolution is a zone separation:
+
+- **Evaluation zone** (this file, evaluation skills, iteration logs, commit
+  messages): concrete examples are allowed and encouraged. Record the actual
+  answer text, the topic, and the observed reaction.
+- **Generation zone** (`.claude/skills/ogiri-ai/SKILL.md`): concrete examples,
+  materials, scenarios, and punchlines are banned. Only *structural
+  abstractions* may cross over from the evaluation zone.
+
+**Abstraction procedure:**
+1. Take the example and name the mechanism that made it work or fail
+   (e.g., "the dog thought the entire quest was a walk" → the laugh comes from
+   a *premise-level* misunderstanding, not a behavior-level one).
+2. Strip every content word: no nouns, no settings, no specific punchline.
+   State the rule purely as structure or form ("間違いは前提レベルが最も笑える").
+3. **Reconstruction test**: could someone reading only the rule reconstruct the
+   original example? If yes, the abstraction is too shallow and will become an
+   attractor — abstract one level further. If no, it may cross into `SKILL.md`.
+4. **Cross-topic regression**: the abstracted rule must improve answers on
+   topics *different from* the one the example came from. A rule that only
+   helps its source topic is a disguised example.
+
+Worked precedent: 「散歩じゃなかったと今気づいた」(strong human-rated answer) →
+rule 「バカの深さ: 前提の勘違いが最も笑える」. The rule contains no dog, no
+Momotarō, no walk; reading it cannot reproduce the joke. It passed cross-topic
+regression (improved 健診/お菓子 topics too).
+
+The same firewall applies to *negative* examples: a joke that fell flat goes
+into the iteration log and may justify a structural prohibition, but the joke
+itself never appears in `SKILL.md` as a "don't write this" example — that too
+is an attractor (the model anchors on it).
+
 ## Skill Development Process
 
 When iterating on `SKILL.md`, follow this cycle:
@@ -135,6 +171,35 @@ decision: stop / continue, with next intervention
 13. **Commit** with a message explaining the hypothesis, loop count, metrics per iteration, and what intervention changed between iterations
 
 **Warning:** Evaluation of "funniness" by the LLM itself is unreliable. The model rates its own outputs as funny because it completed the prescribed process. Use structural checks (diversity, specificity, visual quality) as proxies, and rely on human judgment for final quality assessment.
+
+### Evaluation noise and loop execution notes
+
+Empirically measured pitfalls (2026-06 session) and how to handle them:
+
+- **humor-eval is noisy.** The same 10-answer set scored Overall 2.6 vs 3.0 on
+  back-to-back independent runs (±0.4 swing, alternating strict/lenient
+  calibration). Single-run averages cannot support claims about edits whose
+  effect size is < 0.4. Mitigations: run **2+ independent humor-eval passes**
+  and compare medians; prefer **peak metrics** (count of Overall-4 answers,
+  quality of the top 2) over averages — ogiri is judged by its best answer,
+  not its mean; track per-axis bottlenecks (the lowest-average axis) rather
+  than Overall.
+- **One subagent, one skill.** Subagents asked to run 2-3 evaluation skills in
+  one prompt frequently stop after the first skill and return a partial
+  report. Issue one skill per subagent invocation, or verify all sections
+  arrived before using the result.
+- **Pooled-run metrics are inflated.** Merging 2 runs into a 10-answer pool is
+  required for cross-run SMC detection (it catches attractors that recur in
+  every run), but fun-check risk rates and duplicate counts on the pooled set
+  overstate what a single user sees in one 5-answer output. Gate decisions on
+  per-run numbers; use pooled numbers only for attractor diagnosis.
+- **Pairwise comparisons have position bias.** For finalist decisions with
+  humor-rank, re-run close comparisons with A/B order swapped; if the winner
+  flips, record a draw. Treat confidence ≤ 0.55 as a draw outright.
+- **The evaluator ceiling is real.** Once structural metrics pass and
+  humor-eval deltas fall inside the noise band, further prompt tuning cannot
+  be validated by LLM evaluation alone. At that point the correct next signal
+  is human reactions, fed back through the Example Firewall above.
 
 ### Evaluation skills at a glance
 
