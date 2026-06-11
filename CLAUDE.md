@@ -26,11 +26,11 @@ When Codex is asked to improve the ogiri prompt, `SKILL.md`, or any evaluation s
 Required behavior:
 - Read `DEVELOPMENT.md` and the relevant skill files before editing.
 - Start with a concrete failure hypothesis, then make a targeted prompt change. Do not reword large sections without naming the failure mode.
-- Use the full evaluation loop described in `DEVELOPMENT.md`: `ogiri-ai` generation, `diversity-check`, `fun-check`, `cluster-fit-check`, `humor-rank`, and `humor-eval`.
+- Use the two-tier loop described in `DEVELOPMENT.md`: the **light loop** (`ogiri-ai` generation + `diversity-check` + `fun-check` + hand counts) for everyday iteration, and the **gate check** (pooled 2-run generation, an unseen topic, and 2-pass `humor-eval` medians) before claiming an improvement is validated. `cluster-fit-check` and `humor-rank` are optional tools for specific questions, not per-iteration steps.
 - Prefer independent runs through subagents or CLI invocations. If those are unavailable, run the same checks locally and clearly mark the verification as limited.
-- Keep per-iteration metrics: diversity axis count, risk counts, dominant cluster-fit signals, pairwise ranking pattern, and average Relevance/Empathy/Overall scores.
-- Do not claim the prompt is "good enough" from self-review alone. A change is only validated by loop metrics, and the stricter stop criteria in `DEVELOPMENT.md` require three consecutive passing iterations.
-- If the full three-iteration pass streak is not completed in the current session, report the exact loop depth reached, the remaining failing criteria, and the next concrete intervention.
+- Keep per-iteration metrics: diversity axis count, dominant fun-check risk type and overlap warnings, hand counts (「」, repeated mechanisms/metaphor systems), and — at gates — median Relevance/Empathy and the Overall-4 count.
+- Do not claim the prompt is "good enough" from self-review alone. A change is only validated by passing the gate check in `DEVELOPMENT.md`.
+- If the gate check is not passed in the current session, report the exact loop depth reached, the remaining failing criteria, and the next concrete intervention.
 
 Shortcut rules:
 - Do not skip raw candidate generation.

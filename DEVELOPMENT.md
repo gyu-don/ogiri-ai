@@ -53,160 +53,153 @@ is an attractor (the model anchors on it).
 
 ## Skill Development Process
 
-When iterating on `SKILL.md`, follow this cycle:
+Two tiers: a cheap **light loop** for everyday iteration, and a heavier
+**gate check** run only when you want to claim an improvement is validated.
 
-### Codex autonomous execution prompt
+The previous process (5 evaluation skills × 2 runs × 2 topics on *every*
+iteration, plus a 3-consecutive-pass streak) cost roughly 250k+ subagent
+tokens per iteration and was never completed in practice. This version keeps
+the signals that actually drove interventions in past sessions and drops the
+rest; the removed requirements are recorded at the bottom so they don't creep
+back without new evidence.
 
-Use this section as the operating prompt for Codex when the task is to improve `ogiri-ai` or its evaluation skills. Its purpose is to prevent shallow prompt editing without evidence.
+**Activation:** any request like "improve the prompt", "make the skill
+better", "reduce convergence", or "run the feedback loop" activates this
+process. Do not stop after editing text: a development turn includes
+generation, evaluation, and a decision about the next intervention. If
+tooling or budget prevents even the light loop, record the blocker and run
+the largest subset possible.
 
-**Activation:** Any request such as "improve the prompt", "make the skill better", "reduce convergence", "Codex is skipping thinking", or "run the feedback loop" activates this protocol.
+### Non-negotiables (both tiers)
 
-**Non-negotiable rule:** Do not stop after editing text. A development turn must include generation, evaluation, and a decision about the next intervention. If tooling, budget, or sandbox limits prevent the full loop, record the blocker explicitly and still run the largest local subset possible.
+- Read `SKILL.md`, this file, and the evaluation skills you will use, before editing.
+- Write one concrete failure hypothesis before editing, then make **one**
+  targeted change (two only if the previous loop showed coupled failures).
+  Do not reword large sections without naming the failure mode.
+- Generate real candidates by skill invocation. Never evaluate from memory or
+  from a cleaned-up subset; preserve the raw outputs.
+- **One subagent, one skill.** Agents asked to run several evaluation skills
+  in one prompt return partial reports.
+- Funniness self-review is not evidence. Structural metrics and human
+  reactions (fed back through the Example Firewall) are.
+- Log every iteration (template below); put the hypothesis and metrics in the
+  commit message.
 
-**Before editing:**
-- Read `SKILL.md`, this file, and the evaluation skills that will be used.
-- Write one failure hypothesis in concrete terms, for example: "answers pass novelty by escaping into generic eerie imagery, but lose relevance."
-- Select at least two fixed topics from different categories for regression. Add one unseen topic before any final gate check.
-- Define the metric target before seeing the new outputs.
+### How to invoke
 
-**One loop iteration means all of the following happened:**
-1. Generate candidates with `ogiri-ai` through independent subagents first: at least 2 independent runs per fixed topic, producing 10+ answers per topic. If subagents are unavailable, use CLI fallback commands.
-2. Preserve the raw answers. Do not evaluate from memory or from a cleaned-up subset.
-3. Run `diversity-check` on each topic and record axis count plus largest-axis share.
-4. Run `fun-check` and record total risk rate, risk-type concentration, structural overlap warnings, and surreal-escape warnings.
-5. Run `cluster-fit-check` and record any dominant positive or negative feature that appears in more than half of the answers.
-6. Use `humor-rank` on plausible finalists or on close pairs where the metrics disagree. Record whether wins concentrate on one brittle pattern.
-7. Run `humor-eval` on surviving candidates and record average Relevance, Empathy, and Overall Funniness.
-8. Decide one concrete next intervention in `SKILL.md`. The intervention must change behavior, not merely intensify wording.
-
-**Minimum verification before claiming progress:** complete at least one baseline loop and one post-edit loop. If the stricter stop criteria below are not met for three consecutive iterations, say so directly; the correct final state is "improved but not fully validated", not "done".
-
-**What Codex must not do:**
-- Do not infer diversity from the apparent variety of nouns; use `diversity-check`.
-- Do not treat `fun-check` as a funniness score.
-- Do not tune toward cluster-fit by mechanically adding parentheses, ellipses, slang, or other surface features.
-- Do not let `humor-eval` Overall Funniness override low Relevance or Empathy.
-- Do not discard inconvenient generated answers before scoring.
-- Do not change several unrelated prompt mechanisms at once unless the previous loop identified multiple coupled failures.
-
-**Iteration log template:**
+Prefer subagents with native skill invocation (Sonnet-class at moderate
+effort is sufficient; see model defaults in `CLAUDE.md`):
 
 ```
-iteration N
+# Claude-family subagent prompt
+/ogiri-ai <お題>
+
+# Codex-family subagent prompt
+$ogiri-ai <お題>
+```
+
+CLI fallback when subagents are unavailable:
+
+```
+claude -p --model=<model> --effort=<effort> '/ogiri-ai <お題>'
+codex exec -C . -m <model> -c 'model_reasoning_effort="<effort>"' '$ogiri-ai <お題>'
+```
+(Single-quote the Codex prompt so the shell does not expand `$ogiri-ai`.)
+
+### Light loop (default — ~5-6 subagent calls per iteration)
+
+1. Hypothesis + one targeted edit to `SKILL.md`.
+2. Generate: one `/ogiri-ai` run per fixed topic, 2 fixed topics from
+   different categories (5 answers each).
+3. Evaluate per topic: `diversity-check` and `fun-check`, one subagent each.
+   Also count by hand (no subagent needed): 「」 per run, same-mechanism
+   repeats, same borrowed metaphor system repeats, material reappearing from
+   the previous iteration's outputs.
+4. Log, decide the next intervention.
+
+Light-loop reference values — these are *trend signals*, not pass/fail gates:
+- ≥4 distinct decomposition axes per 5 answers
+- no single risk type dominating the fun-check flags (the raw flag rate runs
+  40-60% even on good sets — fun-check flags generously by design)
+- 「」 count within `SKILL.md`'s own limit; no repeated material across iterations
+
+### Gate check (only when claiming a validated improvement — ~15-18 calls)
+
+Run once when light-loop trends look good, not on every iteration:
+
+1. Generate: 2 fixed topics × 2 independent runs each, plus **1 unseen-category
+   topic** × 2 runs (pool each topic to 10 answers).
+2. `diversity-check` on each pooled 10: **≥6 axes, no axis >40%**.
+3. `fun-check` on each pooled 10: no near-identical material across the two
+   runs (cross-run attractor), no risk type >40% of all flags, no overlap
+   warning repeated from the previous gate. Pooled flag rates overstate what
+   one user sees in a single 5-answer output — treat the rate as a trend, not
+   a gate.
+4. `humor-eval` × **2 independent passes** per pooled 10; compare medians.
+   Floors: median Relevance ≥2.5 **and** median Empathy ≥2.5.
+   Peak: ≥2 answers at Overall 4 per 10 (ogiri is judged by its best answer,
+   not its mean). Ignore Overall-average deltas <0.4 — that is the measured
+   noise band between identical runs.
+5. All three topics pass → the change is validated. Then **stop looping**:
+   once structural metrics pass and humor-eval deltas sit inside the noise
+   band, further prompt tuning cannot be validated by LLM evaluation alone.
+   The next signal is human reactions, fed back through the Example Firewall.
+6. Commit with hypothesis, loop count, per-iteration metrics, and what
+   changed between iterations. If the gate was not passed this session,
+   report the exact loop depth, the failing criteria, and the next concrete
+   intervention — the honest final state is "improved but not fully
+   validated", not "done".
+
+### Optional tools (run only when they answer a specific question)
+
+- `humor-rank`: breaking ties between finalists, or when other metrics
+  disagree about a pair. Re-run close pairs with A/B order swapped; a flipped
+  winner or confidence ≤0.55 is a draw. Pairwise wins concentrating on one
+  brittle pattern (e.g., novelty-only) is a warning sign.
+- `cluster-fit-check`: only when deliberately tuning style or audience
+  breadth. Treat scores as preference-fit signals, not funniness. Never
+  optimize by mechanically adding parentheses, ellipses, or slang.
+
+### Iteration log template (both tiers; leave blank what wasn't run)
+
+```
+iteration N (light|gate)
 hypothesis:
 edit:
 topics:
 diversity: axes / largest-axis share
-fun-check: risk rate / dominant risk / overlap warnings
-cluster-fit: dominant signals / lock-in risk
-humor-rank: pairwise pattern
-humor-eval: avg Relevance / Empathy / Overall
-decision: stop / continue, with next intervention
+fun-check: dominant risk type / overlap warnings / flag-rate trend
+hand counts: 「」 / repeated mechanisms / repeated metaphor systems
+humor-eval (gate only): median Relevance / Empathy / Overall-4 count
+decision: next intervention, or gate pass/fail
 ```
-
-1. **Hypothesize** — identify the specific failure mode (SMC? not funny? verbose?)
-2. **Edit** `SKILL.md` with a targeted change
-3. **Verify with parallel subagents** — run at least 2 agents per topic, 2+ topics. Prefer subagents over command-line execution, and prefer native skill invocation over prompts that explicitly tell the agent to read a skill file.
-
-   Give each subagent the skill invocation directly:
-   ```
-   # Claude-family subagent prompt
-   /ogiri-ai <お題>
-
-   # Codex-family subagent prompt
-   $ogiri-ai <お題>
-   ```
-
-   Use command-line execution only when subagents are unavailable or impractical:
-   ```
-   # Claude Code CLI fallback
-   claude -p --model=<model> --effort=<effort> '/ogiri-ai <お題>'
-
-   # Codex CLI fallback
-   codex exec -C . -m <model> -c 'model_reasoning_effort="<effort>"' \
-     '$ogiri-ai <お題>'
-   ```
-   Quote the Codex `$ogiri-ai` prompt with single quotes, or otherwise escape `$`, so the shell does not treat it as environment-variable expansion.
-4. **Evaluate diversity** with the `diversity-check` skill:
-   - Collect outputs from step 3 and invoke `diversity-check` with the topic and all answers
-   - Target: **5+ distinct decomposition axes per 10 answers** (2 runs)
-   - 3-4 axes = improvement needed, 1-2 = still converging
-5. **Evaluate quality risks** with the `fun-check` skill:
-   - Pass the topic and all answers to `fun-check` by skill invocation
-   - It reports *risks* (not verdicts) per answer: ベタ / 絵なし / ひねりなし / 共感 / 認知度 / 長さ / 滑り
-   - It also flags relative typicality, structural overlap, and repeated surreal escape patterns
-   - Use the output to identify *which answers to replace* and *why*, then re-run `ogiri-ai` by skill invocation
-   - `fun-check` does **not** judge overall funniness — final quality assessment requires human review (see warning below)
-6. **Evaluate preference-cluster fit** with the `cluster-fit-check` skill when comparing styles or tuning for audience breadth:
-   - Pass the topic and all answers to `cluster-fit-check` by skill invocation
-   - It estimates how each answer aligns with literature-derived user cluster preference features
-   - Treat its scores as *preference-fit signals*, not funniness scores
-   - Use its improvement notes to decide whether to broaden appeal (remove strong negative features) or intentionally sharpen toward a cluster
-   - Do not optimize answers by mechanically adding surface features such as parentheses, ellipses, or slang
-7. **Rank candidates pairwise** with the `humor-rank` skill:
-   - Compare candidates within the same topic (A/B) and keep winners
-   - Use this as a *relative ranking* signal, not a universal funniness score
-   - Require clear relevance + empathy before novelty can win
-8. **Run multi-axis scoring** with the `humor-eval` skill:
-   - Score each surviving candidate on 6 axes: Novelty / Clarity / Relevance / Intelligence / Empathy / Overall Funniness
-   - Apply a gate: if Relevance or Empathy is too low, cap overall score and regenerate
-9. **Run an explicit feedback loop until quality is sufficient**:
-   - Treat steps 3-8 as one loop iteration
-   - After each iteration, edit `SKILL.md` based on the evaluation reports and run the same topics again
-   - Keep a per-iteration log (`iteration N`) with: diversity axis count, fun-check risk counts, top cluster-fit signals, pairwise wins/losses, and average 6-axis scores
-   - Continue until all stop criteria are met in **three consecutive iterations** (not two)
-10. **Stricter stop criteria (“sufficiently good”)**:
-   - **Diversity floor**: at least **6 decomposition axes per 10 answers**, and no single axis may contain >40% of answers
-   - **Diversity stability**: worst iteration in the 3-iteration pass streak must still be ≥6 axes
-   - **Risk ceiling** (`fun-check`): at most 30% of answers may have any risk flag, and no single risk type may account for >30% of all flagged risks
-   - **No repeated overlap warnings**: if structural-overlap or surreal-escape warnings appear in two consecutive iterations, loop must continue
-   - **Cluster anti-lock-in**: no single positive or negative cluster-fit feature may appear as the dominant signal in >50% of answers
-   - **Pairwise robustness** (`humor-rank`): pairwise wins should not concentrate on one brittle pattern (e.g., novelty-only wins)
-   - **Empathy/Relevance floor** (`humor-eval`): average Empathy and Relevance should both be ≥2.5 for finalists
-   - **Cross-topic robustness**: all above conditions must hold for at least 2 topic categories in the same development session
-11. **If criteria are not met, force another improvement cycle**:
-   - Add or revise one concrete intervention in `SKILL.md` (do not only reword)
-   - Re-run the same topic set, then one additional unseen topic before the next gate check
-12. **Test with novel topics** — always end a development session by testing with an entirely different topic category.
-13. **Commit** with a message explaining the hypothesis, loop count, metrics per iteration, and what intervention changed between iterations
-
-**Warning:** Evaluation of "funniness" by the LLM itself is unreliable. The model rates its own outputs as funny because it completed the prescribed process. Use structural checks (diversity, specificity, visual quality) as proxies, and rely on human judgment for final quality assessment.
-
-### Evaluation noise and loop execution notes
-
-Empirically measured pitfalls (2026-06 session) and how to handle them:
-
-- **humor-eval is noisy.** The same 10-answer set scored Overall 2.6 vs 3.0 on
-  back-to-back independent runs (±0.4 swing, alternating strict/lenient
-  calibration). Single-run averages cannot support claims about edits whose
-  effect size is < 0.4. Mitigations: run **2+ independent humor-eval passes**
-  and compare medians; prefer **peak metrics** (count of Overall-4 answers,
-  quality of the top 2) over averages — ogiri is judged by its best answer,
-  not its mean; track per-axis bottlenecks (the lowest-average axis) rather
-  than Overall.
-- **One subagent, one skill.** Subagents asked to run 2-3 evaluation skills in
-  one prompt frequently stop after the first skill and return a partial
-  report. Issue one skill per subagent invocation, or verify all sections
-  arrived before using the result.
-- **Pooled-run metrics are inflated.** Merging 2 runs into a 10-answer pool is
-  required for cross-run SMC detection (it catches attractors that recur in
-  every run), but fun-check risk rates and duplicate counts on the pooled set
-  overstate what a single user sees in one 5-answer output. Gate decisions on
-  per-run numbers; use pooled numbers only for attractor diagnosis.
-- **Pairwise comparisons have position bias.** For finalist decisions with
-  humor-rank, re-run close comparisons with A/B order swapped; if the winner
-  flips, record a draw. Treat confidence ≤ 0.55 as a draw outright.
-- **The evaluator ceiling is real.** Once structural metrics pass and
-  humor-eval deltas fall inside the noise band, further prompt tuning cannot
-  be validated by LLM evaluation alone. At that point the correct next signal
-  is human reactions, fed back through the Example Firewall above.
 
 ### Evaluation skills at a glance
 
-| Skill | What it measures | What it does NOT measure |
-|---|---|---|
-| `diversity-check` | Structural variety of decomposition axes | Funniness |
-| `fun-check` | Per-answer risks (ベタ・絵・ひねり・共感・認知度・長さ・滑り・被り・相対典型性) | Overall funniness |
-| `cluster-fit-check` | Alignment with literature-derived user cluster preference features | Overall funniness or universal appeal |
-| `humor-rank` | Pairwise relative ranking within the same topic | Absolute/universal funniness |
-| `humor-eval` | Multi-axis scoring (Novelty/Clarity/Relevance/Intelligence/Empathy/Overall) | Ground-truth human final verdict |
+| Skill | What it measures | What it does NOT measure | When |
+|---|---|---|---|
+| `diversity-check` | Structural variety of decomposition axes | Funniness | Every iteration |
+| `fun-check` | Per-answer risks (ベタ・絵・ひねり・共感・認知度・長さ・滑り・被り・相対典型性) | Overall funniness | Every iteration |
+| `humor-eval` | Multi-axis scoring (Novelty/Clarity/Relevance/Intelligence/Empathy/Overall) | Ground-truth human verdict | Gate only, 2-pass medians |
+| `humor-rank` | Pairwise relative ranking within a topic | Absolute funniness | Finalist ties only |
+| `cluster-fit-check` | Alignment with literature-derived user cluster preferences | Funniness or universal appeal | Style/audience tuning only |
+
+### Dropped requirements, and why (do not reinstate without new evidence)
+
+Measured in the 2026-06 sessions:
+
+- **3-consecutive-pass streak**: humor-eval swings ±0.4 between identical
+  back-to-back runs, so a streak across full loops measures evaluator luck,
+  not prompt quality. One gate pass including an unseen topic gives the same
+  confidence at a third of the cost.
+- **Mandatory `cluster-fit-check` + `humor-rank` every iteration**: their
+  conclusions duplicated what `diversity-check`/`fun-check` plus simple hand
+  counting already showed (e.g., quote-form lock-in is visible by counting
+  「」). They earn their cost only on the specific questions listed above.
+- **≤30% fun-check risk ceiling**: never met in any session, including by the
+  sets that scored best on humor-eval — the flag rate did not correlate with
+  quality. Risk-type concentration and repeated cross-run overlap are the
+  real failure signals and are kept as gates.
+- **`humor-eval` on every iteration**: the noisiest and most expensive
+  signal; single-pass averages cannot support claims about edits with effect
+  size <0.4. Reserved for gates, as 2-pass medians and peak counts.
