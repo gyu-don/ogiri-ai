@@ -45,6 +45,7 @@ The cycle:
    claude -p --model=<frontier> "/ogiri-ai <お題>"
    ```
    Or launch subagents that read the skill file and execute it.
+   **Include a skill-off baseline** for at least one topic: run the same topic on the bare tuning-target model with no skill. If skill-off wins in human evaluation, a recently added instruction is acting as an attractor — diff recent `SKILL.md` changes against the style of the skill-on failures to find it.
 5. **Evaluate diversity on Sonnet** — feed collected outputs to `/diversity-check` via a Sonnet subagent (axis classification doesn't need a frontier model).
    - Across runs: **5+ distinct decomposition axes per 10 answers** (2 runs). 3-4 axes = improvement needed, 1-2 = still converging.
    - Within one set of 5: no axis should appear more than twice.
@@ -65,3 +66,10 @@ Distilled from `evaluations/`. When a finding is safely encodable as a form-leve
 - **Set-level axis collapse gets flagged even when individual answers pass.** GPT-5.6-sol's 前前前世 set was rated a hit overall, yet the evaluator still noted all five shared one direction (modern-bureaucracy-in-prehistory). → Encoded as a set-level check (5つ揃えてから読み返す).
 - **Hypothesis (NOT encoded — attractor risk):** the highest-rated answers tend to show *the world reacting* to the subject (記者が沼落ち, 目撃情報なし) rather than the subject asserting its own quality. Encoding this as a positive instruction would likely collapse all five answers into evidence-format. Revisit only if exaggeration-collapse persists after the current negative rules.
 - **Referential answers need a one-glance trigger.** 「君を探し始めた初日、雨で中止」 (君の名は×天気の子) was liked but flagged as hard to parse. If an answer leans on an external work, the reference must land in one read.
+
+### 2026-07-11 — 3 topics, Fable 5 skill-on vs skill-off (bare model)
+
+- **Skill-on lost on 2 of 3 topics** (THE FIRST TAKE, ヤバい新入社員), tied on 1 (ASKUL対義語). The evaluator still believes skill-on is better on average, but suspected "unnecessary instructions" hurting.
+- **The 2026-07-10 attractor hypothesis is confirmed — by our own edit.** The rules added on 07-10 (「痕跡を見せろ」「数字・日数・場所をひとつ刺せ」), though derived from winning answers and phrased as advice, acted as positive attractors: skill-on sets collapsed into subtle-detail evidence humor (「概要欄の端に小さくテイク38」「コメント欄が全員同じ苗字」 — trace + small number + place, exactly the encoded shape). Every answer landed in smirk register; no bold laugh. Skill-off winners were often only 1-step but bold and instantly visible (「入社代行の業者が来た」「ラジオ体操第一」).
+- **Lesson: even "show, don't tell" style advice becomes the house style.** Any unconditional positive rule — including ones extracted from human-validated winners — gets applied to all five answers. Positive rules must be scoped as *conditional repair tools* ("when you're about to exaggerate, do Y"; "when the picture is vague, add a number"), never as unconditional targets.
+- **Changes made:** demoted the 数字/痕跡 rules to conditional repair tools; qualified 「2段階飛べ」 (association distance, not reader decoding effort); added negative self-check 「うまいこと言ってるだけで笑えない」→捨てろ; added set-level register check (all-smirk sets must be redone); added the skill-off baseline comparison to the process (step 4).
