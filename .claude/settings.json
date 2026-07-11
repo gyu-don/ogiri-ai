@@ -13,15 +13,15 @@
   },
   "permissions": {
     "allow": [
-      "Bash:jj log*",
-      "Bash:jj show*",
-      "Bash:jj diff*",
-      "Bash:jj status*",
-      "Bash:jj cat*",
-      "Bash:jj file*",
-      "Bash:jj files*",
-      "Bash:jj obslog*",
-      "Bash:jj evolog*"
+      "Bash(jj log*)",
+      "Bash(jj show*)",
+      "Bash(jj diff*)",
+      "Bash(jj status*)",
+      "Bash(jj cat*)",
+      "Bash(jj file*)",
+      "Bash(jj files*)",
+      "Bash(jj obslog*)",
+      "Bash(jj evolog*)"
     ]
   }
 }
