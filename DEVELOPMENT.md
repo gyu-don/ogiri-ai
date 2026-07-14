@@ -26,34 +26,63 @@ SMC is the core problem this skill tries to solve. When an LLM receives the same
 
 SMC also occurs *within a single answer set*: five individually fine answers that all use the same decomposition axis get flagged by human evaluators (see 2026-07-10 findings). Diversity must be checked per-set, not just across runs.
 
+## Model Tiers
+
+Roles are tier-based, not model-based — the concrete names WILL change; update the "as of" line when they do.
+
+- **Lightweight tier** (as of 2026-07: Claude Sonnet 5, GPT-5.6-luna) — runs the workflow: candidate generation during fast iteration, format smoke tests, output collection, `/diversity-check`, `/funniness-check` screening, statistics.
+- **Heavyweight tier** (as of 2026-07: Claude Fable 5, GPT-5.6-sol) — the tuning targets AND the skill engineers. Reserve heavyweight runs for: diagnosing failure modes, editing `SKILL.md`, and pre-commit verification generation. Never spend a heavyweight run on workflow mechanics the lightweight tier could do.
+- **Human** — ground truth for funniness. Every AI funniness judgment is a screening proxy, nothing more.
+
+Caveat: lightweight-tier generation is *directional only* — it tells you whether an edit changed the output shape, not whether the tuning target got funnier. Any `SKILL.md` change must pass heavyweight verification before commit.
+
 ## Skill Development Process
 
-**Cost note:** one skill run on a frontier model takes minutes. Treat frontier runs as the expensive resource: run them in parallel, and never spend one on something Sonnet could have caught first.
-
-**Division of labor:**
-- **Sonnet subagents** — everything mechanical: format smoke tests, output collection, `/diversity-check` classification, length/anti-pattern scans
-- **Frontier model** — the generation runs whose funniness will actually be judged
-- **Human** — funniness judgment (the only reliable source; see warning)
+**Cost note:** one skill run on a heavyweight model takes minutes. Run heavyweight jobs in parallel, and never spend one on something the lightweight tier could have caught first.
 
 The cycle:
 
 1. **Hypothesize** — identify the specific failure mode (SMC? pure exaggeration? not funny? verbose?)
 2. **Edit** `SKILL.md` with a targeted change
-3. **Cheap checks on Sonnet first** — one Sonnet subagent runs the skill on any topic to verify format compliance (output starts with 【, exact format, no preamble) and catches gross regressions. Don't proceed to frontier runs until this passes.
-4. **Frontier verification** — run the skill on a tuning-target model, 2+ topics, launched **in parallel**:
+3. **Lightweight checks first** — a lightweight-tier subagent runs the skill on any topic to verify format compliance (output starts with 【, exact format, no preamble) and catches gross regressions. Don't proceed to heavyweight runs until this passes.
+4. **Heavyweight verification** — run the skill on a tuning-target model, 2+ topics, launched **in parallel**:
    ```
-   claude -p --model=<frontier> "/ogiri-ai <お題>"
+   claude -p --model=<heavyweight> "/ogiri-ai <お題>"
    ```
-   Or launch subagents that read the skill file and execute it.
+   Or launch subagents that read the skill file and execute it (generator invocations must follow the contamination rules in `CLAUDE.md`: they read only the ogiri-ai `SKILL.md`, never `evaluations/` or `DEVELOPMENT.md`).
    **Include a skill-off baseline** for at least one topic: run the same topic on the bare tuning-target model with no skill. If skill-off wins in human evaluation, a recently added instruction is acting as an attractor — diff recent `SKILL.md` changes against the style of the skill-on failures to find it.
-5. **Evaluate diversity on Sonnet** — feed collected outputs to `/diversity-check` via a Sonnet subagent (axis classification doesn't need a frontier model).
-   - Across runs: **5+ distinct decomposition axes per 10 answers** (2 runs). 3-4 axes = improvement needed, 1-2 = still converging.
-   - Within one set of 5: no axis should appear more than twice.
+5. **Screen on the lightweight tier** — feed collected outputs (topic + answers only, no generation context) to:
+   - `/diversity-check` — across runs: **5+ distinct decomposition axes per 10 answers** (2 runs). 3-4 axes = improvement needed, 1-2 = still converging. Within one set of 5: no axis should appear more than twice.
+   - `/funniness-check` — pairwise ranking + loss-pattern flags. This is a screening proxy, not a verdict; see "Funniness Evaluation" below.
 6. **Evaluate quality with a human** — log the feedback in `evaluations/` (one dated file per session, in Japanese) so learnings accumulate. Distill recurring patterns into the findings section below.
 7. **Test with novel topics** — if a topic has been used repeatedly in testing, the model may overfit to it. Always end a development session by testing with an entirely different topic category.
 8. **Commit** with a message explaining the hypothesis and result
 
 **Warning:** Evaluation of "funniness" by the LLM itself is unreliable. The model rates its own outputs as funny because it completed the prescribed process. Use structural checks (diversity, specificity, visual quality) as proxies, and rely on human judgment for final quality assessment.
+
+## Funniness Evaluation (`/funniness-check`)
+
+The `/funniness-check` skill makes AI funniness judgment *usable as a screening proxy* by restricting it to what LLM judges are least bad at:
+
+- **No absolute scores.** Pairwise ranking only ("which one gets a laugh out loud, not a smirk").
+- **Deduction filters, not taste.** The flags are the loss patterns repeatedly confirmed by human evaluation (exaggeration-only, concept-only, word-swap parody, needs-explanation, verbose).
+- **Judge ≠ generator.** Generation and judging are always separate invocations; a judge never evaluates answers it produced.
+- **Blind judging.** The judge sees only topic + answers — never `evaluations/`, the generator's reasoning, or which condition (skill on/off, which model) produced which set.
+
+**Calibration:** before trusting a judge model (or after editing the funniness-check skill), run it blind on 2–3 logged answer sets from `evaluations/` and compare its ranking against the recorded human ranking. If it misses the human top pick on most sets, fix the funniness-check criteria — never conclude the human was wrong. Re-distill new loss patterns from `evaluations/` into the filter list as feedback accumulates.
+
+## AI-Assisted Improvement Loop
+
+Human feedback stays the ground truth, but it's scarce. Between human rounds, run this loop to pre-filter candidate skill changes so human attention is spent only on edits that survived screening:
+
+1. **Generate** (lightweight tier): current skill vs. baseline (skill-off), 2+ topics, fresh generator invocations under the contamination rules.
+2. **Screen** (lightweight tier): `/diversity-check` + `/funniness-check` on topic+answers only.
+3. **Diagnose & edit** (heavyweight tier): read the screening reports *and* the `evaluations/` history, identify the failure mode, and make one targeted `SKILL.md` edit obeying the SMC rules — negative or conditional form, form-level, never an unconditional positive style target.
+4. **Re-screen** (lightweight tier): repeat 1–2 with the edited skill. Keep the edit only if screening improves or holds while the targeted failure disappears.
+5. **Verify** (heavyweight tier): tuning-target generation on a novel topic + skill-off baseline, per the main process.
+6. **Human round**: present the surviving before/after sets for judgment; log to `evaluations/`; recalibrate `/funniness-check` against the new data if its ranking disagreed.
+
+Never let the loop self-approve: an edit that only ever passed AI screening is a hypothesis, not an improvement. One human round can reject what ten screening rounds approved.
 
 ## Findings from Human Evaluation
 
