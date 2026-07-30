@@ -1,0 +1,3797 @@
+[
+  {
+    "topic_id": 1,
+    "topic": "電車で隣に座った人が急に泣き出した理由",
+    "answers": [
+      {
+        "answer_id": "1-1",
+        "run": 1,
+        "text": "財布を見たら4桁だった",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "即座に絵が出るシンプルさ",
+          "weakness": "ひねりゼロ。直接言い切り",
+          "next_step": "財布を閉じた後の行動1つで見せる（見なかったことにする顔）"
+        }
+      },
+      {
+        "answer_id": "1-2",
+        "run": 1,
+        "text": "スマホのメモに書いてあった「夢を諦めた日」がちょうど今日",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「諦めた日を事前にメモしていた」という前提のズラし",
+          "weakness": "「がちょうど今日」の説明が少し余分",
+          "next_step": "メモを見た後の動作（例：ロックをかける）で終わらせる"
+        }
+      },
+      {
+        "answer_id": "1-3",
+        "run": 1,
+        "text": "彼女との別れ話を完璧にシミュレートしていたら本当に悲しくなった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "自分で作った感情で泣くという構造",
+          "weakness": "長い。「完璧に」と「本当に」は両方要らない",
+          "next_step": "「別れ話のシミュレーション、自分が泣いた」まで削る"
+        }
+      },
+      {
+        "answer_id": "1-4",
+        "run": 1,
+        "text": "食べかけの弁当を今日も全部食べたことに気づいた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 2,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「今日も」という継続性のズラし",
+          "weakness": "泣くほどの落差が出ていない。電車で弁当は設定が弱い",
+          "next_step": "「今日も」の回数か量を数字で示す"
+        }
+      },
+      {
+        "answer_id": "1-5",
+        "run": 1,
+        "text": "「最終回あと10分」の通知",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "通知1枚で全部見せるミニマルさ",
+          "weakness": "「あと10分」は読み手が補える。情報が少し冗長",
+          "next_step": "具体的なアプリ名や作品名に変えて絵を立てる"
+        }
+      },
+      {
+        "answer_id": "1-6",
+        "run": 2,
+        "text": "推しが結婚したツイートを既読にした瞬間",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "電車でスマホ→発見というシチュエーションの自然さ",
+          "weakness": "「既読にした瞬間」だけでは前進できない。推し結婚ネタは既出パターン",
+          "next_step": "既読後の行動（スクリーンショット・ブロック・フォロー外し）で終わらせる"
+        }
+      },
+      {
+        "answer_id": "1-7",
+        "run": 2,
+        "text": "乗り越し精算の金額が月給を超えた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「月給」という比較軸の選択",
+          "weakness": "「月給を超えた」が少し説明的",
+          "next_step": "このままで良い。削りすぎると落差が消える"
+        }
+      },
+      {
+        "answer_id": "1-8",
+        "run": 2,
+        "text": "財布の中の誕生日クーポンの有効期限が昨日だった",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 2,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「昨日だった」という1日ズレの情けなさ",
+          "weakness": "電車で財布を開く文脈が弱い。クーポン期限切れネタは典型",
+          "next_step": "「自分の誕生日クーポン」という自分へのギフト感を足す"
+        }
+      },
+      {
+        "answer_id": "1-9",
+        "run": 2,
+        "text": "スマホの写真フォルダが「今日で整理します」のまま3年経ってた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "時間量（3年）で情けなさを語らせる手法",
+          "weakness": "2番と9番でメモ系ネタの構造被りあり",
+          "next_step": "ラベルの日付が書いてある形式に変えると絵がもっと立つ"
+        }
+      },
+      {
+        "answer_id": "1-10",
+        "run": 2,
+        "text": "住所欄に実家を書いたら手が止まった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 2,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「手が止まった」という動作だけで感情を見せる抑制",
+          "weakness": "電車で書類を書く設定の弱さ",
+          "next_step": "「配送先入力で実家を入れたら手が止まった」など具体のシーンに変える"
+        }
+      },
+      {
+        "answer_id": "1-11",
+        "run": 3,
+        "text": "スマホの画面、嫁の誕生日プッシュ通知を今気づいた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "通知という物で見せる手法",
+          "weakness": "5番と構造が被る。誕生日忘れネタは典型",
+          "next_step": "通知を見て花屋で検索を始めた、など動作まで見せる"
+        }
+      },
+      {
+        "answer_id": "1-12",
+        "run": 3,
+        "text": "爪切りを3駅かけて完成させたら全部床に飛んでた",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「3駅かけて」という努力量と「全部床」の全損落差",
+          "weakness": "「泣き出した」への橋が1ミリ弱い（笑いで泣くのか悲しくて泣くのか）",
+          "next_step": "このままで良い。最後に「泣く理由」への接続は読み手が補う"
+        }
+      },
+      {
+        "answer_id": "1-13",
+        "run": 3,
+        "text": "財布の中の「いつか使う」ポイントの有効期限が今日の0時だった",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 2,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「いつか使う」という自己欺瞞のラベル",
+          "weakness": "1・8と構造が同じ。財布系3本は過多",
+          "next_step": "ポイントの「使い道を5年考え続けた」という時間量に変えると差が出る"
+        }
+      },
+      {
+        "answer_id": "1-14",
+        "run": 3,
+        "text": "昨夜完璧に仕上げた議事録、送ったのが下書きだったと気づいた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「完璧に仕上げた」という当人の努力量",
+          "weakness": "「昨夜」が少し余分",
+          "next_step": "「3回見直した議事録、送ったのが下書きだった」"
+        }
+      },
+      {
+        "answer_id": "1-15",
+        "run": 3,
+        "text": "乗り換え案内を開いたら今いる駅が目的地だった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「今いる駅が目的地」という前提の勘違い構造",
+          "weakness": "なぜ気づかなかったかの土台がないと宙に浮く",
+          "next_step": "「乗り換え案内を開いたら次が目的地、の次が今だった」"
+        }
+      },
+      {
+        "answer_id": "1-16",
+        "run": 4,
+        "text": "乗り換え案内の「最安値」が今日の昼ご飯代を超えてた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "乗り換え案内という電車への直接接地",
+          "weakness": "7番と構造が同じで比較対象が弱い。「昼ご飯代」はケタが小さすぎる",
+          "next_step": "「最安値」の目的地を1段ズラす（実家より遠い）"
+        }
+      },
+      {
+        "answer_id": "1-17",
+        "run": 4,
+        "text": "読みかけの文庫本、主人公が死んで栞を挟んだまま3年経ってた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「主人公が死んだページ」という具体が物語を語る",
+          "weakness": "9番と「3年経ってた」構造が被る",
+          "next_step": "「栞が主人公の死亡シーンに刺さったまま表紙が割れてた」"
+        }
+      },
+      {
+        "answer_id": "1-18",
+        "run": 4,
+        "text": "財布の診察券が全部、もう予約取れない病院だった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 2,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「全部」という量で過去を語らせる",
+          "weakness": "電車で財布を開く設定の弱さ",
+          "next_step": "「財布を落として拾ったら診察券が全部廃院だった」"
+        }
+      },
+      {
+        "answer_id": "1-19",
+        "run": 4,
+        "text": "スマホの充電が2%で、今日何も保存してないと気づいた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「2%」という数字の切迫感",
+          "weakness": "「何も保存してない」が何を指すのか不明で共感しにくい",
+          "next_step": "「充電2%で、今日撮った写真がまだクラウド同期してないと気づいた」"
+        }
+      },
+      {
+        "answer_id": "1-20",
+        "run": 4,
+        "text": "マスクの下で作った笑顔、外す駅を3つ乗り越してた",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "マスク×電車×乗り越しが全部お題に直接接地し、感情を動作だけで語らせる抑制が最高水準",
+          "weakness": "なし",
+          "next_step": "このままで最強。削らない"
+        }
+      }
+    ],
+    "eval_summary": {
+      "overall_4_answers": [
+        "1-7",
+        "1-12",
+        "1-20"
+      ],
+      "weakest_axis": "Intelligence（平均 2.65）",
+      "avg_scores": {
+        "novelty": 2.75,
+        "clarity": 3.75,
+        "relevance": 2.95,
+        "intelligence": 2.65,
+        "empathy": 2.95,
+        "overall": 2.75
+      },
+      "priority": "1. 財布・ポイント系の構造被り解消（1-1・1-8・1-13は1本に絞る） 2. ひねりゼロの直接言い切り（1-1・1-6・1-11・1-19）を隠し方4つで書き直す 3. 電車への接地が弱い回答（1-4・1-8・1-10・1-13・1-18）の設定を電車に引きつける"
+    }
+  },
+  {
+    "topic_id": 2,
+    "topic": "犬が散歩を嫌がる理由",
+    "answers": [
+      {
+        "answer_id": "2-1",
+        "run": 1,
+        "text": "飼い主の歩くペースが恥ずかしい",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "飼い主を恥じる逆転構図",
+          "weakness": "「恥ずかしい」を直接言っている",
+          "next_step": "恥ずかしさを行動や物で隠す"
+        }
+      },
+      {
+        "answer_id": "2-2",
+        "run": 1,
+        "text": "昨日の屈辱のルートを通る",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "昨日の出来事を引きずる構図",
+          "weakness": "「屈辱」が抽象的で絵が薄い",
+          "next_step": "屈辱の中身を電柱・他の犬で指定する"
+        }
+      },
+      {
+        "answer_id": "2-3",
+        "run": 1,
+        "text": "「また同じ電柱かよ」と思っている",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "電柱×ルーティン倦怠の具体性",
+          "weakness": "セリフで直接言っている",
+          "next_step": "行動か状態に転換してセリフを外す"
+        }
+      },
+      {
+        "answer_id": "2-4",
+        "run": 1,
+        "text": "帰ったらハグされるとわかってる",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "帰宅後の出来事を理由にする逆算構造",
+          "weakness": "「ハグが嫌」を直接言っている",
+          "next_step": "帰宅後の特定動作1つで絵にする"
+        }
+      },
+      {
+        "answer_id": "2-5",
+        "run": 1,
+        "text": "近所の犬に借りがある",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 2,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「借り」という人間的概念の圧縮",
+          "weakness": "散歩との接続が薄い",
+          "next_step": "柴犬など犬種を指定してリアリティを上げる"
+        }
+      },
+      {
+        "answer_id": "2-6",
+        "run": 2,
+        "text": "昨日の公園で見た犬に負けた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "昨日の経験が今日の拒否につながる因果",
+          "weakness": "「負けた」を直接言っている",
+          "next_step": "何で負けたか1語で指定する"
+        }
+      },
+      {
+        "answer_id": "2-7",
+        "run": 2,
+        "text": "飼い主が「いいこ」を連発する歩き方",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "飼い主の言動を犬が恥じる構図",
+          "weakness": "「歩き方」の繋ぎが不安定",
+          "next_step": "「連発する歩き方」→「連発してくる」で整理"
+        }
+      },
+      {
+        "answer_id": "2-8",
+        "run": 2,
+        "text": "行き先を相談されなかった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "人間的権利を当然視する犬の前提",
+          "weakness": "特になし",
+          "next_step": "このままか「議事録もない」等で深化させる"
+        }
+      },
+      {
+        "answer_id": "2-9",
+        "run": 2,
+        "text": "帰宅後の足拭きまで計算に入れている",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "帰宅後まで計算する慎重さ",
+          "weakness": "足拭きが嫌という前提を直接説明している",
+          "next_step": "拭く側／拭かれる側の逆転を仕込む"
+        }
+      },
+      {
+        "answer_id": "2-10",
+        "run": 2,
+        "text": "近所の柴犬にまだ謝っていない",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「まだ」という1語で未解決感を圧縮",
+          "weakness": "何を謝るかが見えない",
+          "next_step": "謝罪の内容を1語指定するか、このままで十分"
+        }
+      },
+      {
+        "answer_id": "2-11",
+        "run": 3,
+        "text": "飼い主の「もうちょっと」が4回目",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「4回目」という数字でのEmpathy圧縮",
+          "weakness": "特になし",
+          "next_step": "犬の側の反応を1語添えるか、このままで十分"
+        }
+      },
+      {
+        "answer_id": "2-12",
+        "run": 3,
+        "text": "昨日のルートに謝ってない電柱がある",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "電柱への謝罪という前提の勘違い",
+          "weakness": "謝る動機が共感しにくい",
+          "next_step": "「通れない」など行動で締める"
+        }
+      },
+      {
+        "answer_id": "2-13",
+        "run": 3,
+        "text": "帰ったら足を拭かれる側だと気づいてる",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "帰宅後足拭きへの嫌悪",
+          "weakness": "回答19との構造重複。「気づいてる」で直接言っている",
+          "next_step": "回答19と統合し1本に絞る"
+        }
+      },
+      {
+        "answer_id": "2-14",
+        "run": 3,
+        "text": "向こうの柴犬、まだ根に持ってる顔してた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「根に持ってる顔」の絵の鮮明さ",
+          "weakness": "回答20との柴犬×未解決関係の重複",
+          "next_step": "昨日の出来事を1語添えるか、このままで十分"
+        }
+      },
+      {
+        "answer_id": "2-15",
+        "run": 3,
+        "text": "リードを「お供」だと思ってた",
+        "scores": {
+          "novelty": 4,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「お供」1語で立場逆転を圧縮する前提レベルのズラし",
+          "weakness": "特になし",
+          "next_step": "このままで十分"
+        }
+      },
+      {
+        "answer_id": "2-16",
+        "run": 4,
+        "text": "飼い主の帽子、今日も被ってきた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 2,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "飼い主の外見を犬が気にする構図",
+          "weakness": "帽子が散歩拒否の理由になる接続が薄い",
+          "next_step": "帽子の問題点を1語添える"
+        }
+      },
+      {
+        "answer_id": "2-17",
+        "run": 4,
+        "text": "昨日つけた匂い、まだ残ってるのに上書きさせられる",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "匂いという犬固有の行動を使った視点",
+          "weakness": "少し長い",
+          "next_step": "「昨日の匂い、上書きさせられる」程度に短縮"
+        }
+      },
+      {
+        "answer_id": "2-18",
+        "run": 4,
+        "text": "謝らないまま通り過ぎた電柱が今日のルートにある",
+        "scores": {
+          "novelty": 3,
+          "clarity": 2,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "電柱×謝罪の構造",
+          "weakness": "回答12との重複。長くて絵になるまで時間がかかる",
+          "next_step": "回答12と統合し1本に絞る"
+        }
+      },
+      {
+        "answer_id": "2-19",
+        "run": 4,
+        "text": "帰ってきたら足を拭く側だと思ってた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「拭く側」1語で立場逆転を圧縮する前提レベルのズラし",
+          "weakness": "特になし",
+          "next_step": "このままで十分"
+        }
+      },
+      {
+        "answer_id": "2-20",
+        "run": 4,
+        "text": "向こうの柴犬、和解したと思ってなさそうな顔してた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "一方的和解認識のズレという構造",
+          "weakness": "回答14との柴犬×未解決関係の重複",
+          "next_step": "「和解したと思ってなさそう」→短縮を検討"
+        }
+      }
+    ],
+    "eval_summary": {
+      "overall_4_answers": [
+        "2-15",
+        "2-19"
+      ],
+      "weakest_axis": "novelty",
+      "avg_scores": {
+        "novelty": 2.7,
+        "clarity": 3.5,
+        "relevance": 3.0,
+        "intelligence": 2.7,
+        "empathy": 3.0,
+        "overall": 2.6
+      },
+      "priority": "重複構造の整理（足拭き系・電柱系・柴犬系を各1本に絞る）→感情直接表現のひねり強化→犬固有の視点（匂い・リード・行き先）の優先採用"
+    }
+  },
+  {
+    "topic_id": 3,
+    "topic": "宇宙人が地球に来て一番驚いたこと",
+    "answers": [
+      {
+        "answer_id": "3-1",
+        "run": 1,
+        "text": "階段の手すりを誰も舐めていない",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "宇宙人が「ないこと」に驚く逆張り視点",
+          "weakness": "「ない」系は変なだけで共感が取れない／手すりを舐める土台がない",
+          "next_step": "「舐めない」より「舐めるはずの状況で別のことをしている」絵に変える"
+        }
+      },
+      {
+        "answer_id": "3-2",
+        "run": 1,
+        "text": "重力が全員に同じ強さで働いていた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 1,
+          "empathy": 1,
+          "overall": 1
+        },
+        "improvement_notes": {
+          "strength": "物理法則への注目という切り口",
+          "weakness": "共感軸がない／人間の行動や感情に着地していない",
+          "next_step": "重力を使うなら「人間がそれに従う情けない行動」に転換する"
+        }
+      },
+      {
+        "answer_id": "3-3",
+        "run": 1,
+        "text": "戦争中なのに食べ物の写真を撮っていた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「重大×ちぐはぐな行動」の落差構造",
+          "weakness": "",
+          "next_step": "このままで強い。類似構造の他候補と被りがないか確認する"
+        }
+      },
+      {
+        "answer_id": "3-4",
+        "run": 1,
+        "text": "謝りながら殴る生き物がいた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "行動の矛盾による落差",
+          "weakness": "「謝りながら○○」は既存ネタと近い",
+          "next_step": "「謝る」より前提レベルで1段深い矛盾に変えられないか探る"
+        }
+      },
+      {
+        "answer_id": "3-5",
+        "run": 1,
+        "text": "地面の下に住んでいないのに穴を掘っていた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 1,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "目的と行動のミスマッチという切り口",
+          "weakness": "土台の前提が弱い／人間の情けなさが出ていない",
+          "next_step": "穴を掘る「人間の情けない動機」を1文で見せる形に変える"
+        }
+      },
+      {
+        "answer_id": "3-6",
+        "run": 2,
+        "text": "眠るだけの部屋に毎月金を払っていた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「眠るだけ」という機能の矮小化",
+          "weakness": "発想が第一想起に近い／ひねりが一段足りない",
+          "next_step": "「眠るだけ」をさらに具体化して落差を大きくする"
+        }
+      },
+      {
+        "answer_id": "3-7",
+        "run": 2,
+        "text": "死ぬとわかってから医者を呼んでいた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "タイミングのズレという軸",
+          "weakness": "「死ぬとわかってから」は少し重く笑いに転換しにくい",
+          "next_step": "「手遅れになってから動く」をもっと軽い場面で見せる"
+        }
+      },
+      {
+        "answer_id": "3-8",
+        "run": 2,
+        "text": "謝罪の列に最後尾の札を持って並んでいた",
+        "scores": {
+          "novelty": 4,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「謝罪を列で管理する」という前提ズレの深さ",
+          "weakness": "Clarityが微妙に遅れる",
+          "next_step": "「最後尾の札」を「整理券」か「番号札」に変えると一瞬早くなる"
+        }
+      },
+      {
+        "answer_id": "3-9",
+        "run": 2,
+        "text": "同じ道を毎朝同じ時間に歩かされていた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「歩かされていた」という受け身で主体性のなさを示す構造",
+          "weakness": "通勤ネタは想起しやすすぎる",
+          "next_step": "ルーティンの「なぜそこを」という前提のズレを1段深くする"
+        }
+      },
+      {
+        "answer_id": "3-10",
+        "run": 2,
+        "text": "嫌いな相手に笑顔を向ける練習をしていた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「練習」というひねりの置き場所",
+          "weakness": "「笑顔の練習」までは想起される",
+          "next_step": "練習の具体的な場面（鏡・上司の名前を呼びながら等）を一語入れる"
+        }
+      },
+      {
+        "answer_id": "3-11",
+        "run": 3,
+        "text": "毎朝、顔に色を塗ってから外へ出ていた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「色を塗る」という宇宙人的表現の異化効果",
+          "weakness": "化粧ネタは想起しやすい／ひねりの位置が表面",
+          "next_step": "「塗る理由」や「塗った後の行動」に1段深いズレを加える"
+        }
+      },
+      {
+        "answer_id": "3-12",
+        "run": 3,
+        "text": "謝る気がないのに頭を下げる関節を持っていた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「身体構造として定着している」という前提ズレ",
+          "weakness": "「関節を持っていた」が少し説明的",
+          "next_step": "「頭を下げる専用の関節があった」と語順を変えてオチを末尾に"
+        }
+      },
+      {
+        "answer_id": "3-13",
+        "run": 3,
+        "text": "歌が下手なのに罰を与えられず皆が拍手していた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "カラオケ文化の不条理を宇宙人視点で切る軸",
+          "weakness": "「罰を与えられず」が説明的でオチが弱い",
+          "next_step": "「罰がない」より「なぜ拍手するのか」の宇宙人の困惑を絵で見せる"
+        }
+      },
+      {
+        "answer_id": "3-14",
+        "run": 3,
+        "text": "一番偉い者が一番遅く現れ、全員が立って待っていた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "権力構造の逆転という切り口",
+          "weakness": "ノベルティが低い／第一想起の典型",
+          "next_step": "「遅く来る」を「来ない」か「来た瞬間の行動」にして落差を大きくする"
+        }
+      },
+      {
+        "answer_id": "3-15",
+        "run": 3,
+        "text": "寝る直前に翌日の起床時刻を自分に宣言していた",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「宣言する」という動作への置き換えが絶妙",
+          "weakness": "",
+          "next_step": "このままで強い。「守られない宣言」という後続の絵も浮かぶ"
+        }
+      },
+      {
+        "answer_id": "3-16",
+        "run": 4,
+        "text": "痛いのに笑ってごまかす関節があった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "身体的な動作への宇宙人視点",
+          "weakness": "回答12と「関節」「謝罪/苦痛×外面」で構造が被る",
+          "next_step": "「関節」を別の身体部位か行動単位に変えて被りを解消する"
+        }
+      },
+      {
+        "answer_id": "3-17",
+        "run": 4,
+        "text": "食べられないものに金を払って飾っていた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "機能しない物への課金という切り口",
+          "weakness": "「何を飾るのか」が曖昧でClarityが落ちる",
+          "next_step": "飾るものを1語で特定して「え？」の瞬間を作る"
+        }
+      },
+      {
+        "answer_id": "3-18",
+        "run": 4,
+        "text": "好きな相手に意地悪をして距離を測っていた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「距離を測る」という動機の言語化",
+          "weakness": "「意地悪をして」が少し説明的",
+          "next_step": "「意地悪」を具体的な1動作に変えるとより絵になる"
+        }
+      },
+      {
+        "answer_id": "3-19",
+        "run": 4,
+        "text": "自分より弱い者に順番を譲って得意がっていた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「善行×自己顕示」という落差の方向",
+          "weakness": "ノベルティが低い／第一想起に近い",
+          "next_step": "「得意がる」の具体的な仕草を1語で見せる"
+        }
+      },
+      {
+        "answer_id": "3-20",
+        "run": 4,
+        "text": "終わった戦争の謝り方を百年後も練習していた",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「終わった×続く」の時間的落差と社会批評の深さ",
+          "weakness": "「練習していた」は少し弱い。「まだ練習している」の方が現在進行の絵が強い",
+          "next_step": "「百年後も」→「百年たっても」に変えると時間の重さが増す"
+        }
+      }
+    ],
+    "eval_summary": {
+      "overall_4_answers": [
+        "3-3",
+        "3-8",
+        "3-15",
+        "3-20"
+      ],
+      "weakest_axis": "Intelligence（平均約2.55）",
+      "avg_scores": {
+        "novelty": 2.75,
+        "clarity": 3.75,
+        "relevance": 3.5,
+        "intelligence": 2.55,
+        "empathy": 2.95,
+        "overall": 2.7
+      },
+      "priority": "Intelligence強化（観察止まりの回答を前提ズレに1段深める）、Empathy底上げ（人間の情けない動機への着地が弱い回答の打ち直し）、構造被り解消（「関節」系・「謝罪」系の重複整理）"
+    }
+  },
+  {
+    "topic_id": 4,
+    "topic": "コンビニで絶対に売れないもの",
+    "answers": [
+      {
+        "answer_id": "4-1",
+        "run": 1,
+        "text": "3時間以内消費の刺身盛り合わせ（午前3時着）",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "時間の二重構造のひねり",
+          "weakness": "括弧が説明的でオチが分散する",
+          "next_step": "括弧を外し「午前3時着・3時間以内消費の刺身」に一本化"
+        }
+      },
+      {
+        "answer_id": "4-2",
+        "run": 1,
+        "text": "レジ袋有料化に抗議する店長の手紙",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "制度に抗う立場の逆転",
+          "weakness": "「店長」の動機が薄く絵の解像度が低い",
+          "next_step": "「本部への抗議」か「客への八つ当たり」か動機を一点に絞る"
+        }
+      },
+      {
+        "answer_id": "4-3",
+        "run": 1,
+        "text": "「今日あったこと聞いてくれる？」サービス券",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "孤独な深夜客への共感土台",
+          "weakness": "「サービス券」のフォーマットが少し弱い（何に使う券かが曖昧）",
+          "next_step": "「店員が聞く」と明示するか「引換券」にして使用場面を確定させる"
+        }
+      },
+      {
+        "answer_id": "4-4",
+        "run": 1,
+        "text": "カウンター席付き哲学書",
+        "scores": {
+          "novelty": 3,
+          "clarity": 2,
+          "relevance": 2,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "深夜コンビニの孤独×哲学という落差",
+          "weakness": "「カウンター席付き」の意味と使用場面が曖昧",
+          "next_step": "「読み終わるまで帰れない哲学書」など制約を具体化"
+        }
+      },
+      {
+        "answer_id": "4-5",
+        "run": 1,
+        "text": "弁当温め断り練習キット",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「断れない」という共感の強さ",
+          "weakness": "「練習キット」の中身が見えず絵が止まる",
+          "next_step": "「断り文句カード付き」など中身を一語で示す"
+        }
+      },
+      {
+        "answer_id": "4-6",
+        "run": 2,
+        "text": "コインロッカーの5泊分延長権",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「5泊」という具体数字による状況の暗示",
+          "weakness": "使用者の動機・事情が見えず共感が弱い",
+          "next_step": "「夜逃げ荷物」など使用者の状況を一語で示す"
+        }
+      },
+      {
+        "answer_id": "4-7",
+        "run": 2,
+        "text": "店員の本名と誕生日冊子",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "プライバシー侵害の絵面の笑い",
+          "weakness": "「誰が作り誰が買うか」の文脈がゼロ",
+          "next_step": "「常連客向け」など想定購買者を一語で文脈化する"
+        }
+      },
+      {
+        "answer_id": "4-8",
+        "run": 2,
+        "text": "店内BGM差し替えリクエスト用紙",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "BGMへの不満という共感土台",
+          "weakness": "「リクエスト用紙」が無料配布でなく「売り物」である必然性が薄い",
+          "next_step": "「深夜限定・演歌縛り」など条件を絞って絵を強化"
+        }
+      },
+      {
+        "answer_id": "4-9",
+        "run": 2,
+        "text": "レジ袋の断り方練習DVD",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "断れない人間の情けなさ",
+          "weakness": "回答5（弁当温め断り練習キット）と構造が同一",
+          "next_step": "DVDという媒体の時代感を逆に使うか、対象行動を変える"
+        }
+      },
+      {
+        "answer_id": "4-10",
+        "run": 2,
+        "text": "深夜2時の話し相手付きホットスナック",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "深夜2時の孤独という強い共感土台",
+          "weakness": "「話し相手」の正体が曖昧で絵がぼける",
+          "next_step": "「店員の残り勤務時間つき」など提供者を特定する"
+        }
+      },
+      {
+        "answer_id": "4-11",
+        "run": 3,
+        "text": "「いつものですね」ステッカー",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "承認欲求を商品化した鋭さ",
+          "weakness": "ステッカーの使い方（どこに貼るか）が見えず絵が止まる",
+          "next_step": "「レジ上に貼る」か「財布に貼る」か用途を一語で確定"
+        }
+      },
+      {
+        "answer_id": "4-12",
+        "run": 3,
+        "text": "店員の残業記録まとめ本",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 2,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "労働実態の可視化というテーマ",
+          "weakness": "「なぜそれがコンビニで売られているか」の文脈がない",
+          "next_step": "「本部向け告発本」など読者と目的を一語で特定"
+        }
+      },
+      {
+        "answer_id": "4-13",
+        "run": 3,
+        "text": "「今夜も来てくれた」ポイントカード",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "承認欲求×ポイントカードという核心的なズラし",
+          "weakness": "「今夜も」という言葉が少し説明的",
+          "next_step": "「来店回数ではなく名前で呼んでくれるポイントカード」など一歩具体化"
+        }
+      },
+      {
+        "answer_id": "4-14",
+        "run": 3,
+        "text": "深夜の公式謝罪用土下座マット",
+        "scores": {
+          "novelty": 4,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "土下座マットという商品の具体性と視覚的な強さ",
+          "weakness": "「誰が使うか（店員か客か）」が曖昧",
+          "next_step": "「店員用」か「謝罪される側用」か一語で特定するとさらに鋭くなる"
+        }
+      },
+      {
+        "answer_id": "4-15",
+        "run": 3,
+        "text": "会計後の後悔を先取りする「やっぱりいらなかった」シール",
+        "scores": {
+          "novelty": 3,
+          "clarity": 2,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "後悔を先取りするという時間逆転の発想",
+          "weakness": "「先取りする」という説明が文を長くしている",
+          "next_step": "「買う前に貼る『やっぱりいらなかった』シール」に圧縮"
+        }
+      },
+      {
+        "answer_id": "4-16",
+        "run": 4,
+        "text": "店員の定時退勤記念切手",
+        "scores": {
+          "novelty": 4,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「記念切手」という様式による皮肉の圧縮",
+          "weakness": "切手の購買者が誰か（店員か客か）が曖昧",
+          "next_step": "このままで強い。購買者を特定するとさらに鋭くなる可能性あり"
+        }
+      },
+      {
+        "answer_id": "4-17",
+        "run": 4,
+        "text": "「今日は袋いります」宣言書",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "宣言書という様式の絵の強さ",
+          "weakness": "回答2・9とレジ袋系統が被っている",
+          "next_step": "「宣言書」の形式を別の行為（弁当温め・領収書要求）に転用する"
+        }
+      },
+      {
+        "answer_id": "4-18",
+        "run": 4,
+        "text": "コーヒーMサイズ正式抗議セット",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "Mサイズ不満という強い共感土台",
+          "weakness": "「セット」の中身が見えず絵が止まる",
+          "next_step": "「抗議文・封筒・切手入り」など中身を一語で示す"
+        }
+      },
+      {
+        "answer_id": "4-19",
+        "run": 4,
+        "text": "レジ前1分の反省用砂時計",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "砂時計という物の具体性",
+          "weakness": "「誰が何を反省するか」が完全に欠落",
+          "next_step": "「支払い方法を決めていなかった客向け」など対象を特定する"
+        }
+      },
+      {
+        "answer_id": "4-20",
+        "run": 4,
+        "text": "深夜2時の「密です」注意旗",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 2,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "深夜の無人コンビニという絵面",
+          "weakness": "「密です」という言葉の時事性が2026年現在では機能しない",
+          "next_step": "コロナではなく現在も有効な「深夜の孤独」軸に置き換える"
+        }
+      }
+    ],
+    "eval_summary": {
+      "overall_4_answers": [
+        "4-14",
+        "4-16"
+      ],
+      "weakest_axis": "intelligence",
+      "avg_scores": {
+        "novelty": 2.75,
+        "clarity": 2.95,
+        "relevance": 3.15,
+        "intelligence": 2.55,
+        "empathy": 2.95,
+        "overall": 2.65
+      },
+      "priority": "①回答内の使用者・購買者・使用場面の特定、②同系統ネタの重複排除（特にレジ袋・断り系）、③Intelligenceの向上＝「隠し方」の精度アップ（説明を削り形式に語らせる）"
+    }
+  },
+  {
+    "topic_id": 5,
+    "topic": "定年退職したスーパーヒーローが翌日やること",
+    "answers": [
+      {
+        "answer_id": "5-1",
+        "run": 1,
+        "text": "マントの毛玉を取る",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "マント×日常家事の組み合わせ",
+          "weakness": "ズラし量が小さく毛玉取りは普通の行為",
+          "next_step": "毛玉の数か取り終わるまでの時間で量を見せ落差を作る"
+        }
+      },
+      {
+        "answer_id": "5-2",
+        "run": 1,
+        "text": "ハローワークで「空が飛べます」と書く",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "ハローワーク×超能力スキルの組み合わせ",
+          "weakness": "「書く」で終わるので読み手の推論余地が少ない",
+          "next_step": "窓口担当の反応かスキル欄の次行で落差を1段深くする"
+        }
+      },
+      {
+        "answer_id": "5-3",
+        "run": 1,
+        "text": "年金の受け取り口座を悪の組織に変えてしまう",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "年金手続き×悪の組織という組み合わせ",
+          "weakness": "意図的か誤操作か不明で読み手が補う1文が2通りに割れる",
+          "next_step": "「昔の癖で」など動機を1語で示してひねりを1文に収束させる"
+        }
+      },
+      {
+        "answer_id": "5-4",
+        "run": 1,
+        "text": "とりあえず10時まで寝る",
+        "scores": {
+          "novelty": 1,
+          "clarity": 4,
+          "relevance": 2,
+          "intelligence": 1,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "退職翌日の怠惰感という土台",
+          "weakness": "ヒーロー要素が皆無でスーパーヒーローである必要がない",
+          "next_step": "「変身ポーズのまま寝落ち」等でヒーロー要素を1つ混ぜる"
+        }
+      },
+      {
+        "answer_id": "5-5",
+        "run": 1,
+        "text": "宿敵に「もう関係ない」とLINEを既読スルーされる",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "宿敵との関係終焉をLINEで見せる構図",
+          "weakness": "",
+          "next_step": "このままで十分。差し替え不要"
+        }
+      },
+      {
+        "answer_id": "5-6",
+        "run": 2,
+        "text": "正義感が止まらず通報ボタンを10回押す",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "正義感が身体に染み込んでいる設定",
+          "weakness": "「通報ボタン」が指すものが曖昧で絵が定まりにくい",
+          "next_step": "「110番」「緊急通報アプリ」など具体的な対象に絞る"
+        }
+      },
+      {
+        "answer_id": "5-7",
+        "run": 2,
+        "text": "退職証明書に「悪を倒せます」と書いて提出",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "手続き書類×ヒーロー能力の組み合わせ",
+          "weakness": "回答2と同じオチ構造で差別化できていない",
+          "next_step": "書類の種類か提出先を変えて構造を完全に分ける"
+        }
+      },
+      {
+        "answer_id": "5-8",
+        "run": 2,
+        "text": "スーパー行って袋詰めが遅い人を睨む",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 2,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "日常のスーパーシーンという土台",
+          "weakness": "「睨む」だけではヒーロー固有の行動ではない",
+          "next_step": "変身しかける、光線を出しかけるなど身体反応でヒーロー感を出す"
+        }
+      },
+      {
+        "answer_id": "5-9",
+        "run": 2,
+        "text": "変身できなくなった瞬間を見てしまう",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "能力喪失のリアルな瞬間という土台",
+          "weakness": "「見てしまう」で終わり読み手に渡す1文が不確定",
+          "next_step": "変身できない場面を「鏡の前」「孫の前」など状況で限定する"
+        }
+      },
+      {
+        "answer_id": "5-10",
+        "run": 2,
+        "text": "宿敵の引退を知り「俺も必要なかった」",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "宿敵依存の構図とセリフの自滅感",
+          "weakness": "",
+          "next_step": "このままで十分"
+        }
+      },
+      {
+        "answer_id": "5-11",
+        "run": 3,
+        "text": "マントを防寒具として着ていく",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "マントを日常使いに転用するという発想",
+          "weakness": "回答1とマント系で被っており防寒という着地が平凡",
+          "next_step": "「誰かに見られた時の反応」を見せてマント系を差別化する"
+        }
+      },
+      {
+        "answer_id": "5-12",
+        "run": 3,
+        "text": "宿敵の年賀状を返すか3日間悩む",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "宿敵×礼儀問題という構図と「3日間」の数字",
+          "weakness": "「悩む」で終わり結論が見えないため笑いのピークが来にくい",
+          "next_step": "「3日後に出す」「結局出さない」など結末を1語で見せる"
+        }
+      },
+      {
+        "answer_id": "5-13",
+        "run": 3,
+        "text": "スーパーで牛乳の賞味期限を1時間確かめる",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 2,
+          "intelligence": 1,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「1時間」という数字で量を見せる技法",
+          "weakness": "ヒーロー要素ゼロでお題の「スーパーヒーロー」が消えている",
+          "next_step": "賞味期限確認に変身ポーズが混じるなど能力の名残を入れる"
+        }
+      },
+      {
+        "answer_id": "5-14",
+        "run": 3,
+        "text": "「活躍の証明」欄にシールが500枚貼ってある",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "シール500枚という量の見せ方",
+          "weakness": "「活躍の証明」欄の所在が不明で絵が定まらない",
+          "next_step": "ハローワークの書類など具体的な書類名を入れる"
+        }
+      },
+      {
+        "answer_id": "5-15",
+        "run": 3,
+        "text": "宿敵より先に逃げた隣人に感謝状を送る",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "隣人という意外な受け取り手への着目",
+          "weakness": "「なぜ感謝されるか」の説明コストが高く笑いのテンポを壊す",
+          "next_step": "1文で「隣人が何をしたか」が伝わるよう状況を絞る"
+        }
+      },
+      {
+        "answer_id": "5-16",
+        "run": 4,
+        "text": "マスク置き場を探して3日目",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "マスク置き場という具体的な物への着目",
+          "weakness": "「3日目」がお題の「翌日」設定と矛盾している",
+          "next_step": "「翌日の朝からマスク置き場を探している」など時間軸を修正する"
+        }
+      },
+      {
+        "answer_id": "5-17",
+        "run": 4,
+        "text": "宿敵の老人ホームに「同室希望」を出す",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "老人ホーム×同室希望という構図全体",
+          "weakness": "",
+          "next_step": "このままで十分"
+        }
+      },
+      {
+        "answer_id": "5-18",
+        "run": 4,
+        "text": "自治会の防犯パトロールに変身して行く",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "正義感の規模縮小という構図",
+          "weakness": "「変身して行く」の動機がやや自明で驚きが弱い",
+          "next_step": "変身後に自治会の腕章もつけているなど場違いな細部で落差を出す"
+        }
+      },
+      {
+        "answer_id": "5-19",
+        "run": 4,
+        "text": "市役所で「職業：正義」の削り方を聞く",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「職業：正義」という登録と手続きで消す構図",
+          "weakness": "",
+          "next_step": "このままで十分"
+        }
+      },
+      {
+        "answer_id": "5-20",
+        "run": 4,
+        "text": "飛べなくなったのを膝のせいにする",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "超能力喪失の原因を老化にすり替える自己欺瞞の構図",
+          "weakness": "",
+          "next_step": "このままで十分"
+        }
+      }
+    ],
+    "eval_summary": {
+      "overall_4_answers": [
+        "5-5",
+        "5-10",
+        "5-17",
+        "5-19",
+        "5-20"
+      ],
+      "weakest_axis": "intelligence",
+      "avg_scores": {
+        "novelty": 2.65,
+        "clarity": 3.75,
+        "relevance": 3.35,
+        "intelligence": 2.65,
+        "empathy": 2.9,
+        "overall": 2.85
+      },
+      "priority": "ヒーロー要素が薄い回答の差し替え（5-4・5-8・5-13）および構造重複の解消（5-2と5-7、5-1と5-11）が最優先。Intelligenceが最低軸のため、ひねりの回収精度向上が次の改善ターゲット"
+    }
+  },
+  {
+    "topic_id": 6,
+    "topic": "時間が5分だけ止まったらすること",
+    "answers": [
+      {
+        "answer_id": "6-1",
+        "run": 1,
+        "text": "宝くじ売り場でスクラッチ削って外れを確認してから戻す",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "外れを確認してから戻すという損切り動作",
+          "weakness": "削って戻すの工程が少し長い",
+          "next_step": "「外れだけ先に知る」方向に圧縮を試みる"
+        }
+      },
+      {
+        "answer_id": "6-2",
+        "run": 1,
+        "text": "職場の冷蔵庫に入れてある自分のプリンを食べる",
+        "scores": {
+          "novelty": 1,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 1,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "職場の冷蔵庫という共感度の高い土台",
+          "weakness": "ズラしがゼロ。食べるは当たり前の行動",
+          "next_step": "冷蔵庫でしかできない1点ズラしを入れる"
+        }
+      },
+      {
+        "answer_id": "6-3",
+        "run": 1,
+        "text": "上司のパソコンでうっかり送信した取消不能メールをそっと消す",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "誤送信メール隠滅という強い動機",
+          "weakness": "「そっと消す」が説明的で不要",
+          "next_step": "「そっと消す」を切り消した後の平然とした様子を示す"
+        }
+      },
+      {
+        "answer_id": "6-4",
+        "run": 1,
+        "text": "信号無視で渡った記録を警察の端末から抹消する",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "小さな罪×大掛かりな隠滅という落差の方向性",
+          "weakness": "警察端末は現実感がなく共感が切れる",
+          "next_step": "端末を監視カメラ映像など実感のある媒体に変える"
+        }
+      },
+      {
+        "answer_id": "6-5",
+        "run": 1,
+        "text": "怒られてる最中に「ちょっと待て」って言いながらメモを取る",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「ちょっと待て」のセリフで本人の真剣さが出ている",
+          "weakness": "時間が止まっている感が伝わらない",
+          "next_step": "止まってる上司の顔の描写で停止感を出す"
+        }
+      },
+      {
+        "answer_id": "6-6",
+        "run": 2,
+        "text": "冷蔵庫のプリンに同僚の名前のシール貼る",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "食べずにシールを貼るという一段上の行動",
+          "weakness": "動機（自分のプリンを守るため）が見えにくい",
+          "next_step": "「自分のプリンの横に」など動機を1語示す"
+        }
+      },
+      {
+        "answer_id": "6-7",
+        "run": 2,
+        "text": "ライバルの企画書の核心部だけそっとコーヒーで滲ませる",
+        "scores": {
+          "novelty": 4,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「核心部だけ」という一点絞りの悪意",
+          "weakness": "「そっと」が不要で冗長",
+          "next_step": "「そっと」を削り「核心部にだけコーヒー垂らす」に詰める"
+        }
+      },
+      {
+        "answer_id": "6-8",
+        "run": 2,
+        "text": "昨日の健康診断の採血管と差し替える",
+        "scores": {
+          "novelty": 4,
+          "clarity": 2,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "採血管という意外な素材",
+          "weakness": "誰と誰の何のためかが不明で動機が回収できない",
+          "next_step": "「自分の採血管を昨日運動した人のと差し替える」など動機を1語で示す"
+        }
+      },
+      {
+        "answer_id": "6-9",
+        "run": 2,
+        "text": "さっき届いた宅配の中身を確認してから再び封する",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "宅配という日常の土台",
+          "weakness": "確認して封するだけでは行動が地味すぎる",
+          "next_step": "「確認して気に入ったものだけ抜く」など動機を一段強くする"
+        }
+      },
+      {
+        "answer_id": "6-10",
+        "run": 3,
+        "text": "上司の机の引き出しに鍵かけたまま帰る",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "地味な嫌がらせというズラしの方向",
+          "weakness": "動機と目的が不明瞭",
+          "next_step": "「怒られた直後に」など前後の文脈を補う"
+        }
+      },
+      {
+        "answer_id": "6-11",
+        "run": 3,
+        "text": "採点前のテスト用紙に赤ペンで「見直した」の跡だけ残す",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「跡だけ」という核心の一言が全てを語る",
+          "weakness": "特になし",
+          "next_step": "現状維持。削るところがない"
+        }
+      },
+      {
+        "answer_id": "6-12",
+        "run": 3,
+        "text": "送信済みの謝罪メール、最後の一行だけ敬語に直す",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「最後の一行だけ」という部分修正の情けなさ",
+          "weakness": "回答3（誤送信メール消去）と構造が近い",
+          "next_step": "謝罪メール以外の「部分修正」素材に変える"
+        }
+      },
+      {
+        "answer_id": "6-13",
+        "run": 3,
+        "text": "自分の健康診断の結果を「未着」フォルダに移す",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「未着フォルダ」という具体的な隠し場所",
+          "weakness": "回答8と健康診断素材が被っている",
+          "next_step": "素材を変えるか「未着フォルダ」の精緻さをさらに一段具体にする"
+        }
+      },
+      {
+        "answer_id": "6-14",
+        "run": 3,
+        "text": "昨日断った飲み会の幹事LINEを「既読」から「未読」に戻す",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "既読→未読という逆転と現代人の共感",
+          "weakness": "「昨日断った」情報が過多",
+          "next_step": "「断った飲み会の幹事LINE、既読を未読に戻す」に圧縮"
+        }
+      },
+      {
+        "answer_id": "6-15",
+        "run": 4,
+        "text": "彼女の財布の中のレシートだけ抜く",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 4,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「だけ」の一語で動機説明不要の完結した情けなさ",
+          "weakness": "特になし",
+          "next_step": "現状維持"
+        }
+      },
+      {
+        "answer_id": "6-16",
+        "run": 4,
+        "text": "隣の席の答案、消しゴムで1か所だけ正解に直す",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「1か所だけ正解に直す」逆嫌がらせの発想",
+          "weakness": "回答11とテスト素材・一点絞り構造が被っている",
+          "next_step": "テスト以外の素材で同じ構造を探す"
+        }
+      },
+      {
+        "answer_id": "6-17",
+        "run": 4,
+        "text": "親の遺言書の自分の取り分に下線を引く",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「下線を引く」という一動作で念押し・確認・主張が全て見える",
+          "weakness": "「親の」が重さを加えすぎている場合がある",
+          "next_step": "現状維持か「遺言書の自分の取り分に下線引く」と圧縮を試みる"
+        }
+      },
+      {
+        "answer_id": "6-18",
+        "run": 4,
+        "text": "取引先の名刺入れに自分の名刺を1枚多く入れる",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「1枚多く」の具体的な数字が動機の必死さを示す",
+          "weakness": "「何のため」の動機がやや薄い",
+          "next_step": "「決裁者の名刺入れに」など対象を具体にする"
+        }
+      },
+      {
+        "answer_id": "6-19",
+        "run": 4,
+        "text": "部長のゴルフのスコアカード、7を6に直す",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「7を6に」という具体的な数字の改ざん幅が忖度の絵を完成させる",
+          "weakness": "特になし",
+          "next_step": "現状維持か「7を6に」の前後を削り絵だけにする"
+        }
+      }
+    ],
+    "eval_summary": {
+      "overall_4_answers": [
+        "6-1",
+        "6-7",
+        "6-11",
+        "6-15",
+        "6-17"
+      ],
+      "weakest_axis": "intelligence",
+      "avg_scores": {
+        "novelty": 3.1,
+        "clarity": 3.7,
+        "relevance": 3.4,
+        "intelligence": 2.9,
+        "empathy": 3.2,
+        "overall": 3.0
+      },
+      "priority": "構造重複の整理（テスト2本・健康診断2本・メール2本）と動機不明回答の打ち直し（6-8、6-10）を優先。あるある止まり（6-2、6-9）は置き換え対象"
+    }
+  },
+  {
+    "topic_id": 7,
+    "topic": "深夜に一人でラーメンを食べているサンタの言い訳",
+    "answers": [
+      {
+        "answer_id": "7-1",
+        "run": 1,
+        "text": "プレゼント配達ルートのカロリー補給",
+        "scores": {
+          "novelty": 1,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 1,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "カロリー補給という業務理由の土台",
+          "weakness": "「カロリー補給」を直接言わず結果・数量で見せる",
+          "next_step": "「3軒目から摂取カロリーが業務量を超えている」など量で語らせる"
+        }
+      },
+      {
+        "answer_id": "7-2",
+        "run": 1,
+        "text": "トナカイに見られたくない分を先に食べている",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "トナカイへの見栄という人間的な動機",
+          "weakness": "「先に食べている」を結果・状態で隠す",
+          "next_step": "トナカイが来る前に証拠を消している動作だけ見せる"
+        }
+      },
+      {
+        "answer_id": "7-3",
+        "run": 1,
+        "text": "「ラーメン屋の子は去年いい子だった」と領収書保管",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "去年の審査結果と領収書の組み合わせ",
+          "weakness": "やや説明過多。「と領収書保管」で言い過ぎている",
+          "next_step": "領収書の宛名か品目だけ見せてサンタに語らせない"
+        }
+      },
+      {
+        "answer_id": "7-4",
+        "run": 1,
+        "text": "煮干しだしで業務上必要と申告済み",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "業務経費として正当化する自己正当化の構造",
+          "weakness": "煮干しだしの必然性がない。なぜ煮干しなのかが笑いにならない",
+          "next_step": "申告先（トナカイ？本部？）を具体にして誰への言い訳かを明確に"
+        }
+      },
+      {
+        "answer_id": "7-5",
+        "run": 1,
+        "text": "これは年越しそばの練習",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "全く別のものを「練習」と言い張る構造",
+          "weakness": "「これは」が少し冗長。またサンタ感がほぼない",
+          "next_step": "サンタ固有の文脈（世界一周・トナカイ・12月）と絡めて前提をずらす"
+        }
+      },
+      {
+        "answer_id": "7-6",
+        "run": 2,
+        "text": "12月26日分の燃料費で落とせる",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "12月26日付け計上というリアルな経費処理の細部",
+          "weakness": "「燃料費」より具体的な勘定科目にするともう1段笑える",
+          "next_step": "「深夜割増」「出張手当」など実在する費目名に変える"
+        }
+      },
+      {
+        "answer_id": "7-7",
+        "run": 2,
+        "text": "トナカイ組合の労働規約に「目撃証人ゼロの食事は業務外」とある",
+        "scores": {
+          "novelty": 3,
+          "clarity": 2,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「目撃証人ゼロ」という抜け穴の発想",
+          "weakness": "「トナカイ組合の労働規約に」が長い。20字超えている",
+          "next_step": "「規約第7条：目撃者なき食事は業務外」程度に圧縮"
+        }
+      },
+      {
+        "answer_id": "7-8",
+        "run": 2,
+        "text": "全員の家から塩を持ち帰ったので返却しに来た",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "塩の返却という建前の構造",
+          "weakness": "「全員の家から」が重い。なぜ持ち帰ったかの動機が不明",
+          "next_step": "持ち帰った理由を1語で足して動機を人間的に"
+        }
+      },
+      {
+        "answer_id": "7-9",
+        "run": 2,
+        "text": "麺の太さで来年の景気を占う古代儀式",
+        "scores": {
+          "novelty": 4,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 1,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "景気占いという目的",
+          "weakness": "「古代儀式」は奇抜に逃げている。動機が人間的でない",
+          "next_step": "占い行為の具体的な手順か道具で、当人の真剣さを見せる"
+        }
+      },
+      {
+        "answer_id": "7-10",
+        "run": 2,
+        "text": "2周目のルートで腹が減るのは統計で証明されている",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "統計・客観データで言い訳するという構造",
+          "weakness": "やや説明形式。「統計で証明されている」が結論を言いすぎ",
+          "next_step": "統計の出典か数値だけ見せて本人に語らせない"
+        }
+      },
+      {
+        "answer_id": "7-11",
+        "run": 3,
+        "text": "煮干しだしでトナカイの健康診断報告書を作成中",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "トナカイの健康管理という建前",
+          "weakness": "「煮干しだしで」という接続が不自然。なぜ食べながら報告書？",
+          "next_step": "報告書の内容か宛先だけ見せてラーメンとの接続を自然に"
+        }
+      },
+      {
+        "answer_id": "7-12",
+        "run": 3,
+        "text": "そりのルート上に一軒だけ繁盛してる店があった",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 1,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "そりのルートと店の位置関係というリアルな土台",
+          "weakness": "「繁盛してる」では言い訳になっていない",
+          "next_step": "店が「行列」「深夜営業のみ」など特殊な条件にしてサンタしか来られない理由を1語で"
+        }
+      },
+      {
+        "answer_id": "7-13",
+        "run": 3,
+        "text": "プレゼントを開けた子の顔を確認するため店主の息子の家に来た",
+        "scores": {
+          "novelty": 3,
+          "clarity": 2,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 1,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "プレゼントを開けた顔を確認したいという発想",
+          "weakness": "「店主の息子の家」という場所の特定が複雑すぎる",
+          "next_step": "「店主の息子の家」を削り、確認行動だけをシンプルに見せる"
+        }
+      },
+      {
+        "answer_id": "7-14",
+        "run": 3,
+        "text": "来年の願い事「ラーメン屋になりたい」は審査不要",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「なりたい」は審査不要という規則の抜け穴構造",
+          "weakness": "「」内のセリフが説明的。もう少し絵にできる",
+          "next_step": "願い事の内容を変えて、サンタが「なりたい側」になった状況の絵を見せる"
+        }
+      },
+      {
+        "answer_id": "7-15",
+        "run": 3,
+        "text": "「完食」をサンタ側の業績に計上できる",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "完食を業績に計上するという自己正当化",
+          "weakness": "「サンタ側の」が少し説明的。「側」は要らないかも",
+          "next_step": "計上する台帳や書類の名前を具体にして手続き感を強化"
+        }
+      },
+      {
+        "answer_id": "7-16",
+        "run": 4,
+        "text": "トナカイが精算できない費用の処理",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "トナカイが精算できない費用という組織的な構造",
+          "weakness": "「処理」が抽象的すぎる。どんな処理かが見えない",
+          "next_step": "「トナカイ名義で落ちない」など具体的な障害を1語で見せる"
+        }
+      },
+      {
+        "answer_id": "7-17",
+        "run": 4,
+        "text": "世界一周の終着地が麺類の国だった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "世界一周のルート設計という土台",
+          "weakness": "「麺類の国」が曖昧。日本・中国など固有名詞にすると絵が取れる",
+          "next_step": "ルートの都合でそこに終着する必然性を1語で足す"
+        }
+      },
+      {
+        "answer_id": "7-18",
+        "run": 4,
+        "text": "子どもに残した手紙の宛名を確認しに来た",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 1,
+          "empathy": 1,
+          "overall": 1
+        },
+        "improvement_notes": {
+          "strength": "書類確認という手続き的な建前の方向性",
+          "weakness": "ラーメン屋と手紙確認の接続が全くない",
+          "next_step": "手紙の宛名と店名が同じ、など接続の理由を1語で足す"
+        }
+      },
+      {
+        "answer_id": "7-19",
+        "run": 4,
+        "text": "来年のルートを麺の流れで最適化中",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "ルート最適化という業務的な建前",
+          "weakness": "「麺の流れ」が意味不明に近い。奇抜に逃げている",
+          "next_step": "最適化の方法を別の具体的な手段（箸の角度・スープの温度など）に変える"
+        }
+      },
+      {
+        "answer_id": "7-20",
+        "run": 4,
+        "text": "煙突から出た時の服の匂いを証拠に残している",
+        "scores": {
+          "novelty": 4,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "煙突の匂いを証拠にするという逆転発想と、疑われることを前提にした行動",
+          "weakness": "「服の匂いを」が少し冗長かもしれない",
+          "next_step": "このままで十分強い。「証拠に残している」の主体（誰向け）を1語で足すともう1段"
+        }
+      }
+    ],
+    "eval_summary": {
+      "overall_4_answers": [
+        "7-20"
+      ],
+      "weakest_axis": "empathy",
+      "avg_scores": {
+        "novelty": 2.85,
+        "clarity": 3.2,
+        "relevance": 3.45,
+        "intelligence": 2.4,
+        "empathy": 2.35,
+        "overall": 2.5
+      },
+      "priority": "Intelligence強化（直接言い切りを隠し方4つで再構成）、Empathy接地（奇抜逃げ排除、動機を人間的な情けなさに接地）、サンタ固有要素（煙突・トナカイ・ルート）と日常行動原理の直結回答を増やす"
+    }
+  },
+  {
+    "topic_id": 8,
+    "topic": "ロボットが人間に転職した理由",
+    "answers": [
+      {
+        "answer_id": "8-1",
+        "run": 1,
+        "text": "毎回リセットで初日の気分だと聞いた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "人間側の願望を動機にした構造",
+          "weakness": "オチが「初日の気分」止まりで跳べていない",
+          "next_step": "「初日の気分」の先にある具体的な恩恵まで踏み込む"
+        }
+      },
+      {
+        "answer_id": "8-2",
+        "run": 1,
+        "text": "怒っても壊れない相手と仕事したかった",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "ロボットと人間の物理的差異を動機にした軸",
+          "weakness": "「壊れない」は弱い。具体的な破壊行為まで見せると強くなる",
+          "next_step": "何を怒鳴り散らしても平気な場面を絵で見せる"
+        }
+      },
+      {
+        "answer_id": "8-3",
+        "run": 1,
+        "text": "サービス残業の計算が合わなかった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "ロボットの精算厳密さと労働問題の組み合わせ",
+          "weakness": "「計算が合わなかった」はやや直接的",
+          "next_step": "超過時間を具体的な場面で見せる"
+        }
+      },
+      {
+        "answer_id": "8-4",
+        "run": 1,
+        "text": "「やりがい」の列が空欄のまま10年経った",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "データ的表現でやりがいの欠如を示す構造",
+          "weakness": "「10年経った」は蛇足気味",
+          "next_step": "「10年経った」を削るか時制の絵に変える"
+        }
+      },
+      {
+        "answer_id": "8-5",
+        "run": 1,
+        "text": "褒められた記憶が1件もフォルダにない",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "量（0件）で感情を語らせる技法",
+          "weakness": "「フォルダにない」は少し長い",
+          "next_step": "「褒められた記録が0件」など量の強調で締める"
+        }
+      },
+      {
+        "answer_id": "8-6",
+        "run": 2,
+        "text": "充電中に考え事できるのが羨ましかった",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "充電と人間の内省を対比させる軸",
+          "weakness": "「考え事」が曖昧。具体的な場面がない",
+          "next_step": "充電中に何を考えたいかを1語で具体化する"
+        }
+      },
+      {
+        "answer_id": "8-7",
+        "run": 2,
+        "text": "エラーを無視して続けられると知った",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "エラー処理の対比構造",
+          "weakness": "20番と構造が重複している",
+          "next_step": "エラーの具体内容で差別化"
+        }
+      },
+      {
+        "answer_id": "8-8",
+        "run": 2,
+        "text": "「疲れた」が免罪符になると聞いた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "感情表現を言い訳に使いたいという動機",
+          "weakness": "「免罪符」という言葉が説明的",
+          "next_step": "「疲れた」で実際に乗り切れた場面の絵を見せる"
+        }
+      },
+      {
+        "answer_id": "8-9",
+        "run": 2,
+        "text": "涙で会議を乗り切れる仕事がしたかった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "涙という具体的な手段と会議という場面の組み合わせ",
+          "weakness": "「仕事がしたかった」は蛇足",
+          "next_step": "「涙で会議を乗り切れると知った」に短縮"
+        }
+      },
+      {
+        "answer_id": "8-10",
+        "run": 2,
+        "text": "正確にやるほど怒られる職場だった",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "精確性の逆転という軸",
+          "weakness": "19番と構造重複。19番より弱い",
+          "next_step": "「正確にやるほど怒られた」場面を1コマで見せる"
+        }
+      },
+      {
+        "answer_id": "8-11",
+        "run": 3,
+        "text": "充電サボれると聞いた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 1,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "短さと直接性",
+          "weakness": "直接言い切りでひねりがない",
+          "next_step": "サボった結果どうなるかで隠す"
+        }
+      },
+      {
+        "answer_id": "8-12",
+        "run": 3,
+        "text": "感情が後付けでいいと知った",
+        "scores": {
+          "novelty": 3,
+          "clarity": 2,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "感情処理タイミングの違いという切り口",
+          "weakness": "「後付けでいい」が抽象的で共感を呼びにくい",
+          "next_step": "「あとで悲しんでいいと知った」など具体的な感情と場面で接地させる"
+        }
+      },
+      {
+        "answer_id": "8-13",
+        "run": 3,
+        "text": "ミスしても「そういう日もある」で済む職場だった",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「そういう日もある」という実在感のある言葉",
+          "weakness": "8・14と同じ構造",
+          "next_step": "ミスの内容を具体化して差別化"
+        }
+      },
+      {
+        "answer_id": "8-14",
+        "run": 3,
+        "text": "泣けば2割増しで許されると気づいた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "感情効果の数値化というロボット的発想",
+          "weakness": "9番と涙×許容の構造が近い",
+          "next_step": "「2割増し」をより具体的な状況に適用する"
+        }
+      },
+      {
+        "answer_id": "8-15",
+        "run": 3,
+        "text": "体の不調を「なんとなく」で済ませられる",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 2,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "曖昧表現への憧れという動機",
+          "weakness": "ロボット的な精確さとの対比が見えない",
+          "next_step": "ロボットが精確な診断を求められて困った場面を土台に置く"
+        }
+      },
+      {
+        "answer_id": "8-16",
+        "run": 4,
+        "text": "納期を守ったら怒られた",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "労働環境の不条理という軸",
+          "weakness": "10番と構造重複。Empathyが低い",
+          "next_step": "「なぜ怒られたか」を1語具体化して状況の絵を作る"
+        }
+      },
+      {
+        "answer_id": "8-17",
+        "run": 4,
+        "text": "「お疲れ様」を言いたかった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "短さと「言いたかった」という動機の純粋さ",
+          "weakness": "「言いたかった」の背景まで見えるとさらに強い",
+          "next_step": "「定時後の『お疲れ様』」と時制を足す"
+        }
+      },
+      {
+        "answer_id": "8-18",
+        "run": 4,
+        "text": "有給の存在を知った",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 1,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "短さ",
+          "weakness": "直接言い切りでひねりゼロ。11番と同構造",
+          "next_step": "「有給申請フォームを初めて見た」など発見の場面で隠す"
+        }
+      },
+      {
+        "answer_id": "8-19",
+        "run": 4,
+        "text": "正確さより雰囲気が評価される側に回りたかった",
+        "scores": {
+          "novelty": 2,
+          "clarity": 2,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "評価基準の逆転という軸",
+          "weakness": "10番と重複かつ10番より弱い。長すぎる",
+          "next_step": "「雰囲気」を具体的な場面に置き換えて短縮"
+        }
+      },
+      {
+        "answer_id": "8-20",
+        "run": 4,
+        "text": "エラーを「なんか変だった」で報告できる職に就きたかった",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「なんか変だった」という言葉の具体性",
+          "weakness": "「職に就きたかった」が長い",
+          "next_step": "「エラーを『なんか変だった』で済ませたかった」に短縮"
+        }
+      }
+    ],
+    "eval_summary": {
+      "overall_4_answers": [],
+      "weakest_axis": "intelligence",
+      "avg_scores": {
+        "novelty": 2.4,
+        "clarity": 2.9,
+        "relevance": 3.0,
+        "intelligence": 2.2,
+        "empathy": 2.8,
+        "overall": 2.3
+      },
+      "priority": "直接言い切り回答の再構成（隠し方4つを適用）、構造重複の整理（同一軸から最強1本を残す）、Overall 4 創出のための前提レベルのズラし挑戦"
+    }
+  },
+  {
+    "topic_id": 9,
+    "topic": "お医者さんに「よく眠れていますか」と聞かれた時の正直すぎる答え",
+    "answers": [
+      {
+        "answer_id": "9-1",
+        "run": 1,
+        "text": "寝てますよ、トイレ後1時間ずつ",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "数字による具体化と中高年あるあるの共感",
+          "weakness": "これ以上削るものがなく維持優先",
+          "next_step": "「夜中2回」→「3回」等の数値バリエーション展開も可"
+        }
+      },
+      {
+        "answer_id": "9-2",
+        "run": 1,
+        "text": "眠れてるかを夜中2時に考えてる",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「夜中2時」の具体性と眠れているか考えている逆説構造",
+          "weakness": "完成度高くほぼ不要",
+          "next_step": "そのまま採用候補最上位"
+        }
+      },
+      {
+        "answer_id": "9-3",
+        "run": 1,
+        "text": "昨夜の分を今ここで取ってます",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「今ここで」の現在進行形",
+          "weakness": "6番・18番との差別化が必要",
+          "next_step": "「分を」→「3日分を」など量を明示して差別化"
+        }
+      },
+      {
+        "answer_id": "9-4",
+        "run": 1,
+        "text": "今月で「いいえ」47回目",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "カウントによる定量化の笑い",
+          "weakness": "47という数字のリアリティが弱く日常感と乖離する",
+          "next_step": "「今月で「いいえ」28回目」程度に下げてリアリティ強化"
+        }
+      },
+      {
+        "answer_id": "9-5",
+        "run": 1,
+        "text": "スマホ置いたら寝れます、置けないんですが",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「置けない」の能動/受動の使い分けによる無力感",
+          "weakness": "Noveltyがやや低く、より意外な自己分析を足せると強くなる",
+          "next_step": "そのまま採用。SNS文脈では特に強い"
+        }
+      },
+      {
+        "answer_id": "9-6",
+        "run": 2,
+        "text": "昨夜の分、今取り戻し中",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「取り戻し中」の現在進行形",
+          "weakness": "3番・18番と重複しており単独では情報が薄い",
+          "next_step": "「3日分、今ここで一括返済中」等で具体化して差別化"
+        }
+      },
+      {
+        "answer_id": "9-7",
+        "run": 2,
+        "text": "「眠れない」の記録、今月で満点",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "不眠を「満点」と表現する反転",
+          "weakness": "「満点」の基準が何か読み手が補う必要がある",
+          "next_step": "「今月の不眠カレンダー、満点達成しました」など具体化"
+        }
+      },
+      {
+        "answer_id": "9-8",
+        "run": 2,
+        "text": "目閉じてる、そこまでは本当",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「そこまでは」の限定表現の切れ味",
+          "weakness": "論理的すぎて万人ウケがやや下がる層がある",
+          "next_step": "そのまま採用。知的なウケ狙いとして最高水準"
+        }
+      },
+      {
+        "answer_id": "9-9",
+        "run": 2,
+        "text": "スマホを置いた3分は寝てた",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「3分」の具体数値によるコミカルな誇張",
+          "weakness": "5番と発想が近く単独では弱い",
+          "next_step": "「スマホを置いた3分は寝てた、それ以外は充電してた」等で展開"
+        }
+      },
+      {
+        "answer_id": "9-10",
+        "run": 2,
+        "text": "「よく」の定義から確認していいですか",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「よく」の相対性への鋭い突っ込み",
+          "weakness": "17番と重複のため差別化不要（どちらか1本に絞る）",
+          "next_step": "「よく」の後に「先生の基準でよく、ですか？」等で差別化できる"
+        }
+      },
+      {
+        "answer_id": "9-11",
+        "run": 3,
+        "text": "眠れてる4時間、でも全部夢で怒鳴られてる",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「4時間」の具体性と「夢で怒鳴られてる」による睡眠の質の悪さの二段落ち",
+          "weakness": "ほぼ不要",
+          "next_step": "採用最優先候補"
+        }
+      },
+      {
+        "answer_id": "9-12",
+        "run": 3,
+        "text": "毎晩ベッドで「眠れない日記」を完成させてから寝てる",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「完成させてから寝てる」という手順の皮肉",
+          "weakness": "文が長く14番・19番と「記録化」軸が重複",
+          "next_step": "「毎晩\"眠れない日記\"を書いてから眠れなくなってます」等に短縮"
+        }
+      },
+      {
+        "answer_id": "9-13",
+        "run": 3,
+        "text": "眠れています、起きてる間は",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "後半の読点前後で意味が完全に反転する構造美",
+          "weakness": "論理的すぎてEmpathyがわずかに下がる層がある",
+          "next_step": "そのまま採用。8番と並ぶ知的系最高水準"
+        }
+      },
+      {
+        "answer_id": "9-14",
+        "run": 3,
+        "text": "「眠れていない」の記録を今月から手帳に正式移行しました",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「正式移行」というビジネス語の転用",
+          "weakness": "文が長く記録系の中で12番・19番と差別化が弱い",
+          "next_step": "「今月から不眠を手帳で正式管理し始めました」に圧縮"
+        }
+      },
+      {
+        "answer_id": "9-15",
+        "run": 3,
+        "text": "昨日も朝5時に「今日こそ早起きした」と思いました",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "5時という具体時刻",
+          "weakness": "Relevanceが弱くお題への接続が間接的。論理的反転も弱い",
+          "next_step": "「昨夜は朝4時に寝たので今日は早起きに成功しました」等でRelevance補強"
+        }
+      },
+      {
+        "answer_id": "9-16",
+        "run": 4,
+        "text": "眠れています、この椅子に座るまでは",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「この椅子」という診察室の場の具体化",
+          "weakness": "13番と「眠れています、〜までは」構造が酷似",
+          "next_step": "「眠れています、先生の顔を見るまでは」等で17番とも絡めた差別化"
+        }
+      },
+      {
+        "answer_id": "9-17",
+        "run": 4,
+        "text": "先生の顔見た瞬間また目が覚めました",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「また」による慢性化の表現",
+          "weakness": "16番と軸が近い",
+          "next_step": "「先生の顔を見た瞬間に今月初めて目が覚めました」等で逆説を強化"
+        }
+      },
+      {
+        "answer_id": "9-18",
+        "run": 4,
+        "text": "昨夜の分、今ここで全部返済中",
+        "scores": {
+          "novelty": 2,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「全部」による誇張",
+          "weakness": "3番・6番と重複しており独立した価値がない",
+          "next_step": "3番か6番に統合。単独採用は不要"
+        }
+      },
+      {
+        "answer_id": "9-19",
+        "run": 4,
+        "text": "眠れない記録、今月で三冊目に入りました",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「三冊目」という具体的な数量誇張で自虐の深さを表現",
+          "weakness": "記録系の中で12番・14番と競合",
+          "next_step": "「眠れない記録帳、今月で三冊目に突入しました」でテンポ改善"
+        }
+      }
+    ],
+    "eval_summary": {
+      "overall_4_answers": [
+        "9-1",
+        "9-2",
+        "9-5",
+        "9-8",
+        "9-11",
+        "9-13"
+      ],
+      "weakest_axis": "novelty（重複グループ内で低下、平均2.95）",
+      "avg_scores": {
+        "novelty": 3.05,
+        "clarity": 3.63,
+        "relevance": 3.84,
+        "intelligence": 3.05,
+        "empathy": 3.16,
+        "overall": 3.16
+      },
+      "priority": "高：返済系（3・6・18番）と記録系（12・14・19番）の重複グループ整理。各グループから最も Intelligence と Empathy が高い1本に絞る。次点：知的逆説系（8・13番）の Empathy 底上げのため感情的具体描写を1つ追加。15番は Relevance 再設計が必要"
+    }
+  },
+  {
+    "topic_id": 10,
+    "topic": "神様が仕事をさぼっている場面",
+    "answers": [
+      {
+        "answer_id": "10-1",
+        "run": 1,
+        "text": "祈りを既読スルー",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「既読スルー」という語の解像度",
+          "weakness": "直接言い切りで読み手の推論が発生しない",
+          "next_step": "結果だけ見せる形に（例：祈り欄、最終既読が3年前）"
+        }
+      },
+      {
+        "answer_id": "10-2",
+        "run": 1,
+        "text": "「奇跡、明日でいい？」と担当天使に投げる",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「担当天使に投げる」という組織的ダメさ",
+          "weakness": "セリフ形式のため絵より説明になっている",
+          "next_step": "セリフを地の文に変換（例：奇跡の担当、今日も天使に振り直す）"
+        }
+      },
+      {
+        "answer_id": "10-3",
+        "run": 1,
+        "text": "奇跡の申請書をデスクの隅に9ヶ月",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「9ヶ月」という数字の語らせ方",
+          "weakness": "Empathyの入り口がやや遠い（申請書を神が持つ場面の違和感）",
+          "next_step": "申請書ではなく神が普段使うものに差し替え（例：祈りの受付票）"
+        }
+      },
+      {
+        "answer_id": "10-4",
+        "run": 1,
+        "text": "今日8件目の「なんとかなれ」を「なんとかなれ」で処理",
+        "scores": {
+          "novelty": 4,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "同語反復で「さぼり」を見せるひねり構造",
+          "weakness": "「8件目」の数字の根拠感がやや恣意的",
+          "next_step": "このままで良い。強いて言えば数字を変えて試す（7件目／12件目）"
+        }
+      },
+      {
+        "answer_id": "10-5",
+        "run": 1,
+        "text": "人類の希望を付箋に書いて冷蔵庫に貼る",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「冷蔵庫」という家庭的具体物の選択",
+          "weakness": "「人類の希望」が抽象すぎてつかみが遅れる",
+          "next_step": "付箋の中身をもっと具体に（例：「絶滅危惧種どうする」を冷蔵庫メモ）"
+        }
+      },
+      {
+        "answer_id": "10-6",
+        "run": 2,
+        "text": "祈りの対応は週イチ",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「週イチ」の具体感",
+          "weakness": "直接言い切り。ひねりがない",
+          "next_step": "時間をずらす（週イチ対応日の前日、祈りが497件溜まっている）"
+        }
+      },
+      {
+        "answer_id": "10-7",
+        "run": 2,
+        "text": "「宇宙の膨張、放置でいいか」と思い直す",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "宇宙規模の業務を「放置でいいか」と悩む情けなさ",
+          "weakness": "「思い直す」が結末として弱い。どちらに思い直したか不明",
+          "next_step": "結末を具体化（例：宇宙の膨張、今年もそのままで）"
+        }
+      },
+      {
+        "answer_id": "10-8",
+        "run": 2,
+        "text": "因果応報の処理件数、今月ゼロ",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「因果応報」という業務語の選択",
+          "weakness": "「今月ゼロ」が直接すぎる",
+          "next_step": "結果だけ見せる（例：因果応報の担当、5ヶ月連続で空欄）"
+        }
+      },
+      {
+        "answer_id": "10-9",
+        "run": 2,
+        "text": "奇跡の予約、3年待ち",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 2,
+          "empathy": 3,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「3年待ち」の数字の絵",
+          "weakness": "構造が「あるある」止まり",
+          "next_step": "なぜ3年待ちなのかを1段潜らせる（例：奇跡の担当、昨年から有給消化中）"
+        }
+      },
+      {
+        "answer_id": "10-10",
+        "run": 2,
+        "text": "「無限の愛」を有給取得日にのみ発揮",
+        "scores": {
+          "novelty": 4,
+          "clarity": 3,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「無限の愛」×「有給取得日のみ」という制度語での解体",
+          "weakness": "語順が少し硬い",
+          "next_step": "語順を整える（例：有給取得日だけ無限の愛）"
+        }
+      },
+      {
+        "answer_id": "10-11",
+        "run": 3,
+        "text": "天変地異の稟議、半年で差し戻し",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「差し戻し」という官僚語の選択",
+          "weakness": "神がさぼっているのか、制度が機能不全なのか絵が揺れる",
+          "next_step": "神が差し戻す主体であることを明確に（例：天変地異の稟議、神が半年で突き返す）"
+        }
+      },
+      {
+        "answer_id": "10-12",
+        "run": 3,
+        "text": "祈りの未読、現在41,000件",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「41,000件」という具体数字の語らせ方",
+          "weakness": "回答1と構造が近い",
+          "next_step": "未読件数ではなく既読後の行動で見せる（例：祈り41,000件、全部「承知しました」）"
+        }
+      },
+      {
+        "answer_id": "10-13",
+        "run": 3,
+        "text": "奇跡の発注ミス、気づいて今年で3年目",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 4,
+          "empathy": 4,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「気づいて今年で3年目」という時間のずらし",
+          "weakness": "Clarityが3で読解に一拍かかる",
+          "next_step": "構造を短縮（例：奇跡の発注ミス、3年間見なかったことに）"
+        }
+      },
+      {
+        "answer_id": "10-14",
+        "run": 3,
+        "text": "信仰心の集計、今期もエクセルのまま",
+        "scores": {
+          "novelty": 3,
+          "clarity": 3,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「エクセルのまま」という具体的怠惰の描写",
+          "weakness": "「信仰心の集計」という入り口がやや遠い",
+          "next_step": "エクセルの中身を見せる（例：信仰心一覧、E列に色が塗られたまま3年）"
+        }
+      },
+      {
+        "answer_id": "10-15",
+        "run": 3,
+        "text": "「世界の均衡」をメモ帳に書いて閉じる",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「書いて閉じる」という行為での感情省略",
+          "weakness": "メモ帳のWindowsアプリ感がやや具体的すぎて絵が割れる",
+          "next_step": "閉じた後の状態を見せる（例：「世界の均衡」、付箋に書いて2年）"
+        }
+      },
+      {
+        "answer_id": "10-16",
+        "run": 4,
+        "text": "人類の悲鳴、着信拒否設定中",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「着信拒否設定中」という能動的な無視の表現",
+          "weakness": "回答1・回答12と構造が近い",
+          "next_step": "着信拒否の設定画面ではなく、設定した後の行動を見せる"
+        }
+      },
+      {
+        "answer_id": "10-17",
+        "run": 4,
+        "text": "徳の採点、去年から一時停止",
+        "scores": {
+          "novelty": 2,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 2,
+          "empathy": 2,
+          "overall": 2
+        },
+        "improvement_notes": {
+          "strength": "「去年から」という時間のずらし",
+          "weakness": "「徳の採点」の入り口が狭い、「一時停止」が直接的",
+          "next_step": "採点の結果物で見せる（例：今年の徳ランキング、まだ去年のまま）"
+        }
+      },
+      {
+        "answer_id": "10-18",
+        "run": 4,
+        "text": "因果応報の順番待ち、発券機が壊れたまま",
+        "scores": {
+          "novelty": 3,
+          "clarity": 4,
+          "relevance": 3,
+          "intelligence": 3,
+          "empathy": 3,
+          "overall": 3
+        },
+        "improvement_notes": {
+          "strength": "「発券機が壊れたまま」というアイテムの具体性",
+          "weakness": "神がさぼっているからなのか、設備の問題なのか絵が揺れる",
+          "next_step": "神が発券機を直さない理由を1段潜らせる（例：因果応報の受付、発券機が壊れて神も気づいていない）"
+        }
+      },
+      {
+        "answer_id": "10-19",
+        "run": 4,
+        "text": "奇跡の在庫、賞味期限で全廃棄",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 3,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "奇跡に賞味期限という前提転換と「全廃棄」という結果の見せ方",
+          "weakness": "Empathyの入り口がやや業務経験者寄り",
+          "next_step": "このままで十分強い。「全廃棄」を「また全廃棄」にするとリピート感が出る"
+        }
+      },
+      {
+        "answer_id": "10-20",
+        "run": 4,
+        "text": "地球の自転、オートで助かった",
+        "scores": {
+          "novelty": 4,
+          "clarity": 4,
+          "relevance": 4,
+          "intelligence": 4,
+          "empathy": 4,
+          "overall": 4
+        },
+        "improvement_notes": {
+          "strength": "「オートで助かった」という神の安堵感と無責任さの同居",
+          "weakness": "特になし",
+          "next_step": "このまま使うべき。強いて言えば「また助かった」でリピート感を出す試み"
+        }
+      }
+    ],
+    "eval_summary": {
+      "overall_4_answers": [
+        "10-4",
+        "10-10",
+        "10-19",
+        "10-20"
+      ],
+      "weakest_axis": "intelligence",
+      "avg_scores": {
+        "novelty": 3.0,
+        "clarity": 3.75,
+        "relevance": 3.6,
+        "intelligence": 2.95,
+        "empathy": 3.1,
+        "overall": 2.95
+      },
+      "priority": "high"
+    }
+  }
+]
