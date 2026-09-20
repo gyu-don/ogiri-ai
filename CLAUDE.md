@@ -19,6 +19,12 @@ The `.claude/skills/ogiri-ai/SKILL.md` file contains the main skill logic. This 
 
 See `DEVELOPMENT.md` for the skill development process, design theory, and iteration methodology.
 
+The evaluation skills (`diversity-check`, `fun-check`, `humor-eval`, `humor-rank`, `cluster-fit-check`) live in [gyu-don/humor-skills](https://github.com/gyu-don/humor-skills) and are installed into `.claude/skills/` (git-ignored; `skills-lock.json` is the committed pin). `DEVELOPMENT.md` has the install and invocation commands.
+
+## Secrets
+
+Anything calling the TypeSafe AI (Jev) API needs `TYPESAFE_API_KEY`. If it is not already in the environment, run the command under `doppler run --`. See the "Secrets and environment variables" section of `AGENTS.md`.
+
 ## Codex Development Discipline
 
 When Codex is asked to improve the ogiri prompt, `SKILL.md`, or any evaluation skill, it must treat `DEVELOPMENT.md` as the execution contract, not background reading.

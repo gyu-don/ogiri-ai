@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "skills": {
+    "cluster-fit-check": {
+      "source": "../humor-skills",
+      "sourceType": "local",
+      "computedHash": "109eabbfd2d0ce2cc3d4ebbc0fb447964e37b5e5999d911766273e444af97e82"
+    },
+    "diversity-check": {
+      "source": "../humor-skills",
+      "sourceType": "local",
+      "computedHash": "7636696e8abae0d054a7d3d7b06aa40346532085b17ac3b918407a2f3462d4b5"
+    },
+    "fun-check": {
+      "source": "../humor-skills",
+      "sourceType": "local",
+      "computedHash": "2aef877d414dd56a2a338ea6c51020c2c89b08dd8f07660ba539e192f9c95968"
+    },
+    "humor-eval": {
+      "source": "../humor-skills",
+      "sourceType": "local",
+      "computedHash": "3c80577571ff81ae68b7834eb96d56a594e31cdf343d0261d03aca898d0f8ab1"
+    },
+    "humor-rank": {
+      "source": "../humor-skills",
+      "sourceType": "local",
+      "computedHash": "bc03b7cd5beeba569c40001bb78e6d758a9ddc2ecd9728f63770c099ca8be6e5"
+    }
+  }
+}

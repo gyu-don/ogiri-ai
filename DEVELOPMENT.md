@@ -70,9 +70,52 @@ generation, evaluation, and a decision about the next intervention. If
 tooling or budget prevents even the light loop, record the blocker and run
 the largest subset possible.
 
+### Setup: installing the evaluation skills
+
+The evaluation skills no longer live in this repo. They moved to
+[gyu-don/humor-skills](https://github.com/gyu-don/humor-skills), which keeps
+each original prompt-based `SKILL.md` **and** adds a Jev port
+(`scripts/evaluate.ts`) that returns numbers instead of an LLM's prose verdict.
+Install them before running any loop:
+
+```bash
+npx skills add ../humor-skills -s '*' -y        # local checkout next to this repo
+npx skills add gyu-don/humor-skills -s '*' -y   # or straight from GitHub
+```
+
+or, inside Claude Code:
+
+```
+/plugin marketplace add https://github.com/gyu-don/humor-skills
+/plugin install humor-skills
+```
+
+The installed copies land in `.claude/skills/<name>/` (`.agents/skills/` is a
+symlink to the same directory, so Codex sees them too) and are **git-ignored**.
+Only `skills-lock.json` is committed, so `npx skills experimental_install`
+restores the pinned set on a fresh checkout. Never edit an installed copy — fix
+it in `humor-skills` and reinstall.
+
+For the numeric (Jev) version, each skill needs its own `npm install` — once
+per skill, and again after any reinstall, because installing replaces the whole
+skill directory (`node_modules` included):
+
+```bash
+(cd .claude/skills/<name> && npm install)   # Node.js >= 22.6; only dep is @typesafe-ai/sdk
+doppler run -- node .claude/skills/<name>/scripts/evaluate.ts <input.json> [output.json]
+```
+
+Input is `{"topic": "...", "answers": ["...", ...]}` — see each skill's
+`assets/samples.json` for the shape, including the multi-sample form used to
+compare two candidate sets in one run. `TYPESAFE_API_KEY` is required; run under
+`doppler run --` when it is not already in the environment (see `AGENTS.md`).
+`diversity-check` is prompt-only: it ships no `evaluate.ts` and is always run by
+subagent.
+
 ### Non-negotiables (both tiers)
 
-- Read `SKILL.md`, this file, and the evaluation skills you will use, before editing.
+- Read `SKILL.md`, this file, and the evaluation skills you will use
+  (installed under `.claude/skills/`), before editing.
 - Write one concrete failure hypothesis before editing, then make **one**
   targeted change (two only if the previous loop showed coupled failures).
   Do not reword large sections without naming the failure mode.
@@ -105,6 +148,22 @@ claude -p --model=<model> --effort=<effort> '/ogiri-ai <お題>'
 codex exec -C . -m <model> -c 'model_reasoning_effort="<effort>"' '$ogiri-ai <お題>'
 ```
 (Single-quote the Codex prompt so the shell does not expand `$ogiri-ai`.)
+
+Evaluation skills have two invocation modes, and they answer different
+questions:
+
+- **Prompt mode** (subagent, `/humor-eval` etc.): returns the full report with
+  per-answer reasoning and rewrite notes. Use it when you need to know *why* a
+  set failed.
+- **Jev mode** (`doppler run -- node .claude/skills/<name>/scripts/evaluate.ts`):
+  returns the same axes as numbers, cheaply and reproducibly. Use it for the
+  per-iteration metrics, for comparing two iterations, and wherever this file
+  asks for a median or a share. It has no subagent budget cost, so prefer it
+  when the question is "did the number move?".
+
+Numbers from Jev mode and scores from prompt mode are on the same 0-4 axes but
+are not interchangeable across a comparison — pick one mode per comparison and
+stay in it.
 
 ### Light loop (default — ~5-6 subagent calls per iteration)
 
@@ -183,6 +242,9 @@ decision: next intervention, or gate pass/fail
 | `humor-eval` | Multi-axis scoring (Novelty/Clarity/Relevance/Intelligence/Empathy/Overall) | Ground-truth human verdict | Gate only, 2-pass medians |
 | `humor-rank` | Pairwise relative ranking within a topic | Absolute funniness | Finalist ties only |
 | `cluster-fit-check` | Alignment with literature-derived user cluster preferences | Funniness or universal appeal | Style/audience tuning only |
+
+All five come from [gyu-don/humor-skills](https://github.com/gyu-don/humor-skills).
+Every row except `diversity-check` also has a Jev port (`scripts/evaluate.ts`).
 
 ### Dropped requirements, and why (do not reinstate without new evidence)
 

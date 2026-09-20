@@ -1,0 +1,7 @@
+# Evaluation skills installed from humor-skills (see DEVELOPMENT.md).
+# Restore with: npx skills experimental_install
+/.claude/skills/*
+!/.claude/skills/ogiri-ai
+
+# Per-skill npm install (needed by the Jev scripts)
+node_modules/
