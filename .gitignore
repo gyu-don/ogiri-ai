@@ -3,5 +3,5 @@
 /.claude/skills/*
 !/.claude/skills/ogiri-ai
 
-# Per-skill npm install (needed by the Jev scripts)
+# Root npm install (the Jev scripts' SDK; see package.json)
 node_modules/

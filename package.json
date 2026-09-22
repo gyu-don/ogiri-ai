@@ -1,0 +1,9 @@
+{
+  "name": "ogiri-ai-dev",
+  "private": true,
+  "description": "Development only: runtime dependency for the Jev scripts of the evaluation skills installed from humor-skills. Not needed to use the ogiri-ai skill itself.",
+  "type": "module",
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.6.0"
+  }
+}
