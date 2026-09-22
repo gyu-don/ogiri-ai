@@ -96,12 +96,15 @@ Only `skills-lock.json` is committed, so `npx skills experimental_install`
 restores the pinned set on a fresh checkout. Never edit an installed copy — fix
 it in `humor-skills` and reinstall.
 
-For the numeric (Jev) version, each skill needs its own `npm install` — once
-per skill, and again after any reinstall, because installing replaces the whole
-skill directory (`node_modules` included):
+For the numeric (Jev) version, run `npm install` once at this repo's root
+(Node.js >= 22.6). The root `package.json` exists only to provide
+`@typesafe-ai/sdk`, the scripts' single dependency; Node finds it by walking up
+from `.claude/skills/<name>/scripts/`, so reinstalling or updating the skills
+does not require another install. Using the ogiri-ai skill itself needs no
+Node at all.
 
 ```bash
-(cd .claude/skills/<name> && npm install)   # Node.js >= 22.6; only dep is @typesafe-ai/sdk
+npm install                                  # once per clone
 doppler run -- node .claude/skills/<name>/scripts/evaluate.ts <input.json> [output.json]
 ```
 
@@ -165,18 +168,26 @@ Numbers from Jev mode and scores from prompt mode are on the same 0-4 axes but
 are not interchangeable across a comparison — pick one mode per comparison and
 stay in it.
 
+Reproducible is not the same as valid. As of 2026-09-23, no funniness score
+from either mode agrees with human judgment better than chance (see
+"How far to trust the evaluators" below), so a number that moved is not
+evidence that the answers got funnier.
+
 ### Light loop (default — ~5-6 subagent calls per iteration)
 
 1. Hypothesis + one targeted edit to `SKILL.md`.
 2. Generate: one `/ogiri-ai` run per fixed topic, 2 fixed topics from
    different categories (5 answers each).
 3. Evaluate per topic: `diversity-check` and `fun-check`, one subagent each.
-   Also count by hand (no subagent needed): 「」 per run, same-mechanism
-   repeats, same borrowed metaphor system repeats, material reappearing from
-   the previous iteration's outputs.
+   Also count by hand (no subagent needed): 「」 per run, answers that break
+   the form the お題 asks for (e.g. a 「一言」 お題 answered with a situation
+   description instead of an utterance), same-mechanism repeats, same
+   sentence-template repeats, same borrowed metaphor system repeats, material
+   reappearing from the previous iteration's outputs.
 4. Log, decide the next intervention.
 
-Light-loop reference values — these are *trend signals*, not pass/fail gates:
+Light-loop reference values — these are *trend signals*, not pass/fail gates;
+read them against the previous iteration, not as absolute bars:
 - ≥4 distinct decomposition axes per 5 answers
 - no single risk type dominating the fun-check flags (the raw flag rate runs
   40-60% even on good sets — fun-check flags generously by design)
@@ -186,28 +197,71 @@ Light-loop reference values — these are *trend signals*, not pass/fail gates:
 
 Run once when light-loop trends look good, not on every iteration:
 
+The gate never waits for a human. Mechanical checks decide pass/fail; the
+funniness signal and the optional blind human comparison decide how strongly
+the result can be claimed.
+
 1. Generate: 2 fixed topics × 2 independent runs each, plus **1 unseen-category
-   topic** × 2 runs (pool each topic to 10 answers).
-2. `diversity-check` on each pooled 10: **≥6 axes, no axis >40%**.
-3. `fun-check` on each pooled 10: no near-identical material across the two
-   runs (cross-run attractor), no risk type >40% of all flags, no overlap
-   warning repeated from the previous gate. Pooled flag rates overstate what
-   one user sees in a single 5-answer output — treat the rate as a trend, not
-   a gate.
-4. `humor-eval` × **2 independent passes** per pooled 10; compare medians.
-   Floors: median Relevance ≥2.5 **and** median Empathy ≥2.5.
-   Peak: ≥2 answers at Overall 4 per 10 (ogiri is judged by its best answer,
-   not its mean). Ignore Overall-average deltas <0.4 — that is the measured
-   noise band between identical runs.
-5. All three topics pass → the change is validated. Then **stop looping**:
-   once structural metrics pass and humor-eval deltas sit inside the noise
-   band, further prompt tuning cannot be validated by LLM evaluation alone.
-   The next signal is human reactions, fed back through the Example Firewall.
+   topic** × 2 runs (pool each topic to 10 answers). Also generate the same
+   topics with the pre-change `SKILL.md` (the baseline) — the funniness
+   signal and the human comparison compare the two.
+2. **Checks on each pooled 10.** Only unambiguous checks are pass/fail.
+   Fuzzy similarity is judged *relative to the baseline*, because a strict
+   absolute similarity bar gets optimized against: it rejects answers that
+   merely share the お題's own premise, and the judge invents similarity when
+   there is none (see "How far to trust the evaluators"). The human's
+   favorite set on record (2026-07-11 FIRST TAKE, skill off) would have failed
+   an absolute version of these checks.
+   - **Pass/fail (hard):**
+     - every answer takes the form the お題 asks for (utterance for 「一言」,
+       a description of the thing for 「どんな〇〇？」, a title for 「タイトル」…)
+     - 「」 count and length within `SKILL.md`'s own limits
+     - no near-duplicate pair: Jev `fun-check` `nearDuplicates` (exact match,
+       or same core material ≥0.7) is empty — unless the baseline pooled on
+       the same topic has as many, which means the お題 forces a shared form
+   - **Relative to the baseline (warning, not a failure by itself):**
+     - `fun-check` Jev `sameMaterial` distribution and prompt-mode 被りチェック
+       flag count: warn if clearly higher than the baseline's
+     - `diversity-check` axis count and largest-axis share: warn if clearly
+       worse than the baseline's
+     - material or mechanism reappearing across the two runs (cross-run
+       attractor) or repeated from the previous gate
+     Two or more warnings on the same topic count as a failure for that topic.
+   - **Diagnostic only (log, never gate):** set-wide convergence in one
+     direction (every answer reinterpreting the お題 the same way, the same
+     シュール手癖, the same sentence template). No judge detects this
+     reliably yet; read the prompt-mode reports and count by hand, and
+     discount any "shared structure" that is just a restatement of the お題.
+3. **Funniness signal (always run, never blocking)**: check the latest
+   `reports/validation/<date>/summary.md` in humor-skills.
+   - If a metric is marked `gate: yes`, it is trusted: the candidate must not
+     lose to the baseline on it.
+   - Otherwise (the state as of 2026-09-23), run `humor-eval` × 2 passes on
+     candidate and baseline anyway and log the medians and the Overall-4
+     count, labeled **provisional**. They can neither validate nor veto the
+     change. Watch for the known failure: it rates safe, explanatory sets
+     above bold ones.
+4. **Blind human comparison (optional, asynchronous)**: if a human is
+   present in the session and willing, show candidate and baseline side by
+   side per topic with sources hidden and order randomized (AskUserQuestion
+   works; ask "which set is funnier", allow a tie, and let them mark
+   standout answers). Record the result as a new session in humor-skills
+   `data/human-evals/ogiri-ai/` (`.md` + `.json`, schema in its README)
+   — this is what grows the ground truth used to improve the evaluators. If
+   no human is available, skip it; do not block, poll, or ask repeatedly.
+5. Outcome, stated exactly in the final report and commit message:
+   - **mechanically passed** — step 2 has no hard failure and no topic with
+     two or more warnings, on all three topics. The change
+     may be committed. Then **stop looping**: further prompt tuning cannot
+     be validated by LLM evaluation alone.
+   - **validated** — mechanically passed, *and* either the blind human
+     comparison preferred the candidate (or tied) on the topics shown, or a
+     `gate: yes` evaluator did.
+   - **not passed** — report the exact loop depth, the failing criteria, and
+     the next concrete intervention. The honest final state is "improved but
+     not fully validated", not "done".
 6. Commit with hypothesis, loop count, per-iteration metrics, and what
-   changed between iterations. If the gate was not passed this session,
-   report the exact loop depth, the failing criteria, and the next concrete
-   intervention — the honest final state is "improved but not fully
-   validated", not "done".
+   changed between iterations.
 
 ### Optional tools (run only when they answer a specific question)
 
@@ -228,23 +282,59 @@ edit:
 topics:
 diversity: axes / largest-axis share
 fun-check: dominant risk type / overlap warnings / flag-rate trend
-hand counts: 「」 / repeated mechanisms / repeated metaphor systems
-humor-eval (gate only): median Relevance / Empathy / Overall-4 count
-decision: next intervention, or gate pass/fail
+hand counts: 「」 / form violations / repeated mechanisms / repeated templates / repeated metaphor systems
+funniness (gate only, provisional unless gate-eligible): humor-eval median Relevance / Empathy / Overall-4, candidate vs baseline
+human blind comparison (gate only, optional): not run | candidate / baseline / tie per topic
+decision: next intervention, or gate outcome (mechanically passed / validated / not passed)
 ```
 
 ### Evaluation skills at a glance
 
 | Skill | What it measures | What it does NOT measure | When |
 |---|---|---|---|
-| `diversity-check` | Structural variety of decomposition axes | Funniness | Every iteration |
-| `fun-check` | Per-answer risks (ベタ・絵・ひねり・共感・認知度・長さ・滑り・被り・相対典型性) | Overall funniness | Every iteration |
-| `humor-eval` | Multi-axis scoring (Novelty/Clarity/Relevance/Intelligence/Empathy/Overall) | Ground-truth human verdict | Gate only, 2-pass medians |
+| `diversity-check` | Structural variety of decomposition axes | Funniness; style/template convergence (count those by hand) | Every iteration, read against the baseline |
+| `fun-check` | Per-answer risks (ベタ・絵・ひねり・共感・認知度・長さ・滑り・被り・相対典型性) | Overall funniness | Every iteration; Jev `nearDuplicates` is a hard gate check, the rest is read against the baseline |
+| `humor-eval` | Multi-axis scoring (Novelty/Clarity/Relevance/Intelligence/Empathy/Overall) | Ground-truth human verdict | Gate only, 2-pass, provisional |
 | `humor-rank` | Pairwise relative ranking within a topic | Absolute funniness | Finalist ties only |
 | `cluster-fit-check` | Alignment with literature-derived user cluster preferences | Funniness or universal appeal | Style/audience tuning only |
 
 All five come from [gyu-don/humor-skills](https://github.com/gyu-don/humor-skills).
 Every row except `diversity-check` also has a Jev port (`scripts/evaluate.ts`).
+
+### How far to trust the evaluators
+
+humor-skills validates every judge against recorded human judgments
+(`data/human-evals/`) and writes the result to
+`reports/validation/<date>/summary.md` (procedure: humor-skills `AGENTS.md`,
+"Validation"). Check the latest one before relying on a score.
+
+As of the 2026-09-23 run (75 labeled answers, 7 human set preferences, 13
+answer pairs, 11 of them blind):
+
+- Funniness judgments from `humor-eval`, `fun-check`, and a no-rubric
+  baseline are all at chance (AUC 0.37-0.61, every 95% interval spans 0.5),
+  and none beats "shorter is better".
+- Prompt-mode `humor-eval` agreed with the human on 2 of 7 set preferences
+  and rated both recorded regressions (07-11 attractor set, 09-15 節分)
+  above the sets the human preferred. The old gate would have validated them.
+- `fun-check`'s ベタ/相対ベタ flags land more often on the answers humans
+  liked; `diversity-check` did not detect the convergences humans pointed out.
+- What did work: prose reports spotting near-duplicate answers within a set.
+
+Overlap (被り) detection, checked against 16 blind human similarity
+judgments (`reports/validation/2026-09-23-overlap/`):
+
+- The old prompt-mode 被りチェック flagged 4 of 10 pairs the human called
+  different — pairs that merely shared the お題's premise or an opening
+  phrase. After adding explicit "not 被り" criteria: 0 of 10, same recall
+  (4 of 5). Jev `sameMaterial` at 0.7 (the `nearDuplicates` threshold): 3 of 5
+  caught, 0 of 10 false, r=0.99 between runs. Both were tuned on these same
+  16 pairs — confirm on new topics before tightening anything.
+- Neither detects same-direction reinterpretation with different material,
+  nor set-wide convergence. That stays a diagnostic.
+
+Improving the funniness judges continues in humor-skills; a judge graduates
+to gating use only when its validation row is marked `gate: yes`.
 
 ### Dropped requirements, and why (do not reinstate without new evidence)
 
@@ -265,6 +355,21 @@ Measured in the 2026-06 sessions:
 - **`humor-eval` on every iteration**: the noisiest and most expensive
   signal; single-pass averages cannot support claims about edits with effect
   size <0.4. Reserved for gates, as 2-pass medians and peak counts.
+
+Measured on 2026-09-23 (humor-skills `reports/validation/2026-09-23/`):
+
+- **`humor-eval` median floors (Relevance/Empathy ≥2.5) and the Overall-4
+  peak as validating gate criteria**: checked blind against human labels,
+  they were at chance and preferred the human-rejected set in both recorded
+  regressions. Kept only as a provisional signal (gate step 3) until a
+  humor-skills validation run marks a judge `gate: yes`.
+- **A human in every loop**: the blind human comparison is optional and
+  asynchronous; mechanical checks alone decide "mechanically passed".
+- **Absolute similarity/diversity bars as hard gates** (a sentence template
+  shared by >40%, "no overlap" by prompt-mode judgment, `diversity-check`
+  ≥6 axes): the human's favorite recorded set would have failed them, and
+  prompt-mode overlap judgments invented similarity. Only near-duplicates
+  are a hard check; the rest is compared against the baseline.
 
 ## Secrets and environment variables
 
