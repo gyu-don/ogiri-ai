@@ -1,30 +1,15 @@
 {
   "version": 1,
   "skills": {
-    "cluster-fit-check": {
+    "overlap-check": {
       "source": "../humor-skills",
       "sourceType": "local",
-      "computedHash": "109eabbfd2d0ce2cc3d4ebbc0fb447964e37b5e5999d911766273e444af97e82"
+      "computedHash": "5b4f1dbd15db494793aac6371f28ab612466523a5b1ebf33ad188607cb6ef2a4"
     },
-    "diversity-check": {
+    "trait-check": {
       "source": "../humor-skills",
       "sourceType": "local",
-      "computedHash": "7636696e8abae0d054a7d3d7b06aa40346532085b17ac3b918407a2f3462d4b5"
-    },
-    "fun-check": {
-      "source": "../humor-skills",
-      "sourceType": "local",
-      "computedHash": "96a2da7367a03d8c1ee295cf2f1eb4b82cf932207f948040bdeb241d61105177"
-    },
-    "humor-eval": {
-      "source": "../humor-skills",
-      "sourceType": "local",
-      "computedHash": "3c80577571ff81ae68b7834eb96d56a594e31cdf343d0261d03aca898d0f8ab1"
-    },
-    "humor-rank": {
-      "source": "../humor-skills",
-      "sourceType": "local",
-      "computedHash": "bc03b7cd5beeba569c40001bb78e6d758a9ddc2ecd9728f63770c099ca8be6e5"
+      "computedHash": "78dec2e9051956522e87a5dee861ff8124e1d95b21d4cd706f33a97a60d96577"
     }
   }
 }
