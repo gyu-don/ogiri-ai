@@ -37,7 +37,11 @@ npx skills add gyu-don/ogiri-ai
 
 ## ライセンス
 
-CC BY-NC-SA 4.0 (Creative Commons 表示-非営利-継承 4.0)
+CC BY-SA 4.0 (Creative Commons 表示-継承 4.0 国際)
+
+- スキルの実行・利用は商用でも自由です。
+- スキルを改変・組み込んで配布・公開する場合は、同じ CC BY-SA 4.0 で提供してください。
+- 生成された回答について、作者は著作権を主張しません。
 
 詳細は [LICENSE.txt](LICENSE.txt) を参照してください。
 
