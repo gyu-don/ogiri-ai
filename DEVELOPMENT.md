@@ -214,10 +214,11 @@ the evaluators").
 Subagents are still used for generation and for the prompt-mode
 `diversity-check` report, which is read as a diagnostic, never counted.
 
-`evaluate.ts` in both checks groups array input by `sample.id`; an array of
-sets without distinct ids is merged, and every set then reports the same pooled
-`summaries` (seen 2026-11-08). Invoke it once per set with a single object
-until distinct-id arrays are verified in humor-skills.
+The 2026-11-09 checks normalize missing array ids to `set-1`, `set-2`, etc.,
+and reject duplicate ids. Earlier versions merged id-less arrays and repeated
+the pooled `summaries` (seen 2026-11-08); affected historical results remain
+invalid. Single-object invocations are still supported. Record the installed
+pin and do not mix results across an evaluator update.
 
 ### Change-specific criteria (both tiers)
 
@@ -551,6 +552,17 @@ process later; continue improving the generation skill now.
   proxy should not become an optimization target or silently substitute for
   the user's judgment. Preserve the distinction between a mechanical result
   and evidence that the answers are funnier.
+- The installed 2026-11-09 validation still marks no funniness evaluator
+  `gate: yes`. On 170 labels, `concrete` AUC is .62 and `indirect` .60; the
+  latter fell to .56 when retested on the original labels. The provisional
+  noise-based regression rule flags 3 of 4 human-tied topics, while its
+  ability to detect a true loss has not yet been established on that table.
+  See humor-skills `reports/validation/2026-11-09/{summary,notes}.md`.
+- Updated overlap guidance distinguishes duplicates within one five-answer
+  output from repetition across independent runs. Reconcile the present
+  pooled hard check with that distinction in the deferred process review;
+  report both counts in the meantime rather than calling every pooled pair
+  a duplicate within one response.
 
 ## Secrets and environment variables
 

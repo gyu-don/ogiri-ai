@@ -4,12 +4,12 @@
     "overlap-check": {
       "source": "../humor-skills",
       "sourceType": "local",
-      "computedHash": "5b4f1dbd15db494793aac6371f28ab612466523a5b1ebf33ad188607cb6ef2a4"
+      "computedHash": "6b6ee30875fc3688195e99fa92f75440343165be66194e58651cb29791b19d2f"
     },
     "trait-check": {
       "source": "../humor-skills",
       "sourceType": "local",
-      "computedHash": "78dec2e9051956522e87a5dee861ff8124e1d95b21d4cd706f33a97a60d96577"
+      "computedHash": "0e25e44ece4ecd04e440075e6065ed97d605c71f6233ea30c8dd1231a2959304"
     }
   }
 }
