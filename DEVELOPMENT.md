@@ -169,8 +169,25 @@ doppler run -- node ../humor-skills/research/<name>/scripts/evaluate.ts <input.j
 
 ### How to invoke
 
-Prefer subagents with native skill invocation for generation (Sonnet-class at
-moderate effort is sufficient; see model defaults in `AGENTS.md`):
+Prefer subagents with native skill invocation for generation (model defaults
+in `AGENTS.md`). Use the same model and effort for baseline and candidate.
+
+**Generator capability check.** Before tuning the skill for a new kind of
+answer, run a small, predefined no-skill diagnostic on the intended generator:
+ask for that kind of answer directly. Record the exact model/version, effort,
+prompt, run count, raw outputs, and audit. A failure means the capability was
+not demonstrated under those conditions, not that no prompt could elicit it;
+use it to pick a generator before spending iterations. A success does not
+guarantee the answer will appear spontaneously through the skill. Keep
+diagnostics and confirmation runs in separate fresh contexts.
+
+Exploratory record, 2026-11-08: asked directly for answers that play with a
+7-character condition, Sonnet only mentioned or refused the condition and
+miscounted once; the latest Opus at high effort used the condition in 10/10
+answers with correct counts. Three `SKILL.md` interventions tested on Sonnet
+showed no target answers; the same text on Opus showed one in two runs. This
+supports testing such changes on Opus; it does not by itself explain every
+Sonnet failure.
 
 ```
 # Claude-family subagent prompt
@@ -196,6 +213,44 @@ the evaluators").
 
 Subagents are still used for generation and for the prompt-mode
 `diversity-check` report, which is read as a diagnostic, never counted.
+
+`evaluate.ts` in both checks groups array input by `sample.id`; an array of
+sets without distinct ids is merged, and every set then reports the same pooled
+`summaries` (seen 2026-11-08). Invoke it once per set with a single object
+until distinct-id arrays are verified in humor-skills.
+
+### Change-specific criteria (both tiers)
+
+The fixed topics catch regressions; they cannot show that a change does what
+it was made for. When a change targets a specific kind of answer, register the
+criteria before generating any confirmatory outputs. Disclose earlier
+exploration and diagnostics, and never reuse outputs you have already
+inspected as confirmatory evidence.
+
+For each topic, record:
+- its exact text and roles: required target, leakage control, regression
+  (fixed), unseen-category, and/or stretch;
+- its content requirement (what the answer must show or convey), its explicit
+  form conditions, and the single condition, if any, eligible for the form
+  exception below;
+- the run count, success and leakage thresholds, and counting conventions
+  (characters, morae with recorded readings, …).
+
+Require at least one required target. Freeze candidate, baseline, generator
+settings, evaluation policy, and topic roles before confirmation. After seeing
+confirmatory outputs, do not reclassify a failed target as stretch, replace
+topics, or pick favourable runs. Never hand a criterion, a diagnostic example,
+or a previous answer to the generator.
+
+A **stretch** topic is one where the move was registered in advance as very
+hard (e.g. bending a 五七五 count while still evoking the season). Stretch
+waives only the minimum number of target answers; every other check applies.
+Zero successes there are recorded as "not demonstrated". Stretch-only results
+do not discharge the Example Firewall's cross-topic requirement: if no benefit
+outside the source topic is shown, report transfer as unconfirmed.
+
+Leakage — the move, or a form violation it causes, appearing where it does
+not belong — counts on every topic, whether or not the change caused it.
 
 ### Light loop (default — ~2-3 subagent calls per iteration)
 
@@ -240,7 +295,31 @@ claimed.
    bars.
    - **Pass/fail (hard):**
      - every answer takes the form the お題 asks for (utterance for 「一言」,
-       a description of the thing for 「どんな〇〇？」, a title for 「タイトル」…)
+       a description of the thing for 「どんな〇〇？」, a title for 「タイトル」…),
+       except an answer accepted under the preregistered **form
+       exception**. This is an external experimental acceptance policy;
+       it does not imply that the current `SKILL.md` permits such answers.
+       Record the tested revision's actual generation rules. Only the
+       condition registered as eligible for the topic may be broken.
+       Accept only when all hold; ambiguous cases are rejected:
+       - exactly one eligible condition is broken; the content requirement,
+         every other condition, the length and 「」 limits, the output
+         format, and a requested utterance form are kept
+       - the departure itself shows what the お題 asks for, and any claim the
+         answer makes about itself matches the actual answer (count it)
+       - repairing the departure removes the mechanism (record the repair)
+       - the answer would not work unchanged for an unrelated content
+         requirement under the same form (record the control お題 used)
+       - the connection is apparent without explanation
+       At most one accepted exception per original five-answer run. Audit
+       separately from generation, with sources hidden where possible, and
+       apply the same audit to baseline and candidate. Count strict
+       violations, accepted exceptions, unaccepted violations, and
+       within-form condition play (an answer that keeps the condition but
+       plays with it) separately. This is a manual semantic judgment, not
+       evidence of funniness. Report any remaining tension with the skill's
+       own generation or self-check rules; this audit does not establish the
+       skill's internal consistency.
      - 「」 count and length within `SKILL.md`'s own limits
      - `overlap-check` `nearDuplicates` is empty — unless the baseline pooled
        on the same topic has as many, which means the お題 forces a shared
@@ -250,10 +329,20 @@ claimed.
      `trait-check`'s `SKILL.md`:
      - `concrete` set mean lower than the baseline's
      - `indirect` set mean higher than the baseline's
-     - `compare.ts` over all candidate × baseline pairs (10 × 10) gives the
-       candidate a win rate below 0.5
+     - `compare.ts` over all candidate × baseline pairs (10 × 10, candidate
+       as A) gives mean `probA` below 0.5 by more than the noise band below
      A difference no larger than the gap between the baseline's own two runs
-     is noise, not a regression. A rise is never a reason to accept a change.
+     is noise, not a regression. For `compare.ts`, that gap is measured by
+     comparing the baseline's run 1 against its run 2 (5 × 5 pairs): the noise
+     band is |mean `probA` − 0.5| of that comparison, and the candidate
+     regresses only if 0.5 − its mean `probA` exceeds the band. Use mean
+     `probA`, not the draw-excluded win rate, which swings far more (on
+     2026-11-08 one baseline's run 1 beat its own run 2 at 0.80). This is a
+     preregistered operational tolerance from one run pair, not a confidence
+     interval or an estimate of all sampling and position bias. Keep baseline
+     run 1 as A, record both the mean and the band, and do not enlarge the band
+     after inspecting candidate results. Record the draw-excluded win rate
+     separately as a diagnostic. A rise is never a reason to accept a change.
    - **Relative to the baseline (warning, not a failure by itself):**
      - `overlap-check` `sameMaterial` distribution clearly higher than the
        baseline's
@@ -285,17 +374,28 @@ claimed.
    Answer-level A/B pairs between candidate and baseline are the most useful
    shape for validating the judges later. If no human is available, skip it;
    do not block, poll, or ask repeatedly.
-5. Outcome, stated exactly in the final report and commit message:
-   - **mechanically passed** — step 2 has no hard failure, no regression, and
-     no topic with two warnings, on all three topics. The change may be
-     committed. Then **stop looping**: further prompt tuning cannot be
-     validated by LLM evaluation alone.
+5. Outcome, stated exactly in the final report and commit message. Step 2
+   is assessed on the union of all registered gate topics: fixed,
+   unseen-category, and any target, leakage-control, and stretch topics from
+   change-specific criteria (each 2 runs, with baseline; a topic with several
+   roles is generated and checked once).
+   - **mechanically passed** — no hard failure, no regression, and no topic
+     with two warnings, across that whole union.
    - **validated** — mechanically passed, *and* either the blind human
      comparison preferred the candidate (or tied) on the topics shown, or a
      `gate: yes` evaluator did.
    - **not passed** — report the exact loop depth, the failing criteria, and
      the next concrete intervention. The honest final state is "improved but
      not fully validated", not "done".
+   Report change-specific criteria separately as met / not met, transfer as
+   demonstrated / unconfirmed, and the number of accepted form exceptions.
+   **Adoption** requires a passing gate, met change-specific criteria, and
+   the Example Firewall's cross-topic requirement where it applies; a
+   record-only commit is not adoption. Stop tuning once adoption
+   requirements are met — further prompt tuning cannot be validated by LLM
+   evaluation alone. If the gate passes but another requirement is unmet,
+   report the limitation and either preregister a new experiment or do not
+   adopt; never relax the completed experiment's criteria.
 6. Commit with hypothesis, loop count, per-iteration metrics, and what
    changed between iterations.
 
@@ -303,15 +403,21 @@ claimed.
 
 ```
 iteration N (light|gate)
+phase: exploratory | confirmatory
+registration: path / timestamp / outputs already inspected before registering
+revisions: candidate / baseline / evaluation-policy commits
+generator: resolved model id / effort / invocation (same for baseline and candidate)
 hypothesis:
 edit:
-topics:
+topics: text and role (regression / unseen / target / leakage / stretch)
 overlap-check: nearDuplicates / sameMaterial max (candidate vs baseline at gate)
 trait-check: concrete mean / indirect mean (candidate vs baseline at gate; baseline run-to-run gap) / compare win rate (gate only)
-hand counts: 「」 / form violations / repeated mechanisms / repeated templates / repeated metaphor systems / cross-run material
+hand counts: 「」 / strict form violations / accepted exceptions / unaccepted violations / within-form condition play / repeated mechanisms / repeated templates / repeated metaphor systems / cross-run material
+change-specific (if registered): target successful runs (candidate vs baseline) / stretch successful runs / leakage per topic / met or not / transfer demonstrated or unconfirmed
+artifacts: raw outputs / evaluator JSON / per-answer exception audit
 diagnostics (optional): diversity-check notes / provisional funniness-score
 human blind comparison (gate only, optional): not run | candidate / baseline / tie per topic
-decision: next intervention, or gate outcome (mechanically passed / validated / not passed)
+decision: next intervention, or gate outcome (mechanically passed / validated / not passed) / adoption (yes / no / pending, with reason)
 ```
 
 ### Evaluation tools at a glance

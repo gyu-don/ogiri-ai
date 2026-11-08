@@ -50,7 +50,7 @@ Shortcut rules:
 When delegating Ogiri generation to sub-agents, apply the following defaults unless the user specifies otherwise:
 
 **Model and effort defaults:**
-- Claude: Opus 4.6 at medium effort or below, **or** Sonnet 4.6 (or later) at high effort or below. Do not use Opus 4.7.
+- Claude: the latest Opus at high effort or below, **or** Sonnet 4.6 (or later) at high effort or below. (Decision of 2026-11-08: the latest Opus is no longer token-inefficient, so the earlier Opus 4.6 cap was lifted. Record the resolved model id in the iteration log.) Prefer Opus when the change targets answers Sonnet cannot produce (see the generator capability check in `DEVELOPMENT.md`).
 - Codex: Use the latest available version at high effort or below. Older Codex versions have no token-efficiency advantage, so prefer the newest.
 
 **When making many sub-agent calls:**
