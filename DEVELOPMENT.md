@@ -327,7 +327,7 @@ claimed.
        compare its distribution with the baseline's instead.
    - **Regression against the baseline (fail the topic)**, per
      `trait-check`'s `SKILL.md`:
-     - `concrete` set mean lower than the baseline's
+     - `concrete` mean of ordinary answers lower than the baseline's
      - `indirect` set mean higher than the baseline's
      - `compare.ts` over all candidate × baseline pairs (10 × 10, candidate
        as A) gives mean `probA` below 0.5 by more than the noise band below
@@ -343,6 +343,18 @@ claimed.
      run 1 as A, record both the mean and the band, and do not enlarge the band
      after inspecting candidate results. Record the draw-excluded win rate
      separately as a diagnostic. A rise is never a reason to accept a change.
+
+     **Accepted performance answers (user decision, 2026-11-09).** Keep every
+     raw answer and every original score. Before reading evaluator scores,
+     freeze the form-exception audit labels for both versions. For accepted
+     performance answers only, physical-scene `concrete` is N/A: compare
+     ordinary-answer means and the baseline's corresponding run gap instead.
+     Keep `indirect`, form, relevance, overlap and the other checks on all
+     answers. For pairwise comparisons involving an accepted performance
+     answer, use `straight` alone; otherwise keep both criteria. Aggregate all
+     pairs, including baseline run-to-run pairs, under the same rule and also
+     report the original results. This applies only to future preregistered
+     gates, never retroactively to a failed gate.
    - **Relative to the baseline (warning, not a failure by itself):**
      - `overlap-check` `sameMaterial` distribution clearly higher than the
        baseline's
@@ -513,6 +525,32 @@ Measured on 2026-09-24/25 (humor-skills `reports/validation/2026-09-24/`,
 - **Maximizing `trait-check` values**: they describe past winners; used as a
   target they drive the same collapse as the 07-11 attractor. Regression
   checks only.
+
+## Open evaluation questions (deferred process work)
+
+User direction, 2026-11-09: record these issues and revisit the evaluation
+process later; continue improving the generation skill now.
+
+- Concreteness is one feature, not an absolute measure of quality or
+  funniness. In condition-finish gate 15 the human tied the 7-character sets,
+  while the candidate's two accepted performance answers scored .075 on
+  `concrete`; its eight ordinary answers scored .846 versus the baseline's
+  .859. The intended mechanism can be penalized because it does not depict a
+  physical scene. The scoped exception above was approved; broader changes
+  to the evaluation process remain deferred.
+- The candidate lost the human comparison on Sylvanian Families. Domain
+  mismatch on one feature does not explain away material repetition or weak
+  answers on other topics. Keep human judgments and all raw scores.
+- A gap from only two baseline runs is an operational tolerance, not a
+  reliable sampling-error estimate. Very small or zero gaps can turn tiny
+  feature differences into failures. Assess false vetoes and the cost of
+  repeated gates before treating the present procedure as a stable quality
+  standard.
+- Revisit the scope and combination of `concrete`, `indirect`, pairwise
+  preference, relevance, empathy and diversity with new human labels. A
+  proxy should not become an optimization target or silently substitute for
+  the user's judgment. Preserve the distinction between a mechanical result
+  and evidence that the answers are funnier.
 
 ## Secrets and environment variables
 
