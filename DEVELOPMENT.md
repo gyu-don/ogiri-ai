@@ -255,6 +255,16 @@ not belong — counts on every topic, whether or not the change caused it.
 
 ### Light loop (default — ~2-3 subagent calls per iteration)
 
+Mechanical form checks belong to development evaluation, not every normal
+generation (user decision, 2026-11-09). Keep the generation skill free of a
+mandatory Python/JSON validation step. For saved outputs, the optional helper
+`../humor-skills/src/mechanical/check_form.py` checks the five-answer policy,
+code-point lengths, explicitly supplied character conditions and quote caps;
+see its README. Register any intentional exception and audit its meaning
+separately. Run this helper when testing form-related changes, at gates, or
+when violations recur; do not call it automatically on every user request.
+Existing experimental gate outcomes are unchanged.
+
 1. Hypothesis + one targeted edit to `SKILL.md`.
 2. Generate: one `/ogiri-ai` run per fixed topic, 2 fixed topics from
    different categories (5 answers each).
