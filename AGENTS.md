@@ -51,7 +51,8 @@ When delegating Ogiri generation to sub-agents, apply the following defaults unl
 
 **Model and effort defaults:**
 - Claude: the latest Opus at high effort or below, **or** Sonnet 4.6 (or later) at high effort or below. (Decision of 2026-11-08: the latest Opus is no longer token-inefficient, so the earlier Opus 4.6 cap was lifted. Record the resolved model id in the iteration log.) Prefer Opus when the change targets answers Sonnet cannot produce (see the generator capability check in `DEVELOPMENT.md`).
-- Codex: Use the latest available version at high effort or below. Older Codex versions have no token-efficiency advantage, so prefer the newest.
+- GPT (Codex): the latest Sol at high effort or below (`gpt-6.1-sol` as of 2026-11-09). Older GPT versions have no token-efficiency advantage, so prefer the newest. Run it from an isolated directory holding only the skill, not at the repo root (see "How to invoke" in `DEVELOPMENT.md`).
+- Token cost order: Sonnet high < Sol high < Opus high. Larger models tend to be funnier, though not strictly in cost or size order. Claude and GPT are both valid generators; register the family, and never mix families within one pooled set or between baseline and candidate. Details in `DEVELOPMENT.md` ("Generator choice").
 
 **When making many sub-agent calls:**
 - Prefer lower effort settings and/or lower-tier models to control costs.

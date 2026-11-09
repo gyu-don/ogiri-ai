@@ -131,11 +131,16 @@ npm install                                  # once per clone
 doppler run -- node .claude/skills/overlap-check/scripts/evaluate.ts <input.json> [output.json]
 doppler run -- node .claude/skills/trait-check/scripts/evaluate.ts <input.json> [output.json]
 doppler run -- node .claude/skills/trait-check/scripts/compare.ts <pairs.json> [output.json]
+doppler run -- node .claude/skills/trait-check/scripts/gate.ts <gate.json> [output.json]
 ```
 
 `evaluate.ts` takes `{"topic": "...", "answers": ["...", ...]}` or an array of
 such sets (compare candidate and baseline in one run); `compare.ts` takes
-`{"topic", "answerA", "answerB"}` or an array of them. See each skill's
+`{"topic", "answerA", "answerB"}` or an array of them; `gate.ts` takes
+`{"topic", "baseline": [[run 1 answers], [run 2 answers]], "candidate":
+[[run 1 answers], [run 2 answers]]}` or an array of them, one per topic, and
+computes the gate's regression verdicts with their noise bands (see Gate
+check). `id` and `label` are optional in all of them. See each skill's
 `assets/` for samples. `TYPESAFE_API_KEY` is required; run under
 `doppler run --` when it is not already in the environment (see `AGENTS.md`).
 
@@ -172,6 +177,40 @@ doppler run -- node ../humor-skills/research/<name>/scripts/evaluate.ts <input.j
 Prefer subagents with native skill invocation for generation (model defaults
 in `AGENTS.md`). Use the same model and effort for baseline and candidate.
 
+**Generator choice.** Two families are supported, and neither is the default
+"correct" one. Pick the generator per experiment, register it, and keep it
+fixed for baseline and candidate.
+
+| Generator | Model / effort | Token cost (rough) |
+|---|---|---|
+| Claude, small | Sonnet (latest) high | lowest |
+| GPT | `gpt-6.1-sol` high (latest Sol as of 2026-11-09) | middle |
+| Claude, large | Opus (latest) high | highest |
+
+Cost order: Sonnet high < Sol high < Opus high. Funniness does not follow
+cost or size strictly, but larger models tend to be funnier, so a cheaper
+generator can fail to produce what a change targets (see the capability check
+below). Rules:
+
+- Everyday light loops and bulk runs: Sonnet high or Sol high. Changes that
+  target answers a cheaper model cannot produce: Opus high, or whichever
+  generator passed the capability check.
+- Generator family is a registered experimental variable (iteration log
+  `generator:` line). Never mix generators within one pooled set, and never
+  compare a candidate on one generator against a baseline on another.
+- Do not move a Claude-measured number to a GPT run or back. Overlap and
+  trait values, hand counts and the gate outcome belong to one generator.
+- A claim that a change helps "the skill" rather than one generator needs the
+  same candidate and baseline checked on a second family (**generator
+  transfer**: run the light loop, or the gate if budget allows, on the other
+  family). Report transfer as demonstrated / unconfirmed, separately from the
+  gate outcome; it is not a pass/fail criterion and never relaxes one.
+- If the families disagree (a change helps on one and regresses on the
+  other), report both and do not adopt on the favourable one.
+- Resolve and record the model id. Claude traces carry it; the Codex trace
+  (`--json`) does not, so record the requested `-m` value, effort, and
+  `codex --version`.
+
 **Generator capability check.** Before tuning the skill for a new kind of
 answer, run a small, predefined no-skill diagnostic on the intended generator:
 ask for that kind of answer directly. Record the exact model/version, effort,
@@ -180,6 +219,10 @@ not demonstrated under those conditions, not that no prompt could elicit it;
 use it to pick a generator before spending iterations. A success does not
 guarantee the answer will appear spontaneously through the skill. Keep
 diagnostics and confirmation runs in separate fresh contexts.
+
+The check is per generator: a result on one family says nothing about the
+other. When adding a family or model to an experiment, run it for that
+generator too.
 
 Exploratory record, 2026-11-08: asked directly for answers that play with a
 7-character condition, Sonnet only mentioned or refused the condition and
@@ -197,13 +240,34 @@ Sonnet failure.
 $ogiri-ai <お題>
 ```
 
-CLI fallback when subagents are unavailable:
+CLI fallback when subagents are unavailable, and the form for fresh,
+independent runs (one invocation per run):
 
 ```
 claude -p --model=<model> --effort=<effort> '/ogiri-ai <お題>'
-codex exec -C . -m <model> -c 'model_reasoning_effort="<effort>"' '$ogiri-ai <お題>'
+
+# Codex: run from an isolated directory that holds only the skill
+W=$(mktemp -d) && mkdir -p "$W/.agents/skills"
+cp -rL skills/ogiri-ai "$W/.agents/skills/ogiri-ai"      # candidate or baseline copy
+codex exec -C "$W" --skip-git-repo-check -m gpt-6.1-sol \
+  -c 'model_reasoning_effort="high"' -s read-only --ephemeral --json \
+  -o "$W/out.txt" '$ogiri-ai <お題>' > "$W/trace.jsonl"
 ```
-(Single-quote the Codex prompt so the shell does not expand `$ogiri-ai`.)
+
+Single-quote the Codex prompt so the shell does not expand `$ogiri-ai`.
+
+**Isolation for Codex generation.** Do not run Codex generators with `-C .`
+at the repo root. Codex auto-loads this repo's `AGENTS.md` and reads files
+through the shell, so a root run can see `DEVELOPMENT.md`, `experiments/`, and
+earlier answers, which breaks the rule that criteria, diagnostic examples and
+previous answers never reach the generator. Claude runs get the same isolation
+from a temporary cwd with `--tools Skill,Read --setting-sources project`; the
+isolated directory above is the Codex equivalent. Copy the exact candidate or
+baseline skill (including `references/`) into it, and check the trace:
+`command_execution` items should only `cat` the skill files. Verified
+2026-11-09 with `codex-cli 0.167.0`, `gpt-6.1-sol` high: the skill is
+discovered under `<cwd>/.agents/skills`, no other files are read, and one run
+costs roughly 70k input tokens (mostly cached) and 2k output tokens.
 
 The installed checks are plain scripts: run them directly, no subagent and no
 subagent budget. They are reproducible (retest r ≥ 0.97), so a moved number is
@@ -337,23 +401,31 @@ claimed.
        form. When `sameMaterial` bunches just under 0.7 on such a topic,
        compare its distribution with the baseline's instead.
    - **Regression against the baseline (fail the topic)**, per
-     `trait-check`'s `SKILL.md`:
-     - `concrete` mean of ordinary answers lower than the baseline's
-     - `indirect` set mean higher than the baseline's
-     - `compare.ts` over all candidate × baseline pairs (10 × 10, candidate
-       as A) gives mean `probA` below 0.5 by more than the noise band below
+     `trait-check`'s `SKILL.md`. Run `trait-check` `scripts/gate.ts` once
+     with every gate topic: per topic, the baseline's run 1 and run 2 as
+     `baseline` (in that order) and the candidate's two runs as `candidate`.
+     Do not compute the noise bands by hand. A topic regresses when its
+     `regressed` list is non-empty. `gate.ts` applies these rules:
+     - `concrete`: the candidate's pooled mean is lower than the baseline's
+       pooled mean by more than |baseline run 1 mean − run 2 mean|
+     - `indirect`: the candidate's pooled mean is higher by more than the same
+       kind of run gap
+     - `compare`: mean `probA` over all candidate × baseline pairs (10 × 10,
+       candidate as A) is below 0.5 by more than |mean `probA` − 0.5| of
+       baseline run 1 (A) × run 2 (B) (5 × 5)
      A difference no larger than the gap between the baseline's own two runs
-     is noise, not a regression. For `compare.ts`, that gap is measured by
-     comparing the baseline's run 1 against its run 2 (5 × 5 pairs): the noise
-     band is |mean `probA` − 0.5| of that comparison, and the candidate
-     regresses only if 0.5 − its mean `probA` exceeds the band. Use mean
-     `probA`, not the draw-excluded win rate, which swings far more (on
-     2026-11-08 one baseline's run 1 beat its own run 2 at 0.80). This is a
+     is noise, not a regression. Decide on mean `probA`, not the
+     draw-excluded win rate, which swings far more (on 2026-11-08 one
+     baseline's run 1 beat its own run 2 at 0.80). The band is a
      preregistered operational tolerance from one run pair, not a confidence
-     interval or an estimate of all sampling and position bias. Keep baseline
-     run 1 as A, record both the mean and the band, and do not enlarge the band
-     after inspecting candidate results. Record the draw-excluded win rate
-     separately as a diagnostic. A rise is never a reason to accept a change.
+     interval or an estimate of all sampling and position bias, and it can
+     come out very small (.002 on one 2026-11-08 topic). Record `worsening`
+     and `noise` for each metric, and record
+     `compare.candidateVsBaseline.drawExcludedWinRate` separately as a
+     diagnostic. Do not enlarge a band after inspecting candidate results.
+     Keep the output JSON with the raw outputs: it holds every answer's trait
+     values (`answers[]`, refs like `baseline-r2#3`) and every pair's
+     `probA` (`pairs[]`). A rise is never a reason to accept a change.
 
      **Accepted performance answers (user decision, 2026-11-09).** Keep every
      raw answer and every original score. Before reading evaluator scores,
@@ -365,7 +437,12 @@ claimed.
      answer, use `straight` alone; otherwise keep both criteria. Aggregate all
      pairs, including baseline run-to-run pairs, under the same rule and also
      report the original results. This applies only to future preregistered
-     gates, never retroactively to a failed gate.
+     gates, never retroactively to a failed gate. `gate.ts` does not apply
+     this rule; its output is the original result. Recompute the
+     ordinary-answer `concrete` means and the baseline's run gap from its
+     `answers[]`. For the pairs involving an accepted performance answer
+     (including baseline run-to-run pairs), run `compare.ts` and use
+     `criteria.straight`, because `gate.ts` keeps only `probA` per pair.
    - **Relative to the baseline (warning, not a failure by itself):**
      - `overlap-check` `sameMaterial` distribution clearly higher than the
        baseline's
@@ -429,14 +506,15 @@ iteration N (light|gate)
 phase: exploratory | confirmatory
 registration: path / timestamp / outputs already inspected before registering
 revisions: candidate / baseline / evaluation-policy commits
-generator: resolved model id / effort / invocation (same for baseline and candidate)
+generator: family / resolved model id (Codex: requested -m + codex --version) / effort / invocation (same for baseline and candidate)
 hypothesis:
 edit:
 topics: text and role (regression / unseen / target / leakage / stretch)
 overlap-check: nearDuplicates / sameMaterial max (candidate vs baseline at gate)
-trait-check: concrete mean / indirect mean (candidate vs baseline at gate; baseline run-to-run gap) / compare win rate (gate only)
+trait-check: concrete mean / indirect mean (candidate vs baseline at gate; baseline run-to-run gap) / gate only, from gate.ts: worsening vs noise for concrete, indirect and compare, regressed list, draw-excluded win rate (diagnostic)
 hand counts: 「」 / strict form violations / accepted exceptions / unaccepted violations / within-form condition play / repeated mechanisms / repeated templates / repeated metaphor systems / cross-run material
 change-specific (if registered): target successful runs (candidate vs baseline) / stretch successful runs / leakage per topic / met or not / transfer demonstrated or unconfirmed
+generator transfer (optional): second family and model / what was run / agrees or disagrees with the primary generator / demonstrated or unconfirmed
 artifacts: raw outputs / evaluator JSON / per-answer exception audit
 diagnostics (optional): diversity-check notes / provisional funniness-score
 human blind comparison (gate only, optional): not run | candidate / baseline / tie per topic
@@ -449,7 +527,8 @@ decision: next intervention, or gate outcome (mechanically passed / validated / 
 |---|---|---|---|---|
 | `overlap-check` | installed | Answer pairs sharing the same core material (被り) | Same-direction twists with different material; set-wide convergence | Every iteration; `nearDuplicates` is a hard gate check |
 | `trait-check` `evaluate.ts` | installed | `concrete` (a concrete thing/phenomenon/anomaly appears), `indirect` (explanatory, roundabout phrasing) | Funniness itself | Every iteration as a trend; at the gate, regression vs baseline only |
-| `trait-check` `compare.ts` | installed | Pairwise preference from concreteness and straightness | Absolute funniness | Gate: candidate × baseline win rate |
+| `trait-check` `compare.ts` | installed | Pairwise preference from concreteness and straightness | Absolute funniness | Ad-hoc pairs; at the gate only for the accepted-performance `straight` recomputation |
+| `trait-check` `gate.ts` | installed | `concrete` / `indirect` / pairwise regression vs baseline, each against the baseline's run-to-run noise band | Funniness itself; whether it catches real deterioration (unverified as of 2026-11-09) | Gate: regression check |
 | `diversity-check` | research | Decomposition axes of the お題 (prose) | Convergence humans point out (AUC 0.49) | Optional diagnostic |
 | `funniness-score` | research | 6-axis funniness scores | Anything humans agree with (inverted/chance) | Optional, provisional |
 | `risk-flags` | research | ベタ・ひねりなし・共感・認知度・滑り・相対典型性 flags | Human preference (chance; some inverted) | Not used |
@@ -568,6 +647,11 @@ process later; continue improving the generation skill now.
   noise-based regression rule flags 3 of 4 human-tied topics, while its
   ability to detect a true loss has not yet been established on that table.
   See humor-skills `reports/validation/2026-11-09/{summary,notes}.md`.
+- The evaluators (`overlap-check`, `trait-check`) are generator-agnostic
+  scripts, but their human-label validation has not been checked separately
+  on GPT-family outputs. Until it is, treat GPT-run values as the same kind of
+  regression signal, not as a calibrated measure, and keep human judgments
+  of GPT-run sets in `data/human-evals/` with the generator recorded.
 - Updated overlap guidance distinguishes duplicates within one five-answer
   output from repetition across independent runs. Reconcile the present
   pooled hard check with that distinction in the deferred process review;

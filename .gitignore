@@ -2,6 +2,7 @@
 # Restore with: npx skills experimental_install
 /.claude/skills/*
 !/.claude/skills/ogiri-ai
+!/.claude/skills/ogiri-baseline
 
 # Root npm install (the Jev scripts' SDK; see package.json)
 node_modules/
